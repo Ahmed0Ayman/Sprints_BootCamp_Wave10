@@ -29,16 +29,23 @@ int main ()
 
 
     /* set user2 name */
-    printf (" enter the second user name MAX 6 characters\n");
+    printf (" enter the second player name \n");
     fgets (ua8_User2_Name, Total_Name_LEN, stdin);
     ua8_User2_Name[strlen(ua8_User2_Name)-1] = 0 ;  /* scape new line */
+	
+	
+	
+	printf(" please follow these instructions \n 1- you need to select your turn by specify its location\n \
+2- location must be from 1 to 9 otherwise not accpeted \n \
+3 - there is two cases first one of you're win second you're equal \n");
 
+	
   
   
     while (1)
     {
         do{     /* first Do while for first Player turn */
-            printf ("your turn %s enter next turn  \n", ua8_User1_Name);
+            printf ("your turn %s   \n", ua8_User1_Name);
             do{
                 scanf ("%d", &Location);
                 if((Location > 9)||(Location < 0))
@@ -57,16 +64,18 @@ int main ()
         if(u32_WinFlag == GAME_END_EQUAL )  /* check if the game is ended with quality result */
         {
              printf("both of you are equeal please try again \n");
+			 fflush(stdin);getchar(); 	/* keep treminal */
              return 0 ;
         }else if (u32_WinFlag == USER_WIN)  /* check if the game is ended wtih win for fisrt player */
         {
              printf("congratulation %s , you are win \n" , ua8_User1_Name);
+			 fflush(stdin);getchar(); 	/* keep treminal */
              return 0 ;            
         }
         
         
         do{  /* second Do while for second Player turn */
-            printf ("your turn %s enter next turn  \n", ua8_User2_Name);
+            printf ("your turn %s \n", ua8_User2_Name);
         
             do{  /* avoid wrong user location */
         
@@ -87,16 +96,21 @@ int main ()
         if(u32_WinFlag == GAME_END_EQUAL)     /* check if the game is ended with quality result */
         {
              printf("both of you are equeal please try again \n");
+			 fflush(stdin);getchar(); 	/* keep treminal */
              return 0 ;
         }else if (u32_WinFlag == USER_WIN ) /* check if the game is ended wtih win for second player */
         {
              printf("congratulation %s , you are win  \n" , ua8_User2_Name);
+			 fflush(stdin);getchar(); 	/* keep treminal */
              return 0 ;            
         }
     
 
     }
+	
 
-  return 0;
+
+	
+	return 0;
 }
 
