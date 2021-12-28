@@ -35,10 +35,10 @@ void DrawPattern (uint32_t * pu32_Game );
  * brief  : this function used to update the game board 
  * param. : pu32_Game pointer to the game board
  * param. : User_Num hold player number that made the change 
- * param. : NewLoc the new location that need to be nodified by the player 
+ * param. : NewLoc the new location that need to be notified by the player 
  * return : UpdateGameRetEvents enum that indicate the current status of the game board 
  */
-int32_t GameUpdat (uint32_t * pu32_Game , uint32_t User_Num, uint8_t NewLoc);
+int32_t GameUpdate (uint32_t * pu32_Game , uint32_t User_Num, uint8_t NewLoc);
 
 
 
@@ -47,8 +47,8 @@ int32_t GameUpdat (uint32_t * pu32_Game , uint32_t User_Num, uint8_t NewLoc);
 /*
  * brief  : this function used to check the current condition of the game board 
  * param. : pu32_Game pointer to the game board
- * param. : CondVar varibale hold all bits of each player to simplify win check 
- * param. : NewLoc the new location that need to be nodified by the player 
+ * param. : CondVar variabale hold all bits of each player to simplify win check 
+ * param. : NewLoc the new location that need to be notified by the player 
  * return : UpdateGameRetEvents enum that indicate the current status of the game board 
  */
 uint32_t CheckWinCondition(uint32_t * pu32_Game , uint32_t CondVar);

@@ -18,7 +18,7 @@ uint32_t User_WinCond[2] ;
  * param. : NewLoc the new location that need to be nodified by the player 
  * return : UpdateGameRetEvents enum that indicate the current status of the game board 
  */
-int32_t GameUpdat (uint32_t * pu32_Game , uint32_t User_Num, uint8_t NewLoc)
+int32_t GameUpdate (uint32_t * pu32_Game , uint32_t User_Num, uint8_t NewLoc)
 {
     uint32_t  GameCurrentCondition = 0 ;
 
