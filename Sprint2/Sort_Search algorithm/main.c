@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "Sorting.h"
 #include "Search.h"
-#define __DEBUG__   0
+#define __DEBUG__   1
 
 
 /* here jest for test the input may be from any other file or from user command */
@@ -17,7 +17,7 @@ str_Sort_t gstr_Sort ;
 
 int main(void)
 {
-    SortDataType_t Num = -1 ; 
+    SortDataType_t Num = 10 ; 
     gstr_Sort.ptf_BubbleSort     = Sort_Using_Bubble ; 
     gstr_Sort.ptf_InsertionSort  = Sort_Using_Selection ;
     gstr_Sort.ptf_SelectionSort   = Sort_Using_Insertion ; 
@@ -32,7 +32,7 @@ int main(void)
     printf("\n");
     #endif
  
-        if(Search_Binary(ga_Data , 0 ,sizeof(ga_Data)/sizeof(ga_Data[0]) -1  ,Num, gstr_Sort.ptf_BubbleSort  ) ==SEARCH_NUM_FOUNDED )
+        if(Search_Binary(ga_Data , 0 ,sizeof(ga_Data)/sizeof(ga_Data[0]) -1  ,Num, gstr_Sort.ptf_BubbleSort  ) == SEARCH_NUM_FOUNDED )
         {
             printf("this number%d is founded \n ",Num);
         }

@@ -15,7 +15,7 @@
 
 
 /* enum return the current status of searching function */
-typedef enum {SEARCH_OK = 0 , SEARCH_NUM_FOUNDED  = 0, SEARCH_NUM_NOT_FOUND , SEARCH_SORT_ERROR  } SearchStauts_t ;
+typedef enum {SEARCH_OK = 0 , SEARCH_NUM_FOUNDED  , SEARCH_NUM_NOT_FOUND , SEARCH_SORT_ERROR  } SearchStauts_t ;
 
 
 
