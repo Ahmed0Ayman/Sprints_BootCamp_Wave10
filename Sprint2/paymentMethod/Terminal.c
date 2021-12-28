@@ -211,7 +211,7 @@ TernimalStatus_t Terminal_CollectCardData(struct ST_cardData_t * pstr_CardData)
         fflush(stdin);fgets(pstr_CardData->pu8_primaryAccountNumber,CARD_NUM_LEN , stdin);
         TerminalStatus = Terminal_GetNumsINString(&pstr_CardData->pu8_primaryAccountNumber);
         
-    }while((TerminalStatus != 0 )&&(strlen(pstr_CardData->pu8_primaryAccountNumber) != 14)) ;    
+    }while((TerminalStatus != 0 )||(strlen(pstr_CardData->pu8_primaryAccountNumber) != 14)) ;    
     system("cls");
   
 
@@ -222,7 +222,7 @@ TernimalStatus_t Terminal_CollectCardData(struct ST_cardData_t * pstr_CardData)
         fflush(stdin);fgets(pstr_CardData->pu8_cardExpirationDate , CARD_NUM_LEN , stdin);
         TerminalStatus = Terminal_GetNumsINString(&pstr_CardData->pu8_cardExpirationDate);
         
-    }while((TerminalStatus != 0 )&&(strlen(pstr_CardData->pu8_cardExpirationDate) != 4)) ;      
+    }while((TerminalStatus != 0 )||(strlen(pstr_CardData->pu8_cardExpirationDate) != 4)) ;      
     system("cls");
    
     
@@ -233,7 +233,7 @@ TernimalStatus_t Terminal_CollectCardData(struct ST_cardData_t * pstr_CardData)
         fflush(stdin);fgets(pstr_CardData->pu8_CardCVV , CARD_CVV_LEN , stdin);
         TerminalStatus = Terminal_GetNumsINString(&pstr_CardData->pu8_CardCVV);
         
-    }while((TerminalStatus != 0 )&&(strlen(pstr_CardData->pu8_CardCVV) != 3)) ;      
+    }while((TerminalStatus != 0 )||(strlen(pstr_CardData->pu8_CardCVV) != 3)) ;      
     system("cls");
     
         

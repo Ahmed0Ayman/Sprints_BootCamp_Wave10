@@ -44,7 +44,7 @@ int main()
 
         if(GetCardData(&ST_cardData ,&ST_terminalData , &cardDateBaseData) == SERVER_OK)
         {
-            printf(" Successed operation   \n");
+            printf(" success operation   \n");
             SERVER_StoreTransactionDate(&ST_cardData ,&ST_terminalData );
         }
         else
