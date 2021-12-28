@@ -64,16 +64,42 @@ uint32_t Check_ParenthesesBlancing(uint8_t * Ptr_CheckLine )
                 return NOT_BALANCING ;
             }
             
+            switch(u8_PopDataClose){
+                    case '(' :
+                        if(Ptr_CheckLine[u8_Index] != ')')
+                        {
+                            return NOT_BALANCING ;
+                        }else
+                        {
+                            ;
+                        }
+                    break ; 
+                    case '[' :
+                        if(Ptr_CheckLine[u8_Index] != ']')
+                        {
+                            return NOT_BALANCING ;
+                        }else
+                        {
+                            ;
+                        }  
+                    break ;  
+                    case '{' :
+                        if(Ptr_CheckLine[u8_Index] != '}')
+                        {
+                            return NOT_BALANCING ;
+                        }else
+                        {
+                            ;
+                        }
+                    break ; 
+                    default :
+
+                    break ;                    
+                    
+
+            }
             
-            /* according to ascii code the subtraction between 2 parentheses 1 or 2 */                 
-            if((Ptr_CheckLine[u8_Index] -  u8_PopDataClose) & 0x03 )  
-            {
-                
-            }
-            else
-            {
-                return NOT_BALANCING ;   
-            }
+
         }
         else
         {

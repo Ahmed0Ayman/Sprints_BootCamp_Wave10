@@ -1,8 +1,8 @@
 
-all:output
+all: clean auto
 
-output:
-	gcc -std=c99 *.c -o output
+auto:
+	gcc -std=c99 *.c -o auto
 
 clean:
 	rm -rf *.o *.exe
