@@ -112,7 +112,7 @@ void DrawPattern (uint32_t * pu32_Game)
   char Shap = ' ';
   uint8_t   u8_UserNumber = 0 ,         /* hold user number USER_1_NUM or USER_1_NUM */
             u8_GameLineNum = 0;         /* hold the current line index */
-
+	system("clear");	/* clear terminal with each player turn */
     for (int interCounter = 0; interCounter < 3; interCounter++)    /* used to draw the most upper line */
     {
       printf (" -- ");
