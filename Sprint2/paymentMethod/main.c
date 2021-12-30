@@ -1,63 +1,61 @@
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 #include <time.h>
+
 #include "Terminal.h"
 #include "Server.h"
+#include "Utilites.h"
 
-#define   MAIN_ERROR   -1 
 
-CardServerData_t cardDateBaseData ; 
+
+#define   MAIN_FUN_ERROR   -1 
+
 FILE *f ;
 
-time_t Str_Time ;
+str_terminalData_t  str_TerminalData;
 
 int main()
 {
 
-  
-    if(Terminal_CollectCardData(&ST_cardData) != TERMINAL_OK)
-    {
-        return MAIN_ERROR ; 
-    }
-    ST_terminalData.maxTransAmount = MAX_WITHDRAW_DAILY ;
-    time(&Str_Time);
-    strcpy(ST_terminalData.transactionDate , ctime(&Str_Time));
-    #if (__DEBUG__ == 1)   
-        printf("%s\n",ST_terminalData.transactionDate);
-    #endif
-    do{
-    printf("Please enter Transaction amount \n");  
-    scanf("%d",&ST_terminalData.transAmount );
-    }while((ST_terminalData.transAmount <= 0 )||(ST_terminalData.transAmount > MAX_WITHDRAW_DAILY));
 
-    if(Terminal_CheckCardDate(&ST_cardData) != TERMINAL_OK)
+
+    Socket_Init( );
+
+    str_cardData_t  str_CardData ;
+
+    if(Terminal_Processing(&str_CardData , &str_TerminalData) != TERMINAL_OK)
     {
-        return MAIN_ERROR ;
+        #if( __DEBUG__ == 1)
+            printf("error in  Terminal_Processing() Function \n");
+        #endif
+        return MAIN_FUN_ERROR ;
+
+
     }
     else{
         // now turn of server side 
-
-        if(GetCardData(&ST_cardData ,&ST_terminalData , &cardDateBaseData) == SERVER_OK)
+    
+        if(SERVER_CheckCardData(&str_CardData ,&str_TerminalData) == SERVER_OK)
         {
             printf(" success operation   \n");
-            SERVER_StoreTransactionDate(&ST_cardData ,&ST_terminalData );
+            SocketSend(" success operation    \n" ,ClientHSocket_Id);
         }
         else
         {
-            return MAIN_ERROR ;   
+            #if( __DEBUG__ == 1)
+                printf("error in  SERVER_CheckCardData() Function \n");
+            #endif
+            printf("Not Success Operation \n");
+            return MAIN_FUN_ERROR ;   
         }
 
 
     }
 
     
-
-
 
 
     return 0;
