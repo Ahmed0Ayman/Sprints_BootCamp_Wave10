@@ -48,6 +48,7 @@ int main()
             #if( __DEBUG__ == 1)
                 printf("error in  SERVER_CheckCardData() Function \n");
             #endif
+            SocketSend("Not success operation  \n" ,ClientHSocket_Id);
             printf("Not Success Operation \n");
             return MAIN_FUN_ERROR ;   
         }

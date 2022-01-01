@@ -35,6 +35,7 @@ StackStatus_t   Stack_Push(pstr_Stack_t *  ppstr_DatasStack, LinkedDataType_t * 
     if((ppstr_DatasStack == NULL)||(Data == NULL))
     {
         return STACK_PTR_ERROR ;
+        
     }
     
     

@@ -81,11 +81,7 @@ ServerStatus_t SERVER_CheckCardData(str_cardData_t * pstr_CardData ,str_terminal
 
     while(fscanf(DateBaseFile , "%s %s %s" , CardName ,CardNumber , CardCVV ) > 1)  /* read the first three column */
     {
-        if(Server_CheckCardName(pstr_CardData,CardName) != SERVER_OK)       /* check if the input card name */
-        {
-            printf("this Name is not found in data base , please try again \n");
-        }
-        else
+        if(Server_CheckCardName(pstr_CardData,CardName) == SERVER_OK)       /* check if the input card name */
         {
             if(strcmp(pstr_CardData->pu8_primaryAccountNumber  , CardNumber) == 0 )  /* check if the input card number  */
             {
@@ -99,14 +95,13 @@ ServerStatus_t SERVER_CheckCardData(str_cardData_t * pstr_CardData ,str_terminal
                     system("cls");
                     #endif 
 
-                    sprintf(ClientMessage , "\nWrong CVV Try again \n");
-                    SocketSend(ClientMessage, ClientHSocket_Id);
-                    break ;
+
                 }
             }
-                fscanf(DateBaseFile , "%s " , CardAmount );
+
         }
-    }
+                       fscanf(DateBaseFile , "%s " , CardAmount );  
+    } 
     if(Found == 1)
     {
         #if (__DEBUG__ == 0)
@@ -133,6 +128,8 @@ ServerStatus_t SERVER_CheckCardData(str_cardData_t * pstr_CardData ,str_terminal
     }
     else
     {
+        sprintf(ClientMessage , "\nWrong card data Try again \n");
+        SocketSend(ClientMessage, ClientHSocket_Id);
         
     }
 
