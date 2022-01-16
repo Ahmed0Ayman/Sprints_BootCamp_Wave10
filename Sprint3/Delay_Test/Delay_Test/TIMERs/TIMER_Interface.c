@@ -525,7 +525,7 @@ TIM_Status_t TIM_InputCaptureModeInit( uint8_t Edge  )
  * parameter(input) : Interrupt_Num indicate which interrupt that you need to set its Call Back fun
  * return : current timer value 
  */
-  TIM_Status_t TIM_CallBack_FuctionSet(IT_BITs Interrupt_Num ,  TIMCaLL_BackFun  callbackfunction)
+  TIM_Status_t TIM_CallBack_FuctionSet(IT_SelBIT_t Interrupt_Num ,  TIMCaLL_BackFun  callbackfunction)
 {
 	
 	if (callbackfunction == NULL)
@@ -622,4 +622,3 @@ void __vector_5(void)
 {
 	OverFlow2_Fun();
 }
-

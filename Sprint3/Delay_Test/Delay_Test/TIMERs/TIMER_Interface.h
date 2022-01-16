@@ -104,13 +104,13 @@ typedef enum{
 		TIM_IT_DIS , TIM_0_IT_OVER =0x01	, TIM_0_IT_COMP   =0x02	 ,TIM_1_IT_OVER =0x04,											
 		TIM_1_IT_COMPB=0x08	, TIM_1_IT_COMPA  =0x10 ,TIM_1_IT_CAPT  =0x20	,										
 		TIM_2_IT_OVER =0x40 	,TIM_2_IT_COMP =0x80 										
-}IT_BITs ; 
+}IT_SelBIT_t ; 
 
 
 
 
 	
-	#define		_TIM_IT_EN(INT)								   			TIMSK |= ((IT_BITs)INT)
+	#define		_TIM_IT_EN(INT)								   			TIMSK |= ((IT_SelBIT_t)INT)
 	#define		TIM_0_IT_MASK									 		0x03u
 	#define		TIM_2_IT_MASK								     		0xc0u
 	#define		TIM_1_IT_MASK								    		0x3cu
@@ -304,7 +304,7 @@ TIM_Status_t TIM_PWMModeInit(TIMInit_t * TIMConfig );
  * parameter(input) : Interrupt_Num indicate which interrupt that you need to set its Call Back fun
  * return : current timer value 
  */
-TIM_Status_t TIM_CallBack_FuctionSet(IT_BITs Interrupt_Num ,  TIMCaLL_BackFun  callbackfunction);
+TIM_Status_t TIM_CallBack_FuctionSet(IT_SelBIT_t Interrupt_Num ,  TIMCaLL_BackFun  callbackfunction);
 
 
 
