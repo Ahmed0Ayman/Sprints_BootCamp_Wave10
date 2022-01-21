@@ -18,14 +18,14 @@
 
 
 #if TIM1_IN_USE
-TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM1 ,.COMPConfig.TIM16Bit.CompAction = TIM_COMP_PIN_OUT_Normal  , .COMPConfig.TIM16Bit.CompNum = COMP_A_ , .TIM_Interrupt = TIM_1_IT_COMPA ,.TimPreScaler = TIM_1_Prescaler_1  ,.TIMMode = TIM_MODE_CTC}; 
+TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM1 ,.COMPConfig.TIM16Bit.CompAction = TIM_COMP_PIN_OUT_Normal  , .COMPConfig.TIM16Bit.CompNum = COMP_A_ , .TIM_Interrupt = TIM_1_IT_COMPA ,.TimPreScaler = TIM_1_Prescaler_1  }; 
 	
 
 #elif TIM2_IN_USE
-TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM2 ,.COMPConfig.TIM8Bit.CompAction = TIM_COMP_PIN_OUT_Normal   , .TIM_Interrupt = TIM_2_IT_COMP ,.TimPreScaler = TIM_2_Prescaler_1024  ,.TIMMode = TIM_MODE_CTC};
+TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM2 ,.COMPConfig.TIM8Bit.CompAction = TIM_COMP_PIN_OUT_Normal   , .TIM_Interrupt = TIM_2_IT_COMP ,.TimPreScaler = TIM_2_Prescaler_1024 };
 
 #elif TIM0_IN_USE
-TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM0 ,.COMPConfig.TIM8Bit.CompAction = TIM_COMP_PIN_OUT_Normal   , .TIM_Interrupt = TIM_0_IT_COMP ,.TimPreScaler = TIM_0_Prescaler_256  ,.TIMMode = TIM_MODE_CTC};	
+TIMInit_t  Tim_PWM_Handler ={ .Instance = TIM0 ,.COMPConfig.TIM8Bit.CompAction = TIM_COMP_PIN_OUT_Normal   , .TIM_Interrupt = TIM_0_IT_COMP ,.TimPreScaler = TIM_0_Prescaler_256 };	
 #endif
 	
 uint8_t Speed[5] = {0,30,60,90,30} ; 

@@ -95,7 +95,7 @@ typedef enum {	TIM_2_Prescaler_0 ,TIM_2_Prescaler_1 ,TIM_2_Prescaler_8	,
 #define		TIM_COMP_PIN_OUT_Normal						   				0x00u
 #define		TIM_COMP_PIN_OUT_OC_CLR			    						0x20u
 #define		TIM_COMP_PIN_OUT_OC_SET										0x30u
-#define		TIM_COMP_OUT_NONPWMONLY_PIN_TOG						 			0x10u
+#define		TIM_COMP_OUT_NONPWMONLY_PIN_TOG						 		0x10u
 	
 
 
