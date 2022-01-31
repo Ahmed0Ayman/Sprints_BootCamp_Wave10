@@ -1,0 +1,2831 @@
+
+CommunicationProtocols.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000fe2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000090  00800060  00000fe2  00001076  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000002c  008000f0  008000f0  00001106  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001106  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001138  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000340  00000000  00000000  00001174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00003b45  00000000  00000000  000014b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000012d8  00000000  00000000  00004ff9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001f43  00000000  00000000  000062d1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000844  00000000  00000000  00008214  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00001053  00000000  00000000  00008a58  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00002259  00000000  00000000  00009aab  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000270  00000000  00000000  0000bd04  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 32 00 	jmp	0x64	; 0x64 <__ctors_end>
+   4:	0c 94 a3 04 	jmp	0x946	; 0x946 <__vector_1>
+   8:	0c 94 ca 04 	jmp	0x994	; 0x994 <__vector_2>
+   c:	0c 94 f1 04 	jmp	0x9e2	; 0x9e2 <__vector_3>
+  10:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  14:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  18:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  1c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  20:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  24:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  28:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  2c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  30:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  34:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  38:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  3c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  40:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  44:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  48:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  4c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  50:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  54:	aa 01       	movw	r20, r20
+  56:	ad 01       	movw	r20, r26
+  58:	b0 01       	movw	r22, r0
+  5a:	b3 01       	movw	r22, r6
+  5c:	b6 01       	movw	r22, r12
+  5e:	b9 01       	movw	r22, r18
+  60:	bc 01       	movw	r22, r24
+  62:	bf 01       	movw	r22, r30
+
+00000064 <__ctors_end>:
+  64:	11 24       	eor	r1, r1
+  66:	1f be       	out	0x3f, r1	; 63
+  68:	cf e5       	ldi	r28, 0x5F	; 95
+  6a:	d8 e0       	ldi	r29, 0x08	; 8
+  6c:	de bf       	out	0x3e, r29	; 62
+  6e:	cd bf       	out	0x3d, r28	; 61
+
+00000070 <__do_copy_data>:
+  70:	10 e0       	ldi	r17, 0x00	; 0
+  72:	a0 e6       	ldi	r26, 0x60	; 96
+  74:	b0 e0       	ldi	r27, 0x00	; 0
+  76:	e2 ee       	ldi	r30, 0xE2	; 226
+  78:	ff e0       	ldi	r31, 0x0F	; 15
+  7a:	02 c0       	rjmp	.+4      	; 0x80 <__do_copy_data+0x10>
+  7c:	05 90       	lpm	r0, Z+
+  7e:	0d 92       	st	X+, r0
+  80:	a0 3f       	cpi	r26, 0xF0	; 240
+  82:	b1 07       	cpc	r27, r17
+  84:	d9 f7       	brne	.-10     	; 0x7c <__do_copy_data+0xc>
+
+00000086 <__do_clear_bss>:
+  86:	21 e0       	ldi	r18, 0x01	; 1
+  88:	a0 ef       	ldi	r26, 0xF0	; 240
+  8a:	b0 e0       	ldi	r27, 0x00	; 0
+  8c:	01 c0       	rjmp	.+2      	; 0x90 <.do_clear_bss_start>
+
+0000008e <.do_clear_bss_loop>:
+  8e:	1d 92       	st	X+, r1
+
+00000090 <.do_clear_bss_start>:
+  90:	ac 31       	cpi	r26, 0x1C	; 28
+  92:	b2 07       	cpc	r27, r18
+  94:	e1 f7       	brne	.-8      	; 0x8e <.do_clear_bss_loop>
+  96:	0e 94 6a 04 	call	0x8d4	; 0x8d4 <main>
+  9a:	0c 94 ef 07 	jmp	0xfde	; 0xfde <_exit>
+
+0000009e <__bad_interrupt>:
+  9e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a2 <Uart_Transmit_Only>:
+
+
+
+void Uart_Transmit_Only(void)
+{
+	uint8_t ExitKey = 0 ; 
+  a2:	80 e0       	ldi	r24, 0x00	; 0
+	while(!ExitKey)
+  a4:	0e c0       	rjmp	.+28     	; 0xc2 <Uart_Transmit_Only+0x20>
+	{
+		HAL_UART_TRANSMIT(&UART_Handler ,UART_TXBuffer ,  UART_RXBuffer_SIZE );
+  a6:	4f e0       	ldi	r20, 0x0F	; 15
+  a8:	50 e0       	ldi	r21, 0x00	; 0
+  aa:	66 ea       	ldi	r22, 0xA6	; 166
+  ac:	70 e0       	ldi	r23, 0x00	; 0
+  ae:	80 e6       	ldi	r24, 0x60	; 96
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	0e 94 da 06 	call	0xdb4	; 0xdb4 <HAL_UART_TRANSMIT>
+		ControlFlag  = 0  ;
+  b6:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+  ba:	85 eb       	ldi	r24, 0xB5	; 181
+  bc:	90 e0       	ldi	r25, 0x00	; 0
+  be:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+
+
+void Uart_Transmit_Only(void)
+{
+	uint8_t ExitKey = 0 ; 
+	while(!ExitKey)
+  c2:	88 23       	and	r24, r24
+  c4:	81 f3       	breq	.-32     	; 0xa6 <Uart_Transmit_Only+0x4>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  c6:	2f ef       	ldi	r18, 0xFF	; 255
+  c8:	81 ee       	ldi	r24, 0xE1	; 225
+  ca:	94 e0       	ldi	r25, 0x04	; 4
+  cc:	21 50       	subi	r18, 0x01	; 1
+  ce:	80 40       	sbci	r24, 0x00	; 0
+  d0:	90 40       	sbci	r25, 0x00	; 0
+  d2:	e1 f7       	brne	.-8      	; 0xcc <Uart_Transmit_Only+0x2a>
+  d4:	00 c0       	rjmp	.+0      	; 0xd6 <Uart_Transmit_Only+0x34>
+  d6:	00 00       	nop
+  d8:	08 95       	ret
+
+000000da <Uart_ECHO_Only>:
+		_delay_ms(100);
+}
+
+void Uart_ECHO_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+  da:	80 e0       	ldi	r24, 0x00	; 0
+	while(!ExitKey)
+  dc:	14 c0       	rjmp	.+40     	; 0x106 <Uart_ECHO_Only+0x2c>
+	{
+		HAL_UART_RECEIVE(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
+  de:	4f e0       	ldi	r20, 0x0F	; 15
+  e0:	50 e0       	ldi	r21, 0x00	; 0
+  e2:	64 e0       	ldi	r22, 0x04	; 4
+  e4:	71 e0       	ldi	r23, 0x01	; 1
+  e6:	80 e6       	ldi	r24, 0x60	; 96
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HAL_UART_RECEIVE>
+		HAL_UART_TRANSMIT(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
+  ee:	4f e0       	ldi	r20, 0x0F	; 15
+  f0:	50 e0       	ldi	r21, 0x00	; 0
+  f2:	64 e0       	ldi	r22, 0x04	; 4
+  f4:	71 e0       	ldi	r23, 0x01	; 1
+  f6:	80 e6       	ldi	r24, 0x60	; 96
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	0e 94 da 06 	call	0xdb4	; 0xdb4 <HAL_UART_TRANSMIT>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+  fe:	85 eb       	ldi	r24, 0xB5	; 181
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+}
+
+void Uart_ECHO_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+	while(!ExitKey)
+ 106:	88 23       	and	r24, r24
+ 108:	51 f3       	breq	.-44     	; 0xde <Uart_ECHO_Only+0x4>
+	{
+		HAL_UART_RECEIVE(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
+		HAL_UART_TRANSMIT(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+	}
+		ControlFlag  = 0  ;
+ 10a:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 10e:	2f ef       	ldi	r18, 0xFF	; 255
+ 110:	81 ee       	ldi	r24, 0xE1	; 225
+ 112:	94 e0       	ldi	r25, 0x04	; 4
+ 114:	21 50       	subi	r18, 0x01	; 1
+ 116:	80 40       	sbci	r24, 0x00	; 0
+ 118:	90 40       	sbci	r25, 0x00	; 0
+ 11a:	e1 f7       	brne	.-8      	; 0x114 <Uart_ECHO_Only+0x3a>
+ 11c:	00 c0       	rjmp	.+0      	; 0x11e <Uart_ECHO_Only+0x44>
+ 11e:	00 00       	nop
+ 120:	08 95       	ret
+
+00000122 <SPI_Transmit_Only>:
+}
+
+void SPI_Transmit_Only(void)
+{
+
+		HAL_UART_RECEIVE(&UART_Handler , SPI_RXBuffer , SPI_RXBuffer_SIZE);
+ 122:	4f e0       	ldi	r20, 0x0F	; 15
+ 124:	50 e0       	ldi	r21, 0x00	; 0
+ 126:	65 ef       	ldi	r22, 0xF5	; 245
+ 128:	70 e0       	ldi	r23, 0x00	; 0
+ 12a:	80 e6       	ldi	r24, 0x60	; 96
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HAL_UART_RECEIVE>
+		HAL_SPI_Transmit(&SPI_Handler , SPI_RXBuffer ,SPI_TXBuffer_SIZE );
+ 132:	4f e0       	ldi	r20, 0x0F	; 15
+ 134:	50 e0       	ldi	r21, 0x00	; 0
+ 136:	65 ef       	ldi	r22, 0xF5	; 245
+ 138:	70 e0       	ldi	r23, 0x00	; 0
+ 13a:	81 e7       	ldi	r24, 0x71	; 113
+ 13c:	90 e0       	ldi	r25, 0x00	; 0
+ 13e:	0e 94 72 06 	call	0xce4	; 0xce4 <HAL_SPI_Transmit>
+		ControlFlag  = 0  ;
+ 142:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 146:	2f ef       	ldi	r18, 0xFF	; 255
+ 148:	81 ee       	ldi	r24, 0xE1	; 225
+ 14a:	94 e0       	ldi	r25, 0x04	; 4
+ 14c:	21 50       	subi	r18, 0x01	; 1
+ 14e:	80 40       	sbci	r24, 0x00	; 0
+ 150:	90 40       	sbci	r25, 0x00	; 0
+ 152:	e1 f7       	brne	.-8      	; 0x14c <SPI_Transmit_Only+0x2a>
+ 154:	00 c0       	rjmp	.+0      	; 0x156 <SPI_Transmit_Only+0x34>
+ 156:	00 00       	nop
+ 158:	08 95       	ret
+
+0000015a <I2C_Transmit_Only>:
+
+	_delay_ms(100);
+}
+
+void I2C_Transmit_Only(void)
+{
+ 15a:	ef 92       	push	r14
+ 15c:	0f 93       	push	r16
+ 15e:	1f 93       	push	r17
+	uint8_t ExitKey = 0 ;
+ 160:	80 e0       	ldi	r24, 0x00	; 0
+	while(!ExitKey)
+ 162:	14 c0       	rjmp	.+40     	; 0x18c <I2C_Transmit_Only+0x32>
+	{
+		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 ,1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+ 164:	0f 2e       	mov	r0, r31
+ 166:	ff e0       	ldi	r31, 0x0F	; 15
+ 168:	ef 2e       	mov	r14, r31
+ 16a:	f0 2d       	mov	r31, r0
+ 16c:	08 e8       	ldi	r16, 0x88	; 136
+ 16e:	10 e0       	ldi	r17, 0x00	; 0
+ 170:	21 e0       	ldi	r18, 0x01	; 1
+ 172:	45 e0       	ldi	r20, 0x05	; 5
+ 174:	50 e0       	ldi	r21, 0x00	; 0
+ 176:	6a ea       	ldi	r22, 0xAA	; 170
+ 178:	8f e7       	ldi	r24, 0x7F	; 127
+ 17a:	90 e0       	ldi	r25, 0x00	; 0
+ 17c:	0e 94 81 05 	call	0xb02	; 0xb02 <HAL_I2C_Mem_Write>
+		ControlFlag  = 0  ;
+ 180:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+ 184:	85 eb       	ldi	r24, 0xB5	; 181
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+}
+
+void I2C_Transmit_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+	while(!ExitKey)
+ 18c:	88 23       	and	r24, r24
+ 18e:	51 f3       	breq	.-44     	; 0x164 <I2C_Transmit_Only+0xa>
+ 190:	2f ef       	ldi	r18, 0xFF	; 255
+ 192:	81 ee       	ldi	r24, 0xE1	; 225
+ 194:	94 e0       	ldi	r25, 0x04	; 4
+ 196:	21 50       	subi	r18, 0x01	; 1
+ 198:	80 40       	sbci	r24, 0x00	; 0
+ 19a:	90 40       	sbci	r25, 0x00	; 0
+ 19c:	e1 f7       	brne	.-8      	; 0x196 <I2C_Transmit_Only+0x3c>
+ 19e:	00 c0       	rjmp	.+0      	; 0x1a0 <I2C_Transmit_Only+0x46>
+ 1a0:	00 00       	nop
+		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 ,1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+		ControlFlag  = 0  ;
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+	}
+	_delay_ms(100);
+}
+ 1a2:	1f 91       	pop	r17
+ 1a4:	0f 91       	pop	r16
+ 1a6:	ef 90       	pop	r14
+ 1a8:	08 95       	ret
+
+000001aa <ALL_Transmit_Only>:
+
+void ALL_Transmit_Only(void)
+{
+ 1aa:	ef 92       	push	r14
+ 1ac:	0f 93       	push	r16
+ 1ae:	1f 93       	push	r17
+	uint8_t ExitKey = 0 ;
+ 1b0:	80 e0       	ldi	r24, 0x00	; 0
+	while(!ExitKey)
+ 1b2:	22 c0       	rjmp	.+68     	; 0x1f8 <ALL_Transmit_Only+0x4e>
+	{
+		HAL_UART_TRANSMIT(&UART_Handler ,UART_TXBuffer ,  UART_TXBuffer_SIZE );
+ 1b4:	4f e0       	ldi	r20, 0x0F	; 15
+ 1b6:	50 e0       	ldi	r21, 0x00	; 0
+ 1b8:	66 ea       	ldi	r22, 0xA6	; 166
+ 1ba:	70 e0       	ldi	r23, 0x00	; 0
+ 1bc:	80 e6       	ldi	r24, 0x60	; 96
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	0e 94 da 06 	call	0xdb4	; 0xdb4 <HAL_UART_TRANSMIT>
+		HAL_SPI_Transmit(&SPI_Handler , SPI_TXBuffer ,SPI_TXBuffer_SIZE );
+ 1c4:	4f e0       	ldi	r20, 0x0F	; 15
+ 1c6:	50 e0       	ldi	r21, 0x00	; 0
+ 1c8:	67 e9       	ldi	r22, 0x97	; 151
+ 1ca:	70 e0       	ldi	r23, 0x00	; 0
+ 1cc:	81 e7       	ldi	r24, 0x71	; 113
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	0e 94 72 06 	call	0xce4	; 0xce4 <HAL_SPI_Transmit>
+		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 , 1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+ 1d4:	0f 2e       	mov	r0, r31
+ 1d6:	ff e0       	ldi	r31, 0x0F	; 15
+ 1d8:	ef 2e       	mov	r14, r31
+ 1da:	f0 2d       	mov	r31, r0
+ 1dc:	08 e8       	ldi	r16, 0x88	; 136
+ 1de:	10 e0       	ldi	r17, 0x00	; 0
+ 1e0:	21 e0       	ldi	r18, 0x01	; 1
+ 1e2:	45 e0       	ldi	r20, 0x05	; 5
+ 1e4:	50 e0       	ldi	r21, 0x00	; 0
+ 1e6:	6a ea       	ldi	r22, 0xAA	; 170
+ 1e8:	8f e7       	ldi	r24, 0x7F	; 127
+ 1ea:	90 e0       	ldi	r25, 0x00	; 0
+ 1ec:	0e 94 81 05 	call	0xb02	; 0xb02 <HAL_I2C_Mem_Write>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+ 1f0:	85 eb       	ldi	r24, 0xB5	; 181
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+}
+
+void ALL_Transmit_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+	while(!ExitKey)
+ 1f8:	88 23       	and	r24, r24
+ 1fa:	e1 f2       	breq	.-72     	; 0x1b4 <ALL_Transmit_Only+0xa>
+		HAL_UART_TRANSMIT(&UART_Handler ,UART_TXBuffer ,  UART_TXBuffer_SIZE );
+		HAL_SPI_Transmit(&SPI_Handler , SPI_TXBuffer ,SPI_TXBuffer_SIZE );
+		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 , 1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+	}
+		ControlFlag  = 0  ;
+ 1fc:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 200:	2f ef       	ldi	r18, 0xFF	; 255
+ 202:	81 ee       	ldi	r24, 0xE1	; 225
+ 204:	94 e0       	ldi	r25, 0x04	; 4
+ 206:	21 50       	subi	r18, 0x01	; 1
+ 208:	80 40       	sbci	r24, 0x00	; 0
+ 20a:	90 40       	sbci	r25, 0x00	; 0
+ 20c:	e1 f7       	brne	.-8      	; 0x206 <ALL_Transmit_Only+0x5c>
+ 20e:	00 c0       	rjmp	.+0      	; 0x210 <ALL_Transmit_Only+0x66>
+ 210:	00 00       	nop
+		_delay_ms(100);
+}
+ 212:	1f 91       	pop	r17
+ 214:	0f 91       	pop	r16
+ 216:	ef 90       	pop	r14
+ 218:	08 95       	ret
+
+0000021a <EEPROM_Read_Only>:
+}
+
+
+
+void EEPROM_Read_Only(void)
+{
+ 21a:	cf 93       	push	r28
+ 21c:	df 93       	push	r29
+ 21e:	00 d0       	rcall	.+0      	; 0x220 <EEPROM_Read_Only+0x6>
+ 220:	cd b7       	in	r28, 0x3d	; 61
+ 222:	de b7       	in	r29, 0x3e	; 62
+	uint8_t ExitKey = 0 ;
+	uint8_t RXByte[2] = {0} ;
+ 224:	1a 82       	std	Y+2, r1	; 0x02
+ 226:	19 82       	std	Y+1, r1	; 0x01
+
+
+
+void EEPROM_Read_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+ 228:	80 e0       	ldi	r24, 0x00	; 0
+	uint8_t RXByte[2] = {0} ;
+	while(!ExitKey)
+ 22a:	0c c0       	rjmp	.+24     	; 0x244 <EEPROM_Read_Only+0x2a>
+	{
+		EEPROM_ReadByteS(10,10,RXByte , 2);
+ 22c:	22 e0       	ldi	r18, 0x02	; 2
+ 22e:	ae 01       	movw	r20, r28
+ 230:	4f 5f       	subi	r20, 0xFF	; 255
+ 232:	5f 4f       	sbci	r21, 0xFF	; 255
+ 234:	6a e0       	ldi	r22, 0x0A	; 10
+ 236:	8a e0       	ldi	r24, 0x0A	; 10
+ 238:	0e 94 f0 03 	call	0x7e0	; 0x7e0 <EEPROM_ReadByteS>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+ 23c:	85 eb       	ldi	r24, 0xB5	; 181
+ 23e:	90 e0       	ldi	r25, 0x00	; 0
+ 240:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+
+void EEPROM_Read_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+	uint8_t RXByte[2] = {0} ;
+	while(!ExitKey)
+ 244:	88 23       	and	r24, r24
+ 246:	91 f3       	breq	.-28     	; 0x22c <EEPROM_Read_Only+0x12>
+	{
+		EEPROM_ReadByteS(10,10,RXByte , 2);
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+	}
+	ControlFlag  = 0  ;
+ 248:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 24c:	2f ef       	ldi	r18, 0xFF	; 255
+ 24e:	81 ee       	ldi	r24, 0xE1	; 225
+ 250:	94 e0       	ldi	r25, 0x04	; 4
+ 252:	21 50       	subi	r18, 0x01	; 1
+ 254:	80 40       	sbci	r24, 0x00	; 0
+ 256:	90 40       	sbci	r25, 0x00	; 0
+ 258:	e1 f7       	brne	.-8      	; 0x252 <EEPROM_Read_Only+0x38>
+ 25a:	00 c0       	rjmp	.+0      	; 0x25c <EEPROM_Read_Only+0x42>
+ 25c:	00 00       	nop
+	_delay_ms(100);
+}
+ 25e:	0f 90       	pop	r0
+ 260:	0f 90       	pop	r0
+ 262:	df 91       	pop	r29
+ 264:	cf 91       	pop	r28
+ 266:	08 95       	ret
+
+00000268 <EEPROM_Write_Only>:
+
+
+
+
+void EEPROM_Write_Only(void)
+{
+ 268:	cf 93       	push	r28
+ 26a:	df 93       	push	r29
+ 26c:	00 d0       	rcall	.+0      	; 0x26e <EEPROM_Write_Only+0x6>
+ 26e:	1f 92       	push	r1
+ 270:	cd b7       	in	r28, 0x3d	; 61
+ 272:	de b7       	in	r29, 0x3e	; 62
+	uint8_t ExitKey = 0 ;
+	uint8_t TXByte[3] = "AH" ;
+ 274:	81 e4       	ldi	r24, 0x41	; 65
+ 276:	98 e4       	ldi	r25, 0x48	; 72
+ 278:	9a 83       	std	Y+2, r25	; 0x02
+ 27a:	89 83       	std	Y+1, r24	; 0x01
+ 27c:	1b 82       	std	Y+3, r1	; 0x03
+
+
+
+void EEPROM_Write_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+ 27e:	80 e0       	ldi	r24, 0x00	; 0
+	uint8_t TXByte[3] = "AH" ;
+	while(!ExitKey)
+ 280:	0c c0       	rjmp	.+24     	; 0x29a <EEPROM_Write_Only+0x32>
+	{
+		EEPROM_WriteByteS(10,10,TXByte , 2);
+ 282:	22 e0       	ldi	r18, 0x02	; 2
+ 284:	ae 01       	movw	r20, r28
+ 286:	4f 5f       	subi	r20, 0xFF	; 255
+ 288:	5f 4f       	sbci	r21, 0xFF	; 255
+ 28a:	6a e0       	ldi	r22, 0x0A	; 10
+ 28c:	8a e0       	ldi	r24, 0x0A	; 10
+ 28e:	0e 94 15 04 	call	0x82a	; 0x82a <EEPROM_WriteByteS>
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+ 292:	85 eb       	ldi	r24, 0xB5	; 181
+ 294:	90 e0       	ldi	r25, 0x00	; 0
+ 296:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+
+void EEPROM_Write_Only(void)
+{
+	uint8_t ExitKey = 0 ;
+	uint8_t TXByte[3] = "AH" ;
+	while(!ExitKey)
+ 29a:	88 23       	and	r24, r24
+ 29c:	91 f3       	breq	.-28     	; 0x282 <EEPROM_Write_Only+0x1a>
+	{
+		EEPROM_WriteByteS(10,10,TXByte , 2);
+		ExitKey = KeyPad_GetPressedKey(&KeyPad);
+	}
+	ControlFlag  = 0  ;
+ 29e:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 2a2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2a4:	81 ee       	ldi	r24, 0xE1	; 225
+ 2a6:	94 e0       	ldi	r25, 0x04	; 4
+ 2a8:	21 50       	subi	r18, 0x01	; 1
+ 2aa:	80 40       	sbci	r24, 0x00	; 0
+ 2ac:	90 40       	sbci	r25, 0x00	; 0
+ 2ae:	e1 f7       	brne	.-8      	; 0x2a8 <EEPROM_Write_Only+0x40>
+ 2b0:	00 c0       	rjmp	.+0      	; 0x2b2 <EEPROM_Write_Only+0x4a>
+ 2b2:	00 00       	nop
+	_delay_ms(100);
+}
+ 2b4:	0f 90       	pop	r0
+ 2b6:	0f 90       	pop	r0
+ 2b8:	0f 90       	pop	r0
+ 2ba:	df 91       	pop	r29
+ 2bc:	cf 91       	pop	r28
+ 2be:	08 95       	ret
+
+000002c0 <APP_Init>:
+								
+								
+
+void APP_Init(void)
+{
+	KeyPad_Initialization(&KeyPad);
+ 2c0:	85 eb       	ldi	r24, 0xB5	; 181
+ 2c2:	90 e0       	ldi	r25, 0x00	; 0
+ 2c4:	0e 94 cd 01 	call	0x39a	; 0x39a <KeyPad_Initialization>
+	LCD_Initializaion();
+ 2c8:	0e 94 4e 03 	call	0x69c	; 0x69c <LCD_Initializaion>
+	EXTI_Init(&EXIT_Handler);
+ 2cc:	80 ef       	ldi	r24, 0xF0	; 240
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	0e 94 6f 04 	call	0x8de	; 0x8de <EXTI_Init>
+//	EXIT_INT0_CallBack()	
+	//I2C_Init(&I2C_Handler);
+	EEPROM_Init();
+ 2d4:	0e 94 ea 03 	call	0x7d4	; 0x7d4 <EEPROM_Init>
+	HAL_SPI_Init(&SPI_Handler);
+ 2d8:	81 e7       	ldi	r24, 0x71	; 113
+ 2da:	90 e0       	ldi	r25, 0x00	; 0
+ 2dc:	0e 94 10 06 	call	0xc20	; 0xc20 <HAL_SPI_Init>
+	HAL_UART_Init(&UART_Handler);
+ 2e0:	80 e6       	ldi	r24, 0x60	; 96
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	0e 94 a1 06 	call	0xd42	; 0xd42 <HAL_UART_Init>
+	sei();
+ 2e8:	78 94       	sei
+ 2ea:	08 95       	ret
+
+000002ec <APP_UPdate>:
+
+
+
+void APP_UPdate(void)
+{
+			*KeypadKey = 0 ;
+ 2ec:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <KeypadKey>
+			while(!KeypadKey[0])
+ 2f0:	06 c0       	rjmp	.+12     	; 0x2fe <APP_UPdate+0x12>
+			KeypadKey[0] = KeyPad_GetPressedKey(&KeyPad);
+ 2f2:	85 eb       	ldi	r24, 0xB5	; 181
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+ 2f6:	0e 94 16 02 	call	0x42c	; 0x42c <KeyPad_GetPressedKey>
+ 2fa:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <KeypadKey>
+
+
+void APP_UPdate(void)
+{
+			*KeypadKey = 0 ;
+			while(!KeypadKey[0])
+ 2fe:	40 91 14 01 	lds	r20, 0x0114	; 0x800114 <KeypadKey>
+ 302:	44 23       	and	r20, r20
+ 304:	b1 f3       	breq	.-20     	; 0x2f2 <APP_UPdate+0x6>
+			KeypadKey[0] = KeyPad_GetPressedKey(&KeyPad);
+			LCD_Send_Character_WithLoc(1,1,KeypadKey[0]);
+ 306:	61 e0       	ldi	r22, 0x01	; 1
+ 308:	81 e0       	ldi	r24, 0x01	; 1
+ 30a:	0e 94 32 03 	call	0x664	; 0x664 <LCD_Send_Character_WithLoc>
+ 30e:	2f ef       	ldi	r18, 0xFF	; 255
+ 310:	81 ee       	ldi	r24, 0xE1	; 225
+ 312:	94 e0       	ldi	r25, 0x04	; 4
+ 314:	21 50       	subi	r18, 0x01	; 1
+ 316:	80 40       	sbci	r24, 0x00	; 0
+ 318:	90 40       	sbci	r25, 0x00	; 0
+ 31a:	e1 f7       	brne	.-8      	; 0x314 <APP_UPdate+0x28>
+ 31c:	00 c0       	rjmp	.+0      	; 0x31e <APP_UPdate+0x32>
+ 31e:	00 00       	nop
+			_delay_ms(100);
+
+			ControlFlag  = atoi((char*)KeypadKey) ;
+ 320:	84 e1       	ldi	r24, 0x14	; 20
+ 322:	91 e0       	ldi	r25, 0x01	; 1
+ 324:	0e 94 89 07 	call	0xf12	; 0xf12 <atoi>
+ 328:	80 93 13 01 	sts	0x0113, r24	; 0x800113 <ControlFlag>
+			LCD_Send_Integer_WithLoc(1,1,ControlFlag, 4);
+ 32c:	48 2f       	mov	r20, r24
+ 32e:	50 e0       	ldi	r21, 0x00	; 0
+ 330:	24 e0       	ldi	r18, 0x04	; 4
+ 332:	61 e0       	ldi	r22, 0x01	; 1
+ 334:	81 e0       	ldi	r24, 0x01	; 1
+ 336:	0e 94 a1 03 	call	0x742	; 0x742 <LCD_Send_Integer_WithLoc>
+			switch(ControlFlag)
+ 33a:	e0 91 13 01 	lds	r30, 0x0113	; 0x800113 <ControlFlag>
+ 33e:	8e 2f       	mov	r24, r30
+ 340:	90 e0       	ldi	r25, 0x00	; 0
+ 342:	fc 01       	movw	r30, r24
+ 344:	31 97       	sbiw	r30, 0x01	; 1
+ 346:	e8 30       	cpi	r30, 0x08	; 8
+ 348:	f1 05       	cpc	r31, r1
+ 34a:	30 f5       	brcc	.+76     	; 0x398 <APP_UPdate+0xac>
+ 34c:	e6 5d       	subi	r30, 0xD6	; 214
+ 34e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 350:	0c 94 59 07 	jmp	0xeb2	; 0xeb2 <__tablejump2__>
+			{
+
+				case  1 :
+						Uart_Transmit_Only();
+ 354:	0e 94 51 00 	call	0xa2	; 0xa2 <Uart_Transmit_Only>
+					break;
+ 358:	08 95       	ret
+				case  2 :
+						SPI_Transmit_Only();
+ 35a:	0e 94 91 00 	call	0x122	; 0x122 <SPI_Transmit_Only>
+					break;
+ 35e:	08 95       	ret
+				case  3 :
+						I2C_Transmit_Only();
+ 360:	0e 94 ad 00 	call	0x15a	; 0x15a <I2C_Transmit_Only>
+					break;
+ 364:	08 95       	ret
+				case 4 :
+						ALL_Transmit_Only();			
+ 366:	0e 94 d5 00 	call	0x1aa	; 0x1aa <ALL_Transmit_Only>
+					break;
+ 36a:	08 95       	ret
+				case 5 :
+						Uart_ECHO_Only();
+ 36c:	0e 94 6d 00 	call	0xda	; 0xda <Uart_ECHO_Only>
+					break;
+ 370:	08 95       	ret
+				case 6 :
+						EEPROM_Read_Only();
+ 372:	0e 94 0d 01 	call	0x21a	; 0x21a <EEPROM_Read_Only>
+					break; 
+ 376:	08 95       	ret
+				case 7 :
+						EEPROM_Write_Only();
+ 378:	0e 94 34 01 	call	0x268	; 0x268 <EEPROM_Write_Only>
+					break;
+ 37c:	08 95       	ret
+				case 8 :
+						EEPROM_Reset();
+ 37e:	0e 94 3a 04 	call	0x874	; 0x874 <EEPROM_Reset>
+								ControlFlag  = 0  ;
+ 382:	10 92 13 01 	sts	0x0113, r1	; 0x800113 <ControlFlag>
+ 386:	2f ef       	ldi	r18, 0xFF	; 255
+ 388:	81 ee       	ldi	r24, 0xE1	; 225
+ 38a:	94 e0       	ldi	r25, 0x04	; 4
+ 38c:	21 50       	subi	r18, 0x01	; 1
+ 38e:	80 40       	sbci	r24, 0x00	; 0
+ 390:	90 40       	sbci	r25, 0x00	; 0
+ 392:	e1 f7       	brne	.-8      	; 0x38c <APP_UPdate+0xa0>
+ 394:	00 c0       	rjmp	.+0      	; 0x396 <APP_UPdate+0xaa>
+ 396:	00 00       	nop
+ 398:	08 95       	ret
+
+0000039a <KeyPad_Initialization>:
+ * brief  : this function used to initialize keypad
+ * param. : KeyPadInit pointer to the handler of keypad
+ * return : void 
+ */
+void KeyPad_Initialization(KeyPad_t * KeyPad)
+{
+ 39a:	ff 92       	push	r15
+ 39c:	0f 93       	push	r16
+ 39e:	1f 93       	push	r17
+ 3a0:	cf 93       	push	r28
+ 3a2:	df 93       	push	r29
+ 3a4:	8c 01       	movw	r16, r24
+    /* for output pins  --> all colomn will set as autput pins*/
+	KeyPad_gpio.mode = GPIO_MODE_OUTPUT ;
+ 3a6:	81 e0       	ldi	r24, 0x01	; 1
+ 3a8:	80 93 f3 00 	sts	0x00F3, r24	; 0x8000f3 <KeyPad_gpio+0x1>
+	for(uint8_t iter =0 ; iter < _NUM_OF_ColumnS ;iter++)
+ 3ac:	f1 2c       	mov	r15, r1
+ 3ae:	19 c0       	rjmp	.+50     	; 0x3e2 <KeyPad_Initialization+0x48>
+	{
+		KeyPad_gpio.pin = KeyPad->ColumnPins[iter].Pin ;
+ 3b0:	cf 2d       	mov	r28, r15
+ 3b2:	d0 e0       	ldi	r29, 0x00	; 0
+ 3b4:	ce 01       	movw	r24, r28
+ 3b6:	88 0f       	add	r24, r24
+ 3b8:	99 1f       	adc	r25, r25
+ 3ba:	c8 0f       	add	r28, r24
+ 3bc:	d9 1f       	adc	r29, r25
+ 3be:	c0 0f       	add	r28, r16
+ 3c0:	d1 1f       	adc	r29, r17
+ 3c2:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 3c4:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <KeyPad_gpio>
+		HAL_GPIO_INIT_PIN(KeyPad->ColumnPins[iter].Port , &KeyPad_gpio);
+ 3c8:	62 ef       	ldi	r22, 0xF2	; 242
+ 3ca:	70 e0       	ldi	r23, 0x00	; 0
+ 3cc:	89 85       	ldd	r24, Y+9	; 0x09
+ 3ce:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 3d0:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iter].Port , KeyPad->ColumnPins[iter].Pin , WRIGHT_SECOND);
+ 3d4:	41 e0       	ldi	r20, 0x01	; 1
+ 3d6:	6b 85       	ldd	r22, Y+11	; 0x0b
+ 3d8:	89 85       	ldd	r24, Y+9	; 0x09
+ 3da:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 3dc:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ */
+void KeyPad_Initialization(KeyPad_t * KeyPad)
+{
+    /* for output pins  --> all colomn will set as autput pins*/
+	KeyPad_gpio.mode = GPIO_MODE_OUTPUT ;
+	for(uint8_t iter =0 ; iter < _NUM_OF_ColumnS ;iter++)
+ 3e0:	f3 94       	inc	r15
+ 3e2:	82 e0       	ldi	r24, 0x02	; 2
+ 3e4:	8f 15       	cp	r24, r15
+ 3e6:	20 f7       	brcc	.-56     	; 0x3b0 <KeyPad_Initialization+0x16>
+		HAL_GPIO_INIT_PIN(KeyPad->ColumnPins[iter].Port , &KeyPad_gpio);
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iter].Port , KeyPad->ColumnPins[iter].Pin , WRIGHT_SECOND);
+	}
+
+
+	KeyPad_gpio.mode = GPIO_MODE_INPUT ;
+ 3e8:	e2 ef       	ldi	r30, 0xF2	; 242
+ 3ea:	f0 e0       	ldi	r31, 0x00	; 0
+ 3ec:	11 82       	std	Z+1, r1	; 0x01
+	KeyPad_gpio.pull = WRIGHT_SECOND ;
+ 3ee:	81 e0       	ldi	r24, 0x01	; 1
+ 3f0:	82 83       	std	Z+2, r24	; 0x02
+	for(uint8_t iter =0 ; iter < _NUM_OF_ROWS ;iter++)
+ 3f2:	c0 e0       	ldi	r28, 0x00	; 0
+ 3f4:	13 c0       	rjmp	.+38     	; 0x41c <__EEPROM_REGION_LENGTH__+0x1c>
+	{
+		KeyPad_gpio.pin = KeyPad->RowPins[iter].Pin ;
+ 3f6:	ec 2f       	mov	r30, r28
+ 3f8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3fa:	cf 01       	movw	r24, r30
+ 3fc:	88 0f       	add	r24, r24
+ 3fe:	99 1f       	adc	r25, r25
+ 400:	e8 0f       	add	r30, r24
+ 402:	f9 1f       	adc	r31, r25
+ 404:	e0 0f       	add	r30, r16
+ 406:	f1 1f       	adc	r31, r17
+ 408:	82 81       	ldd	r24, Z+2	; 0x02
+ 40a:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <KeyPad_gpio>
+		HAL_GPIO_INIT_PIN(KeyPad->RowPins[iter].Port , &KeyPad_gpio);
+ 40e:	62 ef       	ldi	r22, 0xF2	; 242
+ 410:	70 e0       	ldi	r23, 0x00	; 0
+ 412:	80 81       	ld	r24, Z
+ 414:	91 81       	ldd	r25, Z+1	; 0x01
+ 416:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+	}
+
+
+	KeyPad_gpio.mode = GPIO_MODE_INPUT ;
+	KeyPad_gpio.pull = WRIGHT_SECOND ;
+	for(uint8_t iter =0 ; iter < _NUM_OF_ROWS ;iter++)
+ 41a:	cf 5f       	subi	r28, 0xFF	; 255
+ 41c:	c3 30       	cpi	r28, 0x03	; 3
+ 41e:	58 f3       	brcs	.-42     	; 0x3f6 <KeyPad_Initialization+0x5c>
+		HAL_GPIO_INIT_PIN(KeyPad->RowPins[iter].Port , &KeyPad_gpio);
+	}	
+	
+
+
+}/* END_FUN KeyPad_Initialization()*/
+ 420:	df 91       	pop	r29
+ 422:	cf 91       	pop	r28
+ 424:	1f 91       	pop	r17
+ 426:	0f 91       	pop	r16
+ 428:	ff 90       	pop	r15
+ 42a:	08 95       	ret
+
+0000042c <KeyPad_GetPressedKey>:
+ * brief  : this function used to return the pressed key 
+ * param. : void
+ * return : pressed character 
+ */
+char KeyPad_GetPressedKey(KeyPad_t * KeyPad)
+{
+ 42c:	cf 92       	push	r12
+ 42e:	df 92       	push	r13
+ 430:	ef 92       	push	r14
+ 432:	ff 92       	push	r15
+ 434:	0f 93       	push	r16
+ 436:	1f 93       	push	r17
+ 438:	cf 93       	push	r28
+ 43a:	df 93       	push	r29
+ 43c:	8c 01       	movw	r16, r24
+	char Key = 0;
+	for (uint8_t iterCOL = 0  ; iterCOL < _NUM_OF_ColumnS ; iterCOL++)
+ 43e:	c1 2c       	mov	r12, r1
+ 440:	4b c0       	rjmp	.+150    	; 0x4d8 <KeyPad_GetPressedKey+0xac>
+	{
+
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iterCOL].Port  , KeyPad->ColumnPins[iterCOL].Pin , WRIGHT_FIRST) ;
+ 442:	cc 2d       	mov	r28, r12
+ 444:	d0 e0       	ldi	r29, 0x00	; 0
+ 446:	fe 01       	movw	r30, r28
+ 448:	ee 0f       	add	r30, r30
+ 44a:	ff 1f       	adc	r31, r31
+ 44c:	ec 0f       	add	r30, r28
+ 44e:	fd 1f       	adc	r31, r29
+ 450:	e0 0f       	add	r30, r16
+ 452:	f1 1f       	adc	r31, r17
+ 454:	40 e0       	ldi	r20, 0x00	; 0
+ 456:	63 85       	ldd	r22, Z+11	; 0x0b
+ 458:	81 85       	ldd	r24, Z+9	; 0x09
+ 45a:	92 85       	ldd	r25, Z+10	; 0x0a
+ 45c:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+		for (uint8_t iterROW = 0 ; iterROW < _NUM_OF_ROWS ; iterROW++)
+ 460:	d1 2c       	mov	r13, r1
+ 462:	29 c0       	rjmp	.+82     	; 0x4b6 <KeyPad_GetPressedKey+0x8a>
+		{
+			
+			if ( HAL_GPIO_READPIN(KeyPad->RowPins[iterROW].Port ,KeyPad->RowPins[iterROW].Pin ) == WRIGHT_FIRST )
+ 464:	ed 2c       	mov	r14, r13
+ 466:	f1 2c       	mov	r15, r1
+ 468:	f7 01       	movw	r30, r14
+ 46a:	ee 0f       	add	r30, r30
+ 46c:	ff 1f       	adc	r31, r31
+ 46e:	ee 0d       	add	r30, r14
+ 470:	ff 1d       	adc	r31, r15
+ 472:	e0 0f       	add	r30, r16
+ 474:	f1 1f       	adc	r31, r17
+ 476:	62 81       	ldd	r22, Z+2	; 0x02
+ 478:	80 81       	ld	r24, Z
+ 47a:	91 81       	ldd	r25, Z+1	; 0x01
+ 47c:	0e 94 2b 05 	call	0xa56	; 0xa56 <HAL_GPIO_READPIN>
+ 480:	81 11       	cpse	r24, r1
+ 482:	18 c0       	rjmp	.+48     	; 0x4b4 <KeyPad_GetPressedKey+0x88>
+			{
+				
+				HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iterCOL].Port  , KeyPad->ColumnPins[iterCOL].Pin , WRIGHT_SECOND) ;
+ 484:	fe 01       	movw	r30, r28
+ 486:	ee 0f       	add	r30, r30
+ 488:	ff 1f       	adc	r31, r31
+ 48a:	ec 0f       	add	r30, r28
+ 48c:	fd 1f       	adc	r31, r29
+ 48e:	e0 0f       	add	r30, r16
+ 490:	f1 1f       	adc	r31, r17
+ 492:	41 e0       	ldi	r20, 0x01	; 1
+ 494:	63 85       	ldd	r22, Z+11	; 0x0b
+ 496:	81 85       	ldd	r24, Z+9	; 0x09
+ 498:	92 85       	ldd	r25, Z+10	; 0x0a
+ 49a:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+				return arr_KeyPad_char[iterROW][iterCOL] ;
+ 49e:	c7 01       	movw	r24, r14
+ 4a0:	88 0f       	add	r24, r24
+ 4a2:	99 1f       	adc	r25, r25
+ 4a4:	8e 0d       	add	r24, r14
+ 4a6:	9f 1d       	adc	r25, r15
+ 4a8:	89 53       	subi	r24, 0x39	; 57
+ 4aa:	9f 4f       	sbci	r25, 0xFF	; 255
+ 4ac:	c8 0f       	add	r28, r24
+ 4ae:	d9 1f       	adc	r29, r25
+ 4b0:	88 81       	ld	r24, Y
+ 4b2:	17 c0       	rjmp	.+46     	; 0x4e2 <KeyPad_GetPressedKey+0xb6>
+	char Key = 0;
+	for (uint8_t iterCOL = 0  ; iterCOL < _NUM_OF_ColumnS ; iterCOL++)
+	{
+
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iterCOL].Port  , KeyPad->ColumnPins[iterCOL].Pin , WRIGHT_FIRST) ;
+		for (uint8_t iterROW = 0 ; iterROW < _NUM_OF_ROWS ; iterROW++)
+ 4b4:	d3 94       	inc	r13
+ 4b6:	82 e0       	ldi	r24, 0x02	; 2
+ 4b8:	8d 15       	cp	r24, r13
+ 4ba:	a0 f6       	brcc	.-88     	; 0x464 <KeyPad_GetPressedKey+0x38>
+				return arr_KeyPad_char[iterROW][iterCOL] ;
+			}else{
+				;
+			}
+		}
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iterCOL].Port  , KeyPad->ColumnPins[iterCOL].Pin , WRIGHT_SECOND) ;
+ 4bc:	ce 01       	movw	r24, r28
+ 4be:	88 0f       	add	r24, r24
+ 4c0:	99 1f       	adc	r25, r25
+ 4c2:	c8 0f       	add	r28, r24
+ 4c4:	d9 1f       	adc	r29, r25
+ 4c6:	c0 0f       	add	r28, r16
+ 4c8:	d1 1f       	adc	r29, r17
+ 4ca:	41 e0       	ldi	r20, 0x01	; 1
+ 4cc:	6b 85       	ldd	r22, Y+11	; 0x0b
+ 4ce:	89 85       	ldd	r24, Y+9	; 0x09
+ 4d0:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 4d2:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ * return : pressed character 
+ */
+char KeyPad_GetPressedKey(KeyPad_t * KeyPad)
+{
+	char Key = 0;
+	for (uint8_t iterCOL = 0  ; iterCOL < _NUM_OF_ColumnS ; iterCOL++)
+ 4d6:	c3 94       	inc	r12
+ 4d8:	82 e0       	ldi	r24, 0x02	; 2
+ 4da:	8c 15       	cp	r24, r12
+ 4dc:	08 f0       	brcs	.+2      	; 0x4e0 <KeyPad_GetPressedKey+0xb4>
+ 4de:	b1 cf       	rjmp	.-158    	; 0x442 <KeyPad_GetPressedKey+0x16>
+		}
+		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iterCOL].Port  , KeyPad->ColumnPins[iterCOL].Pin , WRIGHT_SECOND) ;
+
+	}
+	
+return Key ;
+ 4e0:	80 e0       	ldi	r24, 0x00	; 0
+ 4e2:	df 91       	pop	r29
+ 4e4:	cf 91       	pop	r28
+ 4e6:	1f 91       	pop	r17
+ 4e8:	0f 91       	pop	r16
+ 4ea:	ff 90       	pop	r15
+ 4ec:	ef 90       	pop	r14
+ 4ee:	df 90       	pop	r13
+ 4f0:	cf 90       	pop	r12
+ 4f2:	08 95       	ret
+
+000004f4 <LCD_Triger_Enable>:
+	LCD_Send_Character_CurrLoc('.');
+	LCD_Send_Integer_CurrLoc(decimalValue,5);
+	
+	
+		return LCD_OK ;
+} /* END_FUN LCD_Send_Float_Withloc()*/
+ 4f4:	cf 93       	push	r28
+ 4f6:	df 93       	push	r29
+ 4f8:	c0 ed       	ldi	r28, 0xD0	; 208
+ 4fa:	d0 e0       	ldi	r29, 0x00	; 0
+ 4fc:	41 e0       	ldi	r20, 0x01	; 1
+ 4fe:	68 85       	ldd	r22, Y+8	; 0x08
+ 500:	8e 81       	ldd	r24, Y+6	; 0x06
+ 502:	9f 81       	ldd	r25, Y+7	; 0x07
+ 504:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 508:	85 e0       	ldi	r24, 0x05	; 5
+ 50a:	8a 95       	dec	r24
+ 50c:	f1 f7       	brne	.-4      	; 0x50a <LCD_Triger_Enable+0x16>
+ 50e:	00 00       	nop
+ 510:	40 e0       	ldi	r20, 0x00	; 0
+ 512:	68 85       	ldd	r22, Y+8	; 0x08
+ 514:	8e 81       	ldd	r24, Y+6	; 0x06
+ 516:	9f 81       	ldd	r25, Y+7	; 0x07
+ 518:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 51c:	8f e3       	ldi	r24, 0x3F	; 63
+ 51e:	9f e1       	ldi	r25, 0x1F	; 31
+ 520:	01 97       	sbiw	r24, 0x01	; 1
+ 522:	f1 f7       	brne	.-4      	; 0x520 <LCD_Triger_Enable+0x2c>
+ 524:	00 c0       	rjmp	.+0      	; 0x526 <LCD_Triger_Enable+0x32>
+ 526:	00 00       	nop
+ 528:	df 91       	pop	r29
+ 52a:	cf 91       	pop	r28
+ 52c:	08 95       	ret
+
+0000052e <LCD_Send_4BitData>:
+ 52e:	0f 93       	push	r16
+ 530:	1f 93       	push	r17
+ 532:	cf 93       	push	r28
+ 534:	c8 2f       	mov	r28, r24
+ 536:	83 e0       	ldi	r24, 0x03	; 3
+ 538:	90 e0       	ldi	r25, 0x00	; 0
+ 53a:	23 c0       	rjmp	.+70     	; 0x582 <LCD_Send_4BitData+0x54>
+ 53c:	8c 01       	movw	r16, r24
+ 53e:	0f 5f       	subi	r16, 0xFF	; 255
+ 540:	1f 4f       	sbci	r17, 0xFF	; 255
+ 542:	41 e0       	ldi	r20, 0x01	; 1
+ 544:	50 e0       	ldi	r21, 0x00	; 0
+ 546:	00 2e       	mov	r0, r16
+ 548:	02 c0       	rjmp	.+4      	; 0x54e <LCD_Send_4BitData+0x20>
+ 54a:	44 0f       	add	r20, r20
+ 54c:	55 1f       	adc	r21, r21
+ 54e:	0a 94       	dec	r0
+ 550:	e2 f7       	brpl	.-8      	; 0x54a <LCD_Send_4BitData+0x1c>
+ 552:	2c 2f       	mov	r18, r28
+ 554:	30 e0       	ldi	r19, 0x00	; 0
+ 556:	42 23       	and	r20, r18
+ 558:	53 23       	and	r21, r19
+ 55a:	00 2e       	mov	r0, r16
+ 55c:	02 c0       	rjmp	.+4      	; 0x562 <LCD_Send_4BitData+0x34>
+ 55e:	55 95       	asr	r21
+ 560:	47 95       	ror	r20
+ 562:	0a 94       	dec	r0
+ 564:	e2 f7       	brpl	.-8      	; 0x55e <LCD_Send_4BitData+0x30>
+ 566:	fc 01       	movw	r30, r24
+ 568:	ee 0f       	add	r30, r30
+ 56a:	ff 1f       	adc	r31, r31
+ 56c:	8e 0f       	add	r24, r30
+ 56e:	9f 1f       	adc	r25, r31
+ 570:	fc 01       	movw	r30, r24
+ 572:	e0 53       	subi	r30, 0x30	; 48
+ 574:	ff 4f       	sbci	r31, 0xFF	; 255
+ 576:	62 81       	ldd	r22, Z+2	; 0x02
+ 578:	80 81       	ld	r24, Z
+ 57a:	91 81       	ldd	r25, Z+1	; 0x01
+ 57c:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 580:	c8 01       	movw	r24, r16
+ 582:	87 30       	cpi	r24, 0x07	; 7
+ 584:	91 05       	cpc	r25, r1
+ 586:	d4 f2       	brlt	.-76     	; 0x53c <LCD_Send_4BitData+0xe>
+ 588:	0e 94 7a 02 	call	0x4f4	; 0x4f4 <LCD_Triger_Enable>
+ 58c:	03 e0       	ldi	r16, 0x03	; 3
+ 58e:	10 e0       	ldi	r17, 0x00	; 0
+ 590:	21 c0       	rjmp	.+66     	; 0x5d4 <LCD_Send_4BitData+0xa6>
+ 592:	c8 01       	movw	r24, r16
+ 594:	03 97       	sbiw	r24, 0x03	; 3
+ 596:	41 e0       	ldi	r20, 0x01	; 1
+ 598:	50 e0       	ldi	r21, 0x00	; 0
+ 59a:	08 2e       	mov	r0, r24
+ 59c:	02 c0       	rjmp	.+4      	; 0x5a2 <LCD_Send_4BitData+0x74>
+ 59e:	44 0f       	add	r20, r20
+ 5a0:	55 1f       	adc	r21, r21
+ 5a2:	0a 94       	dec	r0
+ 5a4:	e2 f7       	brpl	.-8      	; 0x59e <LCD_Send_4BitData+0x70>
+ 5a6:	2c 2f       	mov	r18, r28
+ 5a8:	30 e0       	ldi	r19, 0x00	; 0
+ 5aa:	42 23       	and	r20, r18
+ 5ac:	53 23       	and	r21, r19
+ 5ae:	02 c0       	rjmp	.+4      	; 0x5b4 <LCD_Send_4BitData+0x86>
+ 5b0:	55 95       	asr	r21
+ 5b2:	47 95       	ror	r20
+ 5b4:	8a 95       	dec	r24
+ 5b6:	e2 f7       	brpl	.-8      	; 0x5b0 <LCD_Send_4BitData+0x82>
+ 5b8:	f8 01       	movw	r30, r16
+ 5ba:	ee 0f       	add	r30, r30
+ 5bc:	ff 1f       	adc	r31, r31
+ 5be:	e0 0f       	add	r30, r16
+ 5c0:	f1 1f       	adc	r31, r17
+ 5c2:	e0 53       	subi	r30, 0x30	; 48
+ 5c4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5c6:	62 81       	ldd	r22, Z+2	; 0x02
+ 5c8:	80 81       	ld	r24, Z
+ 5ca:	91 81       	ldd	r25, Z+1	; 0x01
+ 5cc:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 5d0:	0f 5f       	subi	r16, 0xFF	; 255
+ 5d2:	1f 4f       	sbci	r17, 0xFF	; 255
+ 5d4:	07 30       	cpi	r16, 0x07	; 7
+ 5d6:	11 05       	cpc	r17, r1
+ 5d8:	e4 f2       	brlt	.-72     	; 0x592 <LCD_Send_4BitData+0x64>
+ 5da:	0e 94 7a 02 	call	0x4f4	; 0x4f4 <LCD_Triger_Enable>
+ 5de:	cf 91       	pop	r28
+ 5e0:	1f 91       	pop	r17
+ 5e2:	0f 91       	pop	r16
+ 5e4:	08 95       	ret
+
+000005e6 <LCD_Send_Character_CurrLoc>:
+ 5e6:	1f 93       	push	r17
+ 5e8:	cf 93       	push	r28
+ 5ea:	df 93       	push	r29
+ 5ec:	18 2f       	mov	r17, r24
+ 5ee:	c0 ed       	ldi	r28, 0xD0	; 208
+ 5f0:	d0 e0       	ldi	r29, 0x00	; 0
+ 5f2:	41 e0       	ldi	r20, 0x01	; 1
+ 5f4:	6a 81       	ldd	r22, Y+2	; 0x02
+ 5f6:	88 81       	ld	r24, Y
+ 5f8:	99 81       	ldd	r25, Y+1	; 0x01
+ 5fa:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 5fe:	40 e0       	ldi	r20, 0x00	; 0
+ 600:	6d 81       	ldd	r22, Y+5	; 0x05
+ 602:	8b 81       	ldd	r24, Y+3	; 0x03
+ 604:	9c 81       	ldd	r25, Y+4	; 0x04
+ 606:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 60a:	81 2f       	mov	r24, r17
+ 60c:	0e 94 97 02 	call	0x52e	; 0x52e <LCD_Send_4BitData>
+ 610:	80 e0       	ldi	r24, 0x00	; 0
+ 612:	df 91       	pop	r29
+ 614:	cf 91       	pop	r28
+ 616:	1f 91       	pop	r17
+ 618:	08 95       	ret
+
+0000061a <LCD_Send_Command>:
+ 61a:	1f 93       	push	r17
+ 61c:	cf 93       	push	r28
+ 61e:	df 93       	push	r29
+ 620:	18 2f       	mov	r17, r24
+ 622:	c0 ed       	ldi	r28, 0xD0	; 208
+ 624:	d0 e0       	ldi	r29, 0x00	; 0
+ 626:	40 e0       	ldi	r20, 0x00	; 0
+ 628:	6a 81       	ldd	r22, Y+2	; 0x02
+ 62a:	88 81       	ld	r24, Y
+ 62c:	99 81       	ldd	r25, Y+1	; 0x01
+ 62e:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 632:	40 e0       	ldi	r20, 0x00	; 0
+ 634:	6d 81       	ldd	r22, Y+5	; 0x05
+ 636:	8b 81       	ldd	r24, Y+3	; 0x03
+ 638:	9c 81       	ldd	r25, Y+4	; 0x04
+ 63a:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 63e:	81 2f       	mov	r24, r17
+ 640:	0e 94 97 02 	call	0x52e	; 0x52e <LCD_Send_4BitData>
+ 644:	80 e0       	ldi	r24, 0x00	; 0
+ 646:	df 91       	pop	r29
+ 648:	cf 91       	pop	r28
+ 64a:	1f 91       	pop	r17
+ 64c:	08 95       	ret
+
+0000064e <LCD_Goto_Location>:
+ 64e:	e8 2f       	mov	r30, r24
+ 650:	f0 e0       	ldi	r31, 0x00	; 0
+ 652:	e3 51       	subi	r30, 0x13	; 19
+ 654:	ff 4f       	sbci	r31, 0xFF	; 255
+ 656:	80 81       	ld	r24, Z
+ 658:	86 0f       	add	r24, r22
+ 65a:	81 50       	subi	r24, 0x01	; 1
+ 65c:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 660:	80 e0       	ldi	r24, 0x00	; 0
+ 662:	08 95       	ret
+
+00000664 <LCD_Send_Character_WithLoc>:
+ 664:	1f 93       	push	r17
+ 666:	cf 93       	push	r28
+ 668:	df 93       	push	r29
+ 66a:	14 2f       	mov	r17, r20
+ 66c:	0e 94 27 03 	call	0x64e	; 0x64e <LCD_Goto_Location>
+ 670:	c0 ed       	ldi	r28, 0xD0	; 208
+ 672:	d0 e0       	ldi	r29, 0x00	; 0
+ 674:	41 e0       	ldi	r20, 0x01	; 1
+ 676:	6a 81       	ldd	r22, Y+2	; 0x02
+ 678:	88 81       	ld	r24, Y
+ 67a:	99 81       	ldd	r25, Y+1	; 0x01
+ 67c:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 680:	40 e0       	ldi	r20, 0x00	; 0
+ 682:	6d 81       	ldd	r22, Y+5	; 0x05
+ 684:	8b 81       	ldd	r24, Y+3	; 0x03
+ 686:	9c 81       	ldd	r25, Y+4	; 0x04
+ 688:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 68c:	81 2f       	mov	r24, r17
+ 68e:	0e 94 97 02 	call	0x52e	; 0x52e <LCD_Send_4BitData>
+ 692:	80 e0       	ldi	r24, 0x00	; 0
+ 694:	df 91       	pop	r29
+ 696:	cf 91       	pop	r28
+ 698:	1f 91       	pop	r17
+ 69a:	08 95       	ret
+
+0000069c <LCD_Initializaion>:
+ 69c:	0f 93       	push	r16
+ 69e:	1f 93       	push	r17
+ 6a0:	cf 93       	push	r28
+ 6a2:	df 93       	push	r29
+ 6a4:	00 d0       	rcall	.+0      	; 0x6a6 <LCD_Initializaion+0xa>
+ 6a6:	1f 92       	push	r1
+ 6a8:	cd b7       	in	r28, 0x3d	; 61
+ 6aa:	de b7       	in	r29, 0x3e	; 62
+ 6ac:	2f ef       	ldi	r18, 0xFF	; 255
+ 6ae:	89 ef       	ldi	r24, 0xF9	; 249
+ 6b0:	90 e0       	ldi	r25, 0x00	; 0
+ 6b2:	21 50       	subi	r18, 0x01	; 1
+ 6b4:	80 40       	sbci	r24, 0x00	; 0
+ 6b6:	90 40       	sbci	r25, 0x00	; 0
+ 6b8:	e1 f7       	brne	.-8      	; 0x6b2 <LCD_Initializaion+0x16>
+ 6ba:	00 c0       	rjmp	.+0      	; 0x6bc <LCD_Initializaion+0x20>
+ 6bc:	00 00       	nop
+ 6be:	81 e0       	ldi	r24, 0x01	; 1
+ 6c0:	8a 83       	std	Y+2, r24	; 0x02
+ 6c2:	1b 82       	std	Y+3, r1	; 0x03
+ 6c4:	00 e0       	ldi	r16, 0x00	; 0
+ 6c6:	10 e0       	ldi	r17, 0x00	; 0
+ 6c8:	12 c0       	rjmp	.+36     	; 0x6ee <LCD_Initializaion+0x52>
+ 6ca:	f8 01       	movw	r30, r16
+ 6cc:	ee 0f       	add	r30, r30
+ 6ce:	ff 1f       	adc	r31, r31
+ 6d0:	e0 0f       	add	r30, r16
+ 6d2:	f1 1f       	adc	r31, r17
+ 6d4:	e0 53       	subi	r30, 0x30	; 48
+ 6d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6d8:	82 81       	ldd	r24, Z+2	; 0x02
+ 6da:	89 83       	std	Y+1, r24	; 0x01
+ 6dc:	be 01       	movw	r22, r28
+ 6de:	6f 5f       	subi	r22, 0xFF	; 255
+ 6e0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6e2:	80 81       	ld	r24, Z
+ 6e4:	91 81       	ldd	r25, Z+1	; 0x01
+ 6e6:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+ 6ea:	0f 5f       	subi	r16, 0xFF	; 255
+ 6ec:	1f 4f       	sbci	r17, 0xFF	; 255
+ 6ee:	07 30       	cpi	r16, 0x07	; 7
+ 6f0:	11 05       	cpc	r17, r1
+ 6f2:	5c f3       	brlt	.-42     	; 0x6ca <LCD_Initializaion+0x2e>
+ 6f4:	83 e3       	ldi	r24, 0x33	; 51
+ 6f6:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 6fa:	82 e3       	ldi	r24, 0x32	; 50
+ 6fc:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 700:	88 e2       	ldi	r24, 0x28	; 40
+ 702:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 706:	8c e0       	ldi	r24, 0x0C	; 12
+ 708:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 70c:	81 e0       	ldi	r24, 0x01	; 1
+ 70e:	0e 94 0d 03 	call	0x61a	; 0x61a <LCD_Send_Command>
+ 712:	80 e0       	ldi	r24, 0x00	; 0
+ 714:	0f 90       	pop	r0
+ 716:	0f 90       	pop	r0
+ 718:	0f 90       	pop	r0
+ 71a:	df 91       	pop	r29
+ 71c:	cf 91       	pop	r28
+ 71e:	1f 91       	pop	r17
+ 720:	0f 91       	pop	r16
+ 722:	08 95       	ret
+
+00000724 <LCD_Send_String_WithLoc>:
+ 724:	cf 93       	push	r28
+ 726:	df 93       	push	r29
+ 728:	ea 01       	movw	r28, r20
+ 72a:	0e 94 27 03 	call	0x64e	; 0x64e <LCD_Goto_Location>
+ 72e:	03 c0       	rjmp	.+6      	; 0x736 <LCD_Send_String_WithLoc+0x12>
+ 730:	21 96       	adiw	r28, 0x01	; 1
+ 732:	0e 94 f3 02 	call	0x5e6	; 0x5e6 <LCD_Send_Character_CurrLoc>
+ 736:	88 81       	ld	r24, Y
+ 738:	81 11       	cpse	r24, r1
+ 73a:	fa cf       	rjmp	.-12     	; 0x730 <LCD_Send_String_WithLoc+0xc>
+ 73c:	df 91       	pop	r29
+ 73e:	cf 91       	pop	r28
+ 740:	08 95       	ret
+
+00000742 <LCD_Send_Integer_WithLoc>:
+ * param. : IntegerToDisplay this is the integer value that you want to display
+ * param. : NumberOfDigits number of digits of the integer number that you want to display
+ * return : void 
+ */
+LCD_Status_t LCD_Send_Integer_WithLoc(uint8_t y, uint8_t x, uint16_t IntegerToDisplay, uint8_t NumberOfDigits)
+{
+ 742:	8f 92       	push	r8
+ 744:	9f 92       	push	r9
+ 746:	af 92       	push	r10
+ 748:	bf 92       	push	r11
+ 74a:	cf 92       	push	r12
+ 74c:	df 92       	push	r13
+ 74e:	ef 92       	push	r14
+ 750:	ff 92       	push	r15
+ 752:	0f 93       	push	r16
+ 754:	1f 93       	push	r17
+ 756:	cf 93       	push	r28
+ 758:	df 93       	push	r29
+ 75a:	cd b7       	in	r28, 0x3d	; 61
+ 75c:	de b7       	in	r29, 0x3e	; 62
+ 75e:	98 2e       	mov	r9, r24
+ 760:	86 2e       	mov	r8, r22
+ 762:	ca 01       	movw	r24, r20
+	LCD_Send_String_WithLoc(y,x,StringToDisplay);
+	
+	
+	
+		return LCD_OK ;
+} /* END_FUN LCD_Send_Integer_WithLoc()*/
+ 764:	ad b6       	in	r10, 0x3d	; 61
+ 766:	be b6       	in	r11, 0x3e	; 62
+ * param. : NumberOfDigits number of digits of the integer number that you want to display
+ * return : void 
+ */
+LCD_Status_t LCD_Send_Integer_WithLoc(uint8_t y, uint8_t x, uint16_t IntegerToDisplay, uint8_t NumberOfDigits)
+{
+	uint8_t StringToDisplay[NumberOfDigits];   /* create array with required size */
+ 768:	e2 2e       	mov	r14, r18
+ 76a:	f1 2c       	mov	r15, r1
+ 76c:	2d b7       	in	r18, 0x3d	; 61
+ 76e:	3e b7       	in	r19, 0x3e	; 62
+ 770:	2e 19       	sub	r18, r14
+ 772:	3f 09       	sbc	r19, r15
+ 774:	0f b6       	in	r0, 0x3f	; 63
+ 776:	f8 94       	cli
+ 778:	3e bf       	out	0x3e, r19	; 62
+ 77a:	0f be       	out	0x3f, r0	; 63
+ 77c:	2d bf       	out	0x3d, r18	; 61
+ 77e:	2f 5f       	subi	r18, 0xFF	; 255
+ 780:	3f 4f       	sbci	r19, 0xFF	; 255
+ 782:	69 01       	movw	r12, r18
+	itoa(IntegerToDisplay,StringToDisplay,10); /* convert from int num. to char num. */
+ 784:	4a e0       	ldi	r20, 0x0A	; 10
+ 786:	50 e0       	ldi	r21, 0x00	; 0
+ 788:	b9 01       	movw	r22, r18
+ 78a:	0e 94 a7 07 	call	0xf4e	; 0xf4e <itoa>
+	for (uint16_t i=0;i<NumberOfDigits;i++)
+ 78e:	00 e0       	ldi	r16, 0x00	; 0
+ 790:	10 e0       	ldi	r17, 0x00	; 0
+ 792:	05 c0       	rjmp	.+10     	; 0x79e <LCD_Send_Integer_WithLoc+0x5c>
+		LCD_Send_Character_CurrLoc(' ');
+ 794:	80 e2       	ldi	r24, 0x20	; 32
+ 796:	0e 94 f3 02 	call	0x5e6	; 0x5e6 <LCD_Send_Character_CurrLoc>
+ */
+LCD_Status_t LCD_Send_Integer_WithLoc(uint8_t y, uint8_t x, uint16_t IntegerToDisplay, uint8_t NumberOfDigits)
+{
+	uint8_t StringToDisplay[NumberOfDigits];   /* create array with required size */
+	itoa(IntegerToDisplay,StringToDisplay,10); /* convert from int num. to char num. */
+	for (uint16_t i=0;i<NumberOfDigits;i++)
+ 79a:	0f 5f       	subi	r16, 0xFF	; 255
+ 79c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 79e:	0e 15       	cp	r16, r14
+ 7a0:	1f 05       	cpc	r17, r15
+ 7a2:	c0 f3       	brcs	.-16     	; 0x794 <LCD_Send_Integer_WithLoc+0x52>
+		LCD_Send_Character_CurrLoc(' ');
+		
+	LCD_Send_String_WithLoc(y,x,StringToDisplay);
+ 7a4:	a6 01       	movw	r20, r12
+ 7a6:	68 2d       	mov	r22, r8
+ 7a8:	89 2d       	mov	r24, r9
+ 7aa:	0e 94 92 03 	call	0x724	; 0x724 <LCD_Send_String_WithLoc>
+	
+	
+	
+		return LCD_OK ;
+} /* END_FUN LCD_Send_Integer_WithLoc()*/
+ 7ae:	80 e0       	ldi	r24, 0x00	; 0
+ 7b0:	0f b6       	in	r0, 0x3f	; 63
+ 7b2:	f8 94       	cli
+ 7b4:	be be       	out	0x3e, r11	; 62
+ 7b6:	0f be       	out	0x3f, r0	; 63
+ 7b8:	ad be       	out	0x3d, r10	; 61
+ 7ba:	df 91       	pop	r29
+ 7bc:	cf 91       	pop	r28
+ 7be:	1f 91       	pop	r17
+ 7c0:	0f 91       	pop	r16
+ 7c2:	ff 90       	pop	r15
+ 7c4:	ef 90       	pop	r14
+ 7c6:	df 90       	pop	r13
+ 7c8:	cf 90       	pop	r12
+ 7ca:	bf 90       	pop	r11
+ 7cc:	af 90       	pop	r10
+ 7ce:	9f 90       	pop	r9
+ 7d0:	8f 90       	pop	r8
+ 7d2:	08 95       	ret
+
+000007d4 <EEPROM_Init>:
+	
+	
+	HAL_I2C_Mem_Write(&EEPROM_I2C_Handler , EEPROM_DIV_ADDRESS ,(PageNum -1)*(EEPROM_NUMBER_OF_BYTES_FOR_PAGE), 2 , TXBuffer , EEPROM_NUMBER_OF_BYTES_FOR_PAGE);
+	return EEPROM_OK ;
+	
+}
+ 7d4:	85 ee       	ldi	r24, 0xE5	; 229
+ 7d6:	90 e0       	ldi	r25, 0x00	; 0
+ 7d8:	0e 94 40 05 	call	0xa80	; 0xa80 <I2C_Init>
+ 7dc:	80 e0       	ldi	r24, 0x00	; 0
+ 7de:	08 95       	ret
+
+000007e0 <EEPROM_ReadByteS>:
+
+
+EEPROM_Status_t EEPROM_ReadByteS(uint8_t PageNum ,uint8_t ByteNum , uint8_t * RXByte , uint8_t DataSize)
+{
+ 7e0:	ef 92       	push	r14
+ 7e2:	0f 93       	push	r16
+ 7e4:	1f 93       	push	r17
+	
+	if ((PageNum > EEPROM_NUMBER_OF_PAGES)||(RXByte == NULL) || ( DataSize <= 0))
+ 7e6:	41 15       	cp	r20, r1
+ 7e8:	51 05       	cpc	r21, r1
+ 7ea:	c1 f0       	breq	.+48     	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 7ec:	22 23       	and	r18, r18
+ 7ee:	c1 f0       	breq	.+48     	; 0x820 <__DATA_REGION_LENGTH__+0x20>
+ 7f0:	e2 2e       	mov	r14, r18
+ 7f2:	8a 01       	movw	r16, r20
+	
+	
+	
+	
+	
+	HAL_I2C_Mem_Read(&EEPROM_I2C_Handler , EEPROM_DIV_ADDRESS , (PageNum -1)*(ByteNum -1) , 2  , RXByte , DataSize) ;
+ 7f4:	90 e0       	ldi	r25, 0x00	; 0
+ 7f6:	01 97       	sbiw	r24, 0x01	; 1
+ 7f8:	70 e0       	ldi	r23, 0x00	; 0
+ 7fa:	61 50       	subi	r22, 0x01	; 1
+ 7fc:	71 09       	sbc	r23, r1
+ 7fe:	86 9f       	mul	r24, r22
+ 800:	a0 01       	movw	r20, r0
+ 802:	87 9f       	mul	r24, r23
+ 804:	50 0d       	add	r21, r0
+ 806:	96 9f       	mul	r25, r22
+ 808:	50 0d       	add	r21, r0
+ 80a:	11 24       	eor	r1, r1
+ 80c:	22 e0       	ldi	r18, 0x02	; 2
+ 80e:	60 ea       	ldi	r22, 0xA0	; 160
+ 810:	85 ee       	ldi	r24, 0xE5	; 229
+ 812:	90 e0       	ldi	r25, 0x00	; 0
+ 814:	0e 94 bc 05 	call	0xb78	; 0xb78 <HAL_I2C_Mem_Read>
+	return EEPROM_OK ;	
+ 818:	80 e0       	ldi	r24, 0x00	; 0
+ 81a:	03 c0       	rjmp	.+6      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
+EEPROM_Status_t EEPROM_ReadByteS(uint8_t PageNum ,uint8_t ByteNum , uint8_t * RXByte , uint8_t DataSize)
+{
+	
+	if ((PageNum > EEPROM_NUMBER_OF_PAGES)||(RXByte == NULL) || ( DataSize <= 0))
+	{
+		return EEPROM_PARAM_ERROR ;
+ 81c:	81 e0       	ldi	r24, 0x01	; 1
+ 81e:	01 c0       	rjmp	.+2      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
+ 820:	81 e0       	ldi	r24, 0x01	; 1
+	
+	
+	
+	HAL_I2C_Mem_Read(&EEPROM_I2C_Handler , EEPROM_DIV_ADDRESS , (PageNum -1)*(ByteNum -1) , 2  , RXByte , DataSize) ;
+	return EEPROM_OK ;	
+}
+ 822:	1f 91       	pop	r17
+ 824:	0f 91       	pop	r16
+ 826:	ef 90       	pop	r14
+ 828:	08 95       	ret
+
+0000082a <EEPROM_WriteByteS>:
+
+
+EEPROM_Status_t EEPROM_WriteByteS(uint8_t PageNum ,uint8_t ByteNum , uint8_t  * TXByte , uint8_t DataSize)
+{
+ 82a:	ef 92       	push	r14
+ 82c:	0f 93       	push	r16
+ 82e:	1f 93       	push	r17
+	
+	if (((PageNum > EEPROM_NUMBER_OF_PAGES)||(ByteNum > EEPROM_NUMBER_OF_PAGES))
+ 830:	41 15       	cp	r20, r1
+ 832:	51 05       	cpc	r21, r1
+ 834:	c1 f0       	breq	.+48     	; 0x866 <__stack+0x7>
+		||(TXByte == NULL) || (DataSize <= 0))
+ 836:	22 23       	and	r18, r18
+ 838:	c1 f0       	breq	.+48     	; 0x86a <__stack+0xb>
+ 83a:	e2 2e       	mov	r14, r18
+ 83c:	8a 01       	movw	r16, r20
+	}
+	
+	
+	
+	
+	HAL_I2C_Mem_Write(&EEPROM_I2C_Handler , EEPROM_DIV_ADDRESS ,(PageNum -1)*(ByteNum -1), 2 , TXByte , DataSize);
+ 83e:	90 e0       	ldi	r25, 0x00	; 0
+ 840:	01 97       	sbiw	r24, 0x01	; 1
+ 842:	70 e0       	ldi	r23, 0x00	; 0
+ 844:	61 50       	subi	r22, 0x01	; 1
+ 846:	71 09       	sbc	r23, r1
+ 848:	86 9f       	mul	r24, r22
+ 84a:	a0 01       	movw	r20, r0
+ 84c:	87 9f       	mul	r24, r23
+ 84e:	50 0d       	add	r21, r0
+ 850:	96 9f       	mul	r25, r22
+ 852:	50 0d       	add	r21, r0
+ 854:	11 24       	eor	r1, r1
+ 856:	22 e0       	ldi	r18, 0x02	; 2
+ 858:	60 ea       	ldi	r22, 0xA0	; 160
+ 85a:	85 ee       	ldi	r24, 0xE5	; 229
+ 85c:	90 e0       	ldi	r25, 0x00	; 0
+ 85e:	0e 94 81 05 	call	0xb02	; 0xb02 <HAL_I2C_Mem_Write>
+	return EEPROM_OK ;
+ 862:	80 e0       	ldi	r24, 0x00	; 0
+ 864:	03 c0       	rjmp	.+6      	; 0x86c <__stack+0xd>
+{
+	
+	if (((PageNum > EEPROM_NUMBER_OF_PAGES)||(ByteNum > EEPROM_NUMBER_OF_PAGES))
+		||(TXByte == NULL) || (DataSize <= 0))
+	{
+		return EEPROM_PARAM_ERROR ;
+ 866:	81 e0       	ldi	r24, 0x01	; 1
+ 868:	01 c0       	rjmp	.+2      	; 0x86c <__stack+0xd>
+ 86a:	81 e0       	ldi	r24, 0x01	; 1
+	
+	
+	
+	HAL_I2C_Mem_Write(&EEPROM_I2C_Handler , EEPROM_DIV_ADDRESS ,(PageNum -1)*(ByteNum -1), 2 , TXByte , DataSize);
+	return EEPROM_OK ;
+}
+ 86c:	1f 91       	pop	r17
+ 86e:	0f 91       	pop	r16
+ 870:	ef 90       	pop	r14
+ 872:	08 95       	ret
+
+00000874 <EEPROM_Reset>:
+
+EEPROM_Status_t EEPROM_Reset(void)
+{
+ 874:	cf 93       	push	r28
+	DDRC = 0x03 ; 
+ 876:	83 e0       	ldi	r24, 0x03	; 3
+ 878:	84 bb       	out	0x14, r24	; 20
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_1 , GPIO_PIN_SET) ;
+ 87a:	41 e0       	ldi	r20, 0x01	; 1
+ 87c:	62 e0       	ldi	r22, 0x02	; 2
+ 87e:	83 e3       	ldi	r24, 0x33	; 51
+ 880:	90 e0       	ldi	r25, 0x00	; 0
+ 882:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_0 , GPIO_PIN_SET) ;
+ 886:	41 e0       	ldi	r20, 0x01	; 1
+ 888:	61 e0       	ldi	r22, 0x01	; 1
+ 88a:	83 e3       	ldi	r24, 0x33	; 51
+ 88c:	90 e0       	ldi	r25, 0x00	; 0
+ 88e:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+	for (uint8_t i = 0 ; i < 9 ; i++)
+ 892:	c0 e0       	ldi	r28, 0x00	; 0
+ 894:	15 c0       	rjmp	.+42     	; 0x8c0 <EEPROM_Reset+0x4c>
+	{
+//	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_1 , GPIO_PIN_SET) ;
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_0 , GPIO_PIN_SET) ;
+ 896:	41 e0       	ldi	r20, 0x01	; 1
+ 898:	61 e0       	ldi	r22, 0x01	; 1
+ 89a:	83 e3       	ldi	r24, 0x33	; 51
+ 89c:	90 e0       	ldi	r25, 0x00	; 0
+ 89e:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 8a2:	8a e1       	ldi	r24, 0x1A	; 26
+ 8a4:	8a 95       	dec	r24
+ 8a6:	f1 f7       	brne	.-4      	; 0x8a4 <EEPROM_Reset+0x30>
+ 8a8:	00 c0       	rjmp	.+0      	; 0x8aa <EEPROM_Reset+0x36>
+	_delay_us(5);
+//	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_1 , GPIO_PIN_RESET) ;
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_0 , GPIO_PIN_RESET) ;
+ 8aa:	40 e0       	ldi	r20, 0x00	; 0
+ 8ac:	61 e0       	ldi	r22, 0x01	; 1
+ 8ae:	83 e3       	ldi	r24, 0x33	; 51
+ 8b0:	90 e0       	ldi	r25, 0x00	; 0
+ 8b2:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+ 8b6:	8a e1       	ldi	r24, 0x1A	; 26
+ 8b8:	8a 95       	dec	r24
+ 8ba:	f1 f7       	brne	.-4      	; 0x8b8 <EEPROM_Reset+0x44>
+ 8bc:	00 c0       	rjmp	.+0      	; 0x8be <EEPROM_Reset+0x4a>
+EEPROM_Status_t EEPROM_Reset(void)
+{
+	DDRC = 0x03 ; 
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_1 , GPIO_PIN_SET) ;
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_0 , GPIO_PIN_SET) ;
+	for (uint8_t i = 0 ; i < 9 ; i++)
+ 8be:	cf 5f       	subi	r28, 0xFF	; 255
+ 8c0:	c9 30       	cpi	r28, 0x09	; 9
+ 8c2:	48 f3       	brcs	.-46     	; 0x896 <EEPROM_Reset+0x22>
+	HAL_GPIO_WRITEPIN(GPIOC ,  GPIO_PIN_0 , GPIO_PIN_RESET) ;
+	_delay_us(5);
+	}
+	
+	// now we need to generate start condition
+	I2C_EN_START();
+ 8c4:	84 ea       	ldi	r24, 0xA4	; 164
+ 8c6:	86 bf       	out	0x36, r24	; 54
+	DDRC = 0x00 ;
+ 8c8:	14 ba       	out	0x14, r1	; 20
+	I2C_EN_STOP(); 
+ 8ca:	84 e9       	ldi	r24, 0x94	; 148
+ 8cc:	86 bf       	out	0x36, r24	; 54
+	return EEPROM_OK ;
+ 8ce:	80 e0       	ldi	r24, 0x00	; 0
+ 8d0:	cf 91       	pop	r28
+ 8d2:	08 95       	ret
+
+000008d4 <main>:
+
+
+int main(void)
+{
+    /* Replace with your application code */
+	APP_Init();
+ 8d4:	0e 94 60 01 	call	0x2c0	; 0x2c0 <APP_Init>
+    while (1) 
+    {
+		APP_UPdate();
+ 8d8:	0e 94 76 01 	call	0x2ec	; 0x2ec <APP_UPdate>
+ 8dc:	fd cf       	rjmp	.-6      	; 0x8d8 <main+0x4>
+
+000008de <EXTI_Init>:
+ * param : Handler is a pointer to struct that hold all information a bout the INIT 
+ * return : void 
+*/  
+void EXIT_DISABLE(EXIT_Handler_t * Handler)
+{
+	GICR &=~(1<<(5+Handler->EXTI_NUM));  /* disable the required INIT */
+ 8de:	fc 01       	movw	r30, r24
+ 8e0:	80 81       	ld	r24, Z
+ 8e2:	82 30       	cpi	r24, 0x02	; 2
+ 8e4:	71 f4       	brne	.+28     	; 0x902 <EXTI_Init+0x24>
+ 8e6:	81 81       	ldd	r24, Z+1	; 0x01
+ 8e8:	82 30       	cpi	r24, 0x02	; 2
+ 8ea:	21 f4       	brne	.+8      	; 0x8f4 <EXTI_Init+0x16>
+ 8ec:	84 b7       	in	r24, 0x34	; 52
+ 8ee:	8f 7b       	andi	r24, 0xBF	; 191
+ 8f0:	84 bf       	out	0x34, r24	; 52
+ 8f2:	03 c0       	rjmp	.+6      	; 0x8fa <EXTI_Init+0x1c>
+ 8f4:	84 b7       	in	r24, 0x34	; 52
+ 8f6:	80 64       	ori	r24, 0x40	; 64
+ 8f8:	84 bf       	out	0x34, r24	; 52
+ 8fa:	8b b7       	in	r24, 0x3b	; 59
+ 8fc:	80 62       	ori	r24, 0x20	; 32
+ 8fe:	8b bf       	out	0x3b, r24	; 59
+ 900:	20 c0       	rjmp	.+64     	; 0x942 <EXTI_Init+0x64>
+ 902:	85 b7       	in	r24, 0x35	; 53
+ 904:	80 7f       	andi	r24, 0xF0	; 240
+ 906:	85 bf       	out	0x35, r24	; 53
+ 908:	80 81       	ld	r24, Z
+ 90a:	81 11       	cpse	r24, r1
+ 90c:	08 c0       	rjmp	.+16     	; 0x91e <EXTI_Init+0x40>
+ 90e:	95 b7       	in	r25, 0x35	; 53
+ 910:	81 81       	ldd	r24, Z+1	; 0x01
+ 912:	89 2b       	or	r24, r25
+ 914:	85 bf       	out	0x35, r24	; 53
+ 916:	8b b7       	in	r24, 0x3b	; 59
+ 918:	80 64       	ori	r24, 0x40	; 64
+ 91a:	8b bf       	out	0x3b, r24	; 59
+ 91c:	12 c0       	rjmp	.+36     	; 0x942 <EXTI_Init+0x64>
+ 91e:	45 b7       	in	r20, 0x35	; 53
+ 920:	21 81       	ldd	r18, Z+1	; 0x01
+ 922:	90 e0       	ldi	r25, 0x00	; 0
+ 924:	88 0f       	add	r24, r24
+ 926:	99 1f       	adc	r25, r25
+ 928:	30 e0       	ldi	r19, 0x00	; 0
+ 92a:	b9 01       	movw	r22, r18
+ 92c:	02 c0       	rjmp	.+4      	; 0x932 <EXTI_Init+0x54>
+ 92e:	66 0f       	add	r22, r22
+ 930:	77 1f       	adc	r23, r23
+ 932:	8a 95       	dec	r24
+ 934:	e2 f7       	brpl	.-8      	; 0x92e <EXTI_Init+0x50>
+ 936:	cb 01       	movw	r24, r22
+ 938:	84 2b       	or	r24, r20
+ 93a:	85 bf       	out	0x35, r24	; 53
+ 93c:	8b b7       	in	r24, 0x3b	; 59
+ 93e:	80 68       	ori	r24, 0x80	; 128
+ 940:	8b bf       	out	0x3b, r24	; 59
+ 942:	78 94       	sei
+ 944:	08 95       	ret
+
+00000946 <__vector_1>:
+}
+
+
+/* INIT0 Function */
+ISR(INT0_vect)
+{
+ 946:	1f 92       	push	r1
+ 948:	0f 92       	push	r0
+ 94a:	0f b6       	in	r0, 0x3f	; 63
+ 94c:	0f 92       	push	r0
+ 94e:	11 24       	eor	r1, r1
+ 950:	2f 93       	push	r18
+ 952:	3f 93       	push	r19
+ 954:	4f 93       	push	r20
+ 956:	5f 93       	push	r21
+ 958:	6f 93       	push	r22
+ 95a:	7f 93       	push	r23
+ 95c:	8f 93       	push	r24
+ 95e:	9f 93       	push	r25
+ 960:	af 93       	push	r26
+ 962:	bf 93       	push	r27
+ 964:	ef 93       	push	r30
+ 966:	ff 93       	push	r31
+	ptr_INT0();
+ 968:	e0 91 16 01 	lds	r30, 0x0116	; 0x800116 <ptr_INT0>
+ 96c:	f0 91 17 01 	lds	r31, 0x0117	; 0x800117 <ptr_INT0+0x1>
+ 970:	09 95       	icall
+}
+ 972:	ff 91       	pop	r31
+ 974:	ef 91       	pop	r30
+ 976:	bf 91       	pop	r27
+ 978:	af 91       	pop	r26
+ 97a:	9f 91       	pop	r25
+ 97c:	8f 91       	pop	r24
+ 97e:	7f 91       	pop	r23
+ 980:	6f 91       	pop	r22
+ 982:	5f 91       	pop	r21
+ 984:	4f 91       	pop	r20
+ 986:	3f 91       	pop	r19
+ 988:	2f 91       	pop	r18
+ 98a:	0f 90       	pop	r0
+ 98c:	0f be       	out	0x3f, r0	; 63
+ 98e:	0f 90       	pop	r0
+ 990:	1f 90       	pop	r1
+ 992:	18 95       	reti
+
+00000994 <__vector_2>:
+/* INIT0 Function */
+ISR(INT1_vect)
+{
+ 994:	1f 92       	push	r1
+ 996:	0f 92       	push	r0
+ 998:	0f b6       	in	r0, 0x3f	; 63
+ 99a:	0f 92       	push	r0
+ 99c:	11 24       	eor	r1, r1
+ 99e:	2f 93       	push	r18
+ 9a0:	3f 93       	push	r19
+ 9a2:	4f 93       	push	r20
+ 9a4:	5f 93       	push	r21
+ 9a6:	6f 93       	push	r22
+ 9a8:	7f 93       	push	r23
+ 9aa:	8f 93       	push	r24
+ 9ac:	9f 93       	push	r25
+ 9ae:	af 93       	push	r26
+ 9b0:	bf 93       	push	r27
+ 9b2:	ef 93       	push	r30
+ 9b4:	ff 93       	push	r31
+	ptr_INT1();
+ 9b6:	e0 91 1a 01 	lds	r30, 0x011A	; 0x80011a <ptr_INT1>
+ 9ba:	f0 91 1b 01 	lds	r31, 0x011B	; 0x80011b <ptr_INT1+0x1>
+ 9be:	09 95       	icall
+}
+ 9c0:	ff 91       	pop	r31
+ 9c2:	ef 91       	pop	r30
+ 9c4:	bf 91       	pop	r27
+ 9c6:	af 91       	pop	r26
+ 9c8:	9f 91       	pop	r25
+ 9ca:	8f 91       	pop	r24
+ 9cc:	7f 91       	pop	r23
+ 9ce:	6f 91       	pop	r22
+ 9d0:	5f 91       	pop	r21
+ 9d2:	4f 91       	pop	r20
+ 9d4:	3f 91       	pop	r19
+ 9d6:	2f 91       	pop	r18
+ 9d8:	0f 90       	pop	r0
+ 9da:	0f be       	out	0x3f, r0	; 63
+ 9dc:	0f 90       	pop	r0
+ 9de:	1f 90       	pop	r1
+ 9e0:	18 95       	reti
+
+000009e2 <__vector_3>:
+/* INIT0 Function */
+ISR(INT2_vect)
+{
+ 9e2:	1f 92       	push	r1
+ 9e4:	0f 92       	push	r0
+ 9e6:	0f b6       	in	r0, 0x3f	; 63
+ 9e8:	0f 92       	push	r0
+ 9ea:	11 24       	eor	r1, r1
+ 9ec:	2f 93       	push	r18
+ 9ee:	3f 93       	push	r19
+ 9f0:	4f 93       	push	r20
+ 9f2:	5f 93       	push	r21
+ 9f4:	6f 93       	push	r22
+ 9f6:	7f 93       	push	r23
+ 9f8:	8f 93       	push	r24
+ 9fa:	9f 93       	push	r25
+ 9fc:	af 93       	push	r26
+ 9fe:	bf 93       	push	r27
+ a00:	ef 93       	push	r30
+ a02:	ff 93       	push	r31
+	ptr_INT2();
+ a04:	e0 91 18 01 	lds	r30, 0x0118	; 0x800118 <ptr_INT2>
+ a08:	f0 91 19 01 	lds	r31, 0x0119	; 0x800119 <ptr_INT2+0x1>
+ a0c:	09 95       	icall
+ a0e:	ff 91       	pop	r31
+ a10:	ef 91       	pop	r30
+ a12:	bf 91       	pop	r27
+ a14:	af 91       	pop	r26
+ a16:	9f 91       	pop	r25
+ a18:	8f 91       	pop	r24
+ a1a:	7f 91       	pop	r23
+ a1c:	6f 91       	pop	r22
+ a1e:	5f 91       	pop	r21
+ a20:	4f 91       	pop	r20
+ a22:	3f 91       	pop	r19
+ a24:	2f 91       	pop	r18
+ a26:	0f 90       	pop	r0
+ a28:	0f be       	out	0x3f, r0	; 63
+ a2a:	0f 90       	pop	r0
+ a2c:	1f 90       	pop	r1
+ a2e:	18 95       	reti
+
+00000a30 <HAL_GPIO_INIT_PIN>:
+ * param. : PORT pointer to GPIO port
+ * param. : PIN_CONFIG pointer to struct hold all configuration
+ * return : void 
+ */
+void HAL_GPIO_INIT_PIN(StrGPIO_t PORT, GPIO_InitTypeDef *  PIN_CONFIG)
+{
+ a30:	fc 01       	movw	r30, r24
+
+		if(PIN_CONFIG->mode == GPIO_MODE_OUTPUT)
+ a32:	db 01       	movw	r26, r22
+ a34:	11 96       	adiw	r26, 0x01	; 1
+ a36:	8c 91       	ld	r24, X
+ a38:	11 97       	sbiw	r26, 0x01	; 1
+ a3a:	81 30       	cpi	r24, 0x01	; 1
+ a3c:	29 f4       	brne	.+10     	; 0xa48 <HAL_GPIO_INIT_PIN+0x18>
+		{
+			PORT->DDR_REG  |= PIN_CONFIG->pin ;      //SET ALL PINS AS OUTPUT
+ a3e:	8c 91       	ld	r24, X
+ a40:	91 81       	ldd	r25, Z+1	; 0x01
+ a42:	89 2b       	or	r24, r25
+ a44:	81 83       	std	Z+1, r24	; 0x01
+ a46:	08 95       	ret
+		}else{  // PINS MODE CONFIGURED AS INPUT
+			if(PIN_CONFIG->pull == GPIO_PULLUP)
+			{
+			//	PORT->PIN_REG |= PIN_CONFIG->pin ;     // SET PULL UP RES.
+			}
+			PORT->DDR_REG &= ~(PIN_CONFIG->pin);
+ a48:	db 01       	movw	r26, r22
+ a4a:	9c 91       	ld	r25, X
+ a4c:	90 95       	com	r25
+ a4e:	81 81       	ldd	r24, Z+1	; 0x01
+ a50:	98 23       	and	r25, r24
+ a52:	91 83       	std	Z+1, r25	; 0x01
+ a54:	08 95       	ret
+
+00000a56 <HAL_GPIO_READPIN>:
+ * param. : PIN_NUM the pin number must be one of GPIO_PIN_ 
+ * return : return on of  GPIO_PIN_RESET or GPIO_PIN_SET 
+ */
+GPIO_PinState HAL_GPIO_READPIN(StrGPIO_t PORT,uint8_t PIN_NUM)
+{
+	if(PORT->PIN_REG & PIN_NUM)  /* check if specific pin is set */
+ a56:	fc 01       	movw	r30, r24
+ a58:	80 81       	ld	r24, Z
+ a5a:	68 23       	and	r22, r24
+ a5c:	11 f0       	breq	.+4      	; 0xa62 <HAL_GPIO_READPIN+0xc>
+	{
+		return GPIO_PIN_SET ;
+ a5e:	81 e0       	ldi	r24, 0x01	; 1
+ a60:	08 95       	ret
+	}
+	else              /* if read pin is zero */
+	{
+		return GPIO_PIN_RESET ;
+ a62:	80 e0       	ldi	r24, 0x00	; 0
+	}
+}/* END_FUN HAL_GPIO_READPIN()*/
+ a64:	08 95       	ret
+
+00000a66 <HAL_GPIO_WRITEPIN>:
+ * param. : PIN_NUM the pin number must be one of GPIO_PIN_RESET or GPIO_PIN_SET
+ * return : void  
+ */
+void HAL_GPIO_WRITEPIN(StrGPIO_t PORT,uint8_t PIN_NUM,GPIO_PinState PIN_STATE)
+{
+	if(PIN_STATE != GPIO_PIN_RESET)
+ a66:	44 23       	and	r20, r20
+ a68:	29 f0       	breq	.+10     	; 0xa74 <HAL_GPIO_WRITEPIN+0xe>
+	{
+		PORT->PORT_REG |= PIN_NUM ;
+ a6a:	fc 01       	movw	r30, r24
+ a6c:	22 81       	ldd	r18, Z+2	; 0x02
+ a6e:	62 2b       	or	r22, r18
+ a70:	62 83       	std	Z+2, r22	; 0x02
+ a72:	08 95       	ret
+	}
+	else
+	{
+		PORT->PORT_REG &= ~(PIN_NUM);
+ a74:	60 95       	com	r22
+ a76:	fc 01       	movw	r30, r24
+ a78:	22 81       	ldd	r18, Z+2	; 0x02
+ a7a:	62 23       	and	r22, r18
+ a7c:	62 83       	std	Z+2, r22	; 0x02
+ a7e:	08 95       	ret
+
+00000a80 <I2C_Init>:
+		I2C_EN_NACK() ;
+	
+	
+		return I2C_NORMAL ;
+	
+}/* END_FUN I2C_SLAVE_TRANSMIT() */
+ a80:	8f 92       	push	r8
+ a82:	9f 92       	push	r9
+ a84:	af 92       	push	r10
+ a86:	bf 92       	push	r11
+ a88:	cf 92       	push	r12
+ a8a:	df 92       	push	r13
+ a8c:	ef 92       	push	r14
+ a8e:	ff 92       	push	r15
+ a90:	0f 93       	push	r16
+ a92:	cf 93       	push	r28
+ a94:	df 93       	push	r29
+ a96:	ec 01       	movw	r28, r24
+ a98:	28 81       	ld	r18, Y
+ a9a:	39 81       	ldd	r19, Y+1	; 0x01
+ a9c:	4a 81       	ldd	r20, Y+2	; 0x02
+ a9e:	5b 81       	ldd	r21, Y+3	; 0x03
+ aa0:	60 e0       	ldi	r22, 0x00	; 0
+ aa2:	74 e2       	ldi	r23, 0x24	; 36
+ aa4:	84 ef       	ldi	r24, 0xF4	; 244
+ aa6:	90 e0       	ldi	r25, 0x00	; 0
+ aa8:	0e 94 37 07 	call	0xe6e	; 0xe6e <__udivmodsi4>
+ aac:	49 01       	movw	r8, r18
+ aae:	5a 01       	movw	r10, r20
+ ab0:	39 2d       	mov	r19, r9
+ ab2:	4a 2d       	mov	r20, r10
+ ab4:	5b 2d       	mov	r21, r11
+ ab6:	60 e0       	ldi	r22, 0x00	; 0
+ ab8:	70 e0       	ldi	r23, 0x00	; 0
+ aba:	80 e0       	ldi	r24, 0x00	; 0
+ abc:	90 e0       	ldi	r25, 0x00	; 0
+ abe:	a0 ef       	ldi	r26, 0xF0	; 240
+ ac0:	0e 94 7d 07 	call	0xefa	; 0xefa <__adddi3_s8>
+ ac4:	01 e0       	ldi	r16, 0x01	; 1
+ ac6:	0e 94 61 07 	call	0xec2	; 0xec2 <__lshrdi3>
+ aca:	20 b9       	out	0x00, r18	; 0
+ acc:	8c 81       	ldd	r24, Y+4	; 0x04
+ ace:	82 b9       	out	0x02, r24	; 2
+ ad0:	16 be       	out	0x36, r1	; 54
+ ad2:	11 b8       	out	0x01, r1	; 1
+ ad4:	8d 81       	ldd	r24, Y+5	; 0x05
+ ad6:	81 30       	cpi	r24, 0x01	; 1
+ ad8:	29 f4       	brne	.+10     	; 0xae4 <I2C_Init+0x64>
+ ada:	78 94       	sei
+ adc:	86 b7       	in	r24, 0x36	; 54
+ ade:	81 60       	ori	r24, 0x01	; 1
+ ae0:	86 bf       	out	0x36, r24	; 54
+ ae2:	03 c0       	rjmp	.+6      	; 0xaea <I2C_Init+0x6a>
+ ae4:	86 b7       	in	r24, 0x36	; 54
+ ae6:	8e 7f       	andi	r24, 0xFE	; 254
+ ae8:	86 bf       	out	0x36, r24	; 54
+ aea:	df 91       	pop	r29
+ aec:	cf 91       	pop	r28
+ aee:	0f 91       	pop	r16
+ af0:	ff 90       	pop	r15
+ af2:	ef 90       	pop	r14
+ af4:	df 90       	pop	r13
+ af6:	cf 90       	pop	r12
+ af8:	bf 90       	pop	r11
+ afa:	af 90       	pop	r10
+ afc:	9f 90       	pop	r9
+ afe:	8f 90       	pop	r8
+ b00:	08 95       	ret
+
+00000b02 <HAL_I2C_Mem_Write>:
+ * param.  : memAdd this is the internal memory address that you need to write data to 
+ * param.  : pRxData this is pointer to the buffer that hold the writing data 
+ * param.  : DataSize number of bytes that you need to write 
+*/ 
+I2C_STATUS HAL_I2C_Mem_Write(I2C_Handler_t * Handler ,uint8_t DevAdd,uint16_t MemAdd ,uint8_t MemAddSize ,uint8_t * pTxData ,uint8_t DataSize )
+{
+ b02:	ef 92       	push	r14
+ b04:	0f 93       	push	r16
+ b06:	1f 93       	push	r17
+ b08:	fc 01       	movw	r30, r24
+	Handler->buffer = pTxData ;
+ b0a:	17 83       	std	Z+7, r17	; 0x07
+ b0c:	06 83       	std	Z+6, r16	; 0x06
+	Handler->BufferSize   = DataSize;
+ b0e:	e0 86       	std	Z+8, r14	; 0x08
+	
+	I2C_EN_START();WAIT_FLAG();
+ b10:	84 ea       	ldi	r24, 0xA4	; 164
+ b12:	86 bf       	out	0x36, r24	; 54
+ b14:	06 b6       	in	r0, 0x36	; 54
+ b16:	07 fe       	sbrs	r0, 7
+ b18:	fd cf       	rjmp	.-6      	; 0xb14 <HAL_I2C_Mem_Write+0x12>
+	I2C->I2C_TWDR = DevAdd ;
+ b1a:	63 b9       	out	0x03, r22	; 3
+	I2C_EN();WAIT_FLAG();
+ b1c:	84 e8       	ldi	r24, 0x84	; 132
+ b1e:	86 bf       	out	0x36, r24	; 54
+ b20:	06 b6       	in	r0, 0x36	; 54
+ b22:	07 fe       	sbrs	r0, 7
+ b24:	fd cf       	rjmp	.-6      	; 0xb20 <HAL_I2C_Mem_Write+0x1e>
+	I2C->I2C_TWDR =( MemAdd & 0xff );
+ b26:	43 b9       	out	0x03, r20	; 3
+	I2C_EN();WAIT_FLAG();
+ b28:	84 e8       	ldi	r24, 0x84	; 132
+ b2a:	86 bf       	out	0x36, r24	; 54
+ b2c:	06 b6       	in	r0, 0x36	; 54
+ b2e:	07 fe       	sbrs	r0, 7
+ b30:	fd cf       	rjmp	.-6      	; 0xb2c <HAL_I2C_Mem_Write+0x2a>
+	if (MemAddSize == 2)
+ b32:	22 30       	cpi	r18, 0x02	; 2
+ b34:	a1 f4       	brne	.+40     	; 0xb5e <HAL_I2C_Mem_Write+0x5c>
+	{
+		I2C->I2C_TWDR = ((MemAdd>>8) & 0xff);
+ b36:	53 b9       	out	0x03, r21	; 3
+		I2C_EN();WAIT_FLAG();	
+ b38:	84 e8       	ldi	r24, 0x84	; 132
+ b3a:	86 bf       	out	0x36, r24	; 54
+ b3c:	06 b6       	in	r0, 0x36	; 54
+ b3e:	07 fe       	sbrs	r0, 7
+ b40:	fd cf       	rjmp	.-6      	; 0xb3c <HAL_I2C_Mem_Write+0x3a>
+ b42:	0d c0       	rjmp	.+26     	; 0xb5e <HAL_I2C_Mem_Write+0x5c>
+	}
+	while(Handler->BufferSize-- > 0)
+	{
+		I2C->I2C_TWDR = *(Handler->buffer++) ;
+ b44:	a6 81       	ldd	r26, Z+6	; 0x06
+ b46:	b7 81       	ldd	r27, Z+7	; 0x07
+ b48:	cd 01       	movw	r24, r26
+ b4a:	01 96       	adiw	r24, 0x01	; 1
+ b4c:	97 83       	std	Z+7, r25	; 0x07
+ b4e:	86 83       	std	Z+6, r24	; 0x06
+ b50:	8c 91       	ld	r24, X
+ b52:	83 b9       	out	0x03, r24	; 3
+		I2C_EN();WAIT_FLAG();
+ b54:	84 e8       	ldi	r24, 0x84	; 132
+ b56:	86 bf       	out	0x36, r24	; 54
+ b58:	06 b6       	in	r0, 0x36	; 54
+ b5a:	07 fe       	sbrs	r0, 7
+ b5c:	fd cf       	rjmp	.-6      	; 0xb58 <HAL_I2C_Mem_Write+0x56>
+	if (MemAddSize == 2)
+	{
+		I2C->I2C_TWDR = ((MemAdd>>8) & 0xff);
+		I2C_EN();WAIT_FLAG();	
+	}
+	while(Handler->BufferSize-- > 0)
+ b5e:	80 85       	ldd	r24, Z+8	; 0x08
+ b60:	9f ef       	ldi	r25, 0xFF	; 255
+ b62:	98 0f       	add	r25, r24
+ b64:	90 87       	std	Z+8, r25	; 0x08
+ b66:	81 11       	cpse	r24, r1
+ b68:	ed cf       	rjmp	.-38     	; 0xb44 <HAL_I2C_Mem_Write+0x42>
+	{
+		I2C->I2C_TWDR = *(Handler->buffer++) ;
+		I2C_EN();WAIT_FLAG();
+	}
+	I2C_EN_STOP();
+ b6a:	84 e9       	ldi	r24, 0x94	; 148
+ b6c:	86 bf       	out	0x36, r24	; 54
+	
+	
+	return I2C_NORMAL ;
+	
+}/* END_FUN I2C_MEM_WRITE() */
+ b6e:	80 e0       	ldi	r24, 0x00	; 0
+ b70:	1f 91       	pop	r17
+ b72:	0f 91       	pop	r16
+ b74:	ef 90       	pop	r14
+ b76:	08 95       	ret
+
+00000b78 <HAL_I2C_Mem_Read>:
+ * param.  : memAdd this is the internal memory address that you need to read data from it 
+ * param.  : pRxData this is pointer to the buffer that will hold the reading data 
+ * param.  : DataSize number of bytes that you need to read 
+*/ 
+I2C_STATUS HAL_I2C_Mem_Read(I2C_Handler_t * Handler ,uint8_t DevAdd,uint16_t MemAdd ,uint8_t MemAddSize ,uint8_t * pRxData ,uint8_t DataSize )
+{
+ b78:	ef 92       	push	r14
+ b7a:	0f 93       	push	r16
+ b7c:	1f 93       	push	r17
+ b7e:	fc 01       	movw	r30, r24
+	Handler->buffer = pRxData ;
+ b80:	17 83       	std	Z+7, r17	; 0x07
+ b82:	06 83       	std	Z+6, r16	; 0x06
+	Handler->BufferSize = DataSize;
+ b84:	e0 86       	std	Z+8, r14	; 0x08
+	
+	I2C_EN_START();WAIT_FLAG();
+ b86:	84 ea       	ldi	r24, 0xA4	; 164
+ b88:	86 bf       	out	0x36, r24	; 54
+ b8a:	06 b6       	in	r0, 0x36	; 54
+ b8c:	07 fe       	sbrs	r0, 7
+ b8e:	fd cf       	rjmp	.-6      	; 0xb8a <HAL_I2C_Mem_Read+0x12>
+	I2C->I2C_TWDR = DevAdd ;
+ b90:	63 b9       	out	0x03, r22	; 3
+	I2C_EN();WAIT_FLAG();
+ b92:	84 e8       	ldi	r24, 0x84	; 132
+ b94:	86 bf       	out	0x36, r24	; 54
+ b96:	06 b6       	in	r0, 0x36	; 54
+ b98:	07 fe       	sbrs	r0, 7
+ b9a:	fd cf       	rjmp	.-6      	; 0xb96 <HAL_I2C_Mem_Read+0x1e>
+	I2C->I2C_TWDR =( MemAdd & 0xff );
+ b9c:	43 b9       	out	0x03, r20	; 3
+	I2C_EN();WAIT_FLAG();
+ b9e:	84 e8       	ldi	r24, 0x84	; 132
+ ba0:	86 bf       	out	0x36, r24	; 54
+ ba2:	06 b6       	in	r0, 0x36	; 54
+ ba4:	07 fe       	sbrs	r0, 7
+ ba6:	fd cf       	rjmp	.-6      	; 0xba2 <HAL_I2C_Mem_Read+0x2a>
+	if (MemAddSize == 2)
+ ba8:	22 30       	cpi	r18, 0x02	; 2
+ baa:	31 f4       	brne	.+12     	; 0xbb8 <HAL_I2C_Mem_Read+0x40>
+	{
+		I2C->I2C_TWDR = ((MemAdd>>8) & 0xff);
+ bac:	53 b9       	out	0x03, r21	; 3
+		I2C_EN();WAIT_FLAG();
+ bae:	84 e8       	ldi	r24, 0x84	; 132
+ bb0:	86 bf       	out	0x36, r24	; 54
+ bb2:	06 b6       	in	r0, 0x36	; 54
+ bb4:	07 fe       	sbrs	r0, 7
+ bb6:	fd cf       	rjmp	.-6      	; 0xbb2 <HAL_I2C_Mem_Read+0x3a>
+	}
+	I2C_EN_START();
+ bb8:	84 ea       	ldi	r24, 0xA4	; 164
+ bba:	86 bf       	out	0x36, r24	; 54
+	WAIT_FLAG();
+ bbc:	06 b6       	in	r0, 0x36	; 54
+ bbe:	07 fe       	sbrs	r0, 7
+ bc0:	fd cf       	rjmp	.-6      	; 0xbbc <HAL_I2C_Mem_Read+0x44>
+	I2C->I2C_TWDR = DevAdd | 1 ;
+ bc2:	61 60       	ori	r22, 0x01	; 1
+ bc4:	63 b9       	out	0x03, r22	; 3
+	I2C_EN();WAIT_FLAG();
+ bc6:	84 e8       	ldi	r24, 0x84	; 132
+ bc8:	86 bf       	out	0x36, r24	; 54
+ bca:	06 b6       	in	r0, 0x36	; 54
+ bcc:	07 fe       	sbrs	r0, 7
+ bce:	fd cf       	rjmp	.-6      	; 0xbca <HAL_I2C_Mem_Read+0x52>
+ bd0:	0d c0       	rjmp	.+26     	; 0xbec <HAL_I2C_Mem_Read+0x74>
+	while(Handler->BufferSize-- > 1)	
+	{
+		*(Handler->buffer++) = I2C->I2C_TWDR ;
+ bd2:	a6 81       	ldd	r26, Z+6	; 0x06
+ bd4:	b7 81       	ldd	r27, Z+7	; 0x07
+ bd6:	cd 01       	movw	r24, r26
+ bd8:	01 96       	adiw	r24, 0x01	; 1
+ bda:	97 83       	std	Z+7, r25	; 0x07
+ bdc:	86 83       	std	Z+6, r24	; 0x06
+ bde:	83 b1       	in	r24, 0x03	; 3
+ be0:	8c 93       	st	X, r24
+		I2C_EN_ACK();WAIT_FLAG();
+ be2:	84 ec       	ldi	r24, 0xC4	; 196
+ be4:	86 bf       	out	0x36, r24	; 54
+ be6:	06 b6       	in	r0, 0x36	; 54
+ be8:	07 fe       	sbrs	r0, 7
+ bea:	fd cf       	rjmp	.-6      	; 0xbe6 <HAL_I2C_Mem_Read+0x6e>
+	}
+	I2C_EN_START();
+	WAIT_FLAG();
+	I2C->I2C_TWDR = DevAdd | 1 ;
+	I2C_EN();WAIT_FLAG();
+	while(Handler->BufferSize-- > 1)	
+ bec:	80 85       	ldd	r24, Z+8	; 0x08
+ bee:	9f ef       	ldi	r25, 0xFF	; 255
+ bf0:	98 0f       	add	r25, r24
+ bf2:	90 87       	std	Z+8, r25	; 0x08
+ bf4:	82 30       	cpi	r24, 0x02	; 2
+ bf6:	68 f7       	brcc	.-38     	; 0xbd2 <HAL_I2C_Mem_Read+0x5a>
+		I2C_EN_ACK();WAIT_FLAG();
+	}
+	
+	
+	/* Last Byte Will received with NACK */
+	*(Handler->buffer++) = I2C->I2C_TWDR ;
+ bf8:	a6 81       	ldd	r26, Z+6	; 0x06
+ bfa:	b7 81       	ldd	r27, Z+7	; 0x07
+ bfc:	cd 01       	movw	r24, r26
+ bfe:	01 96       	adiw	r24, 0x01	; 1
+ c00:	97 83       	std	Z+7, r25	; 0x07
+ c02:	86 83       	std	Z+6, r24	; 0x06
+ c04:	83 b1       	in	r24, 0x03	; 3
+ c06:	8c 93       	st	X, r24
+	I2C_EN_NACK();WAIT_FLAG();
+ c08:	84 e8       	ldi	r24, 0x84	; 132
+ c0a:	86 bf       	out	0x36, r24	; 54
+ c0c:	06 b6       	in	r0, 0x36	; 54
+ c0e:	07 fe       	sbrs	r0, 7
+ c10:	fd cf       	rjmp	.-6      	; 0xc0c <HAL_I2C_Mem_Read+0x94>
+	
+	/* Send Stop Bit allow another Master to acquire the bus */
+	I2C_EN_STOP();
+ c12:	84 e9       	ldi	r24, 0x94	; 148
+ c14:	86 bf       	out	0x36, r24	; 54
+	
+	
+	return I2C_NORMAL ;
+} /* END_FUN I2C_MEM_READ() */
+ c16:	80 e0       	ldi	r24, 0x00	; 0
+ c18:	1f 91       	pop	r17
+ c1a:	0f 91       	pop	r16
+ c1c:	ef 90       	pop	r14
+ c1e:	08 95       	ret
+
+00000c20 <HAL_SPI_Init>:
+ * brief  : this function used to initialize the SPI peripheral 
+ * param. : handler this var hold all initialization required by the application   
+ * return :void 
+*/
+ void HAL_SPI_Init(SPI_Handler_t * Handler)
+{
+ c20:	0f 93       	push	r16
+ c22:	1f 93       	push	r17
+ c24:	cf 93       	push	r28
+ c26:	df 93       	push	r29
+ c28:	00 d0       	rcall	.+0      	; 0xc2a <HAL_SPI_Init+0xa>
+ c2a:	1f 92       	push	r1
+ c2c:	cd b7       	in	r28, 0x3d	; 61
+ c2e:	de b7       	in	r29, 0x3e	; 62
+ c30:	8c 01       	movw	r16, r24
+	GPIO_InitTypeDef SPI_GpioPin;  // used by  this function to initialize the gpio peripheral to work as spi 
+	/* ONLY ONE REGISTER CONTROL SPI OPREATION AND ONE STRUCT HOLD ALL CONFIG.*/
+	if((Handler->strSPI_Init.CLKPrescaler) & 0x80)    /* set the selected prescaler so first check if it is required to set the SPI2X bit  */
+ c32:	fc 01       	movw	r30, r24
+ c34:	83 81       	ldd	r24, Z+3	; 0x03
+ c36:	88 23       	and	r24, r24
+ c38:	44 f4       	brge	.+16     	; 0xc4a <HAL_SPI_Init+0x2a>
+	{
+	 SPI_PREPH->SPI_SPCR |=((Handler->strSPI_Init.CLKPrescaler)&0x3u);
+ c3a:	9d b1       	in	r25, 0x0d	; 13
+ c3c:	83 70       	andi	r24, 0x03	; 3
+ c3e:	89 2b       	or	r24, r25
+ c40:	8d b9       	out	0x0d, r24	; 13
+	 SPI_PREPH->SPI_SPSR |= SPI_SPSR_SPR2;
+ c42:	8e b1       	in	r24, 0x0e	; 14
+ c44:	81 60       	ori	r24, 0x01	; 1
+ c46:	8e b9       	out	0x0e, r24	; 14
+ c48:	04 c0       	rjmp	.+8      	; 0xc52 <HAL_SPI_Init+0x32>
+	}else{
+	 SPI_PREPH->SPI_SPCR |=((Handler->strSPI_Init.CLKPrescaler)&0x3u);		
+ c4a:	9d b1       	in	r25, 0x0d	; 13
+ c4c:	83 70       	andi	r24, 0x03	; 3
+ c4e:	89 2b       	or	r24, r25
+ c50:	8d b9       	out	0x0d, r24	; 13
+	}
+	if(Handler->strSPI_Init.Mode & SPI_SPCR_MSTR)  /* master mode GPIO configuration */ 
+ c52:	f8 01       	movw	r30, r16
+ c54:	80 81       	ld	r24, Z
+ c56:	84 ff       	sbrs	r24, 4
+ c58:	16 c0       	rjmp	.+44     	; 0xc86 <HAL_SPI_Init+0x66>
+	{
+		SPI_GpioPin.mode = GPIO_MODE_OUTPUT ;
+ c5a:	81 e0       	ldi	r24, 0x01	; 1
+ c5c:	8a 83       	std	Y+2, r24	; 0x02
+		SPI_GpioPin.pin  = SPI_PIN_MOSI | SPI_PIN_SS | SPI_PIN_SCK;
+ c5e:	80 eb       	ldi	r24, 0xB0	; 176
+ c60:	89 83       	std	Y+1, r24	; 0x01
+		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+ c62:	be 01       	movw	r22, r28
+ c64:	6f 5f       	subi	r22, 0xFF	; 255
+ c66:	7f 4f       	sbci	r23, 0xFF	; 255
+ c68:	86 e3       	ldi	r24, 0x36	; 54
+ c6a:	90 e0       	ldi	r25, 0x00	; 0
+ c6c:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+
+		SPI_GpioPin.mode = GPIO_MODE_INPUT ;
+ c70:	1a 82       	std	Y+2, r1	; 0x02
+		SPI_GpioPin.pin  = SPI_PIN_MISO ;
+ c72:	80 e4       	ldi	r24, 0x40	; 64
+ c74:	89 83       	std	Y+1, r24	; 0x01
+		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);		
+ c76:	be 01       	movw	r22, r28
+ c78:	6f 5f       	subi	r22, 0xFF	; 255
+ c7a:	7f 4f       	sbci	r23, 0xFF	; 255
+ c7c:	86 e3       	ldi	r24, 0x36	; 54
+ c7e:	90 e0       	ldi	r25, 0x00	; 0
+ c80:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+ c84:	15 c0       	rjmp	.+42     	; 0xcb0 <HAL_SPI_Init+0x90>
+		
+		
+	}else{           /* slave mode GPIO configuration */
+		SPI_GpioPin.mode = GPIO_MODE_INPUT ;
+ c86:	1a 82       	std	Y+2, r1	; 0x02
+		SPI_GpioPin.pin  = SPI_PIN_SCK | SPI_PIN_MOSI | SPI_PIN_SS;
+ c88:	80 eb       	ldi	r24, 0xB0	; 176
+ c8a:	89 83       	std	Y+1, r24	; 0x01
+		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+ c8c:	be 01       	movw	r22, r28
+ c8e:	6f 5f       	subi	r22, 0xFF	; 255
+ c90:	7f 4f       	sbci	r23, 0xFF	; 255
+ c92:	86 e3       	ldi	r24, 0x36	; 54
+ c94:	90 e0       	ldi	r25, 0x00	; 0
+ c96:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+
+		SPI_GpioPin.mode = GPIO_MODE_OUTPUT ;
+ c9a:	81 e0       	ldi	r24, 0x01	; 1
+ c9c:	8a 83       	std	Y+2, r24	; 0x02
+		SPI_GpioPin.pin  = SPI_PIN_MISO ;
+ c9e:	80 e4       	ldi	r24, 0x40	; 64
+ ca0:	89 83       	std	Y+1, r24	; 0x01
+		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+ ca2:	be 01       	movw	r22, r28
+ ca4:	6f 5f       	subi	r22, 0xFF	; 255
+ ca6:	7f 4f       	sbci	r23, 0xFF	; 255
+ ca8:	86 e3       	ldi	r24, 0x36	; 54
+ caa:	90 e0       	ldi	r25, 0x00	; 0
+ cac:	0e 94 18 05 	call	0xa30	; 0xa30 <HAL_GPIO_INIT_PIN>
+	}
+	/* set the select attribute of the SPI peripheral */
+	 SPI_PREPH->SPI_SPCR  = Handler->strSPI_Init.CLKPhase | Handler->strSPI_Init.CLKPolarity |Handler->strSPI_Init.FirstBit |Handler->strSPI_Init.IT_EN |Handler->strSPI_Init.Mode ;
+ cb0:	f8 01       	movw	r30, r16
+ cb2:	42 81       	ldd	r20, Z+2	; 0x02
+ cb4:	81 81       	ldd	r24, Z+1	; 0x01
+ cb6:	34 81       	ldd	r19, Z+4	; 0x04
+ cb8:	25 81       	ldd	r18, Z+5	; 0x05
+ cba:	90 81       	ld	r25, Z
+ cbc:	84 2b       	or	r24, r20
+ cbe:	83 2b       	or	r24, r19
+ cc0:	82 2b       	or	r24, r18
+ cc2:	89 2b       	or	r24, r25
+ cc4:	8d b9       	out	0x0d, r24	; 13
+	 SPI_PREPH->SPI_SPCR |= SPI_SPCR_SPE ; 	
+ cc6:	8d b1       	in	r24, 0x0d	; 13
+ cc8:	80 64       	ori	r24, 0x40	; 64
+ cca:	8d b9       	out	0x0d, r24	; 13
+	if(Handler->strSPI_Init.IT_EN == SPI_IT_MODE_ENABLE)   /* if SPI interrupt enable then enable the global interrupt */
+ ccc:	85 81       	ldd	r24, Z+5	; 0x05
+ cce:	80 38       	cpi	r24, 0x80	; 128
+ cd0:	09 f4       	brne	.+2      	; 0xcd4 <HAL_SPI_Init+0xb4>
+		sei();
+ cd2:	78 94       	sei
+			
+			
+	
+}/* END_FUN HAL_SPI_Init()*/
+ cd4:	0f 90       	pop	r0
+ cd6:	0f 90       	pop	r0
+ cd8:	0f 90       	pop	r0
+ cda:	df 91       	pop	r29
+ cdc:	cf 91       	pop	r28
+ cde:	1f 91       	pop	r17
+ ce0:	0f 91       	pop	r16
+ ce2:	08 95       	ret
+
+00000ce4 <HAL_SPI_Transmit>:
+ * param. :Handler : this handler of SPI peripheral 
+ * param. :pTxData : pointer to the tx buffer  
+ * param. :size the required number of bytes to transmit 
+*/
+ void HAL_SPI_Transmit(SPI_Handler_t * Handler,uint8_t * pTxData,uint16_t size )
+{
+ ce4:	cf 93       	push	r28
+ ce6:	df 93       	push	r29
+ ce8:	ec 01       	movw	r28, r24
+
+    /* set the SPI Handler data trans and buffer size */
+	Handler->RxBuffer = NULL ;
+ cea:	19 86       	std	Y+9, r1	; 0x09
+ cec:	18 86       	std	Y+8, r1	; 0x08
+	Handler->RxBufferSize = 0;
+ cee:	1d 86       	std	Y+13, r1	; 0x0d
+ cf0:	1c 86       	std	Y+12, r1	; 0x0c
+
+	Handler->TxBuffer = pTxData  ;
+ cf2:	7f 83       	std	Y+7, r23	; 0x07
+ cf4:	6e 83       	std	Y+6, r22	; 0x06
+	Handler->TxBufferSize = size;
+ cf6:	5b 87       	std	Y+11, r21	; 0x0b
+ cf8:	4a 87       	std	Y+10, r20	; 0x0a
+	HAL_GPIO_WRITEPIN(GPIOB,SPI_PIN_SS,GPIO_PIN_RESET); 	
+ cfa:	40 e0       	ldi	r20, 0x00	; 0
+ cfc:	60 e1       	ldi	r22, 0x10	; 16
+ cfe:	86 e3       	ldi	r24, 0x36	; 54
+ d00:	90 e0       	ldi	r25, 0x00	; 0
+ d02:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+	while(Handler->TxBufferSize-- > 0)   /* block mode so this function will block till the size of buffer is equal to zero */
+ d06:	0b c0       	rjmp	.+22     	; 0xd1e <HAL_SPI_Transmit+0x3a>
+	{
+		SPI_PREPH->SPI_SPDR = *(Handler->TxBuffer);
+ d08:	ee 81       	ldd	r30, Y+6	; 0x06
+ d0a:	ff 81       	ldd	r31, Y+7	; 0x07
+ d0c:	80 81       	ld	r24, Z
+ d0e:	8f b9       	out	0x0f, r24	; 15
+		while(!(SPI_PREPH->SPI_SPSR & SPI_SPSR_SPIF)); /* wait till the SPI send byte and set SPIIF bit */
+ d10:	77 9b       	sbis	0x0e, 7	; 14
+ d12:	fe cf       	rjmp	.-4      	; 0xd10 <HAL_SPI_Transmit+0x2c>
+		++(Handler->TxBuffer);
+ d14:	8e 81       	ldd	r24, Y+6	; 0x06
+ d16:	9f 81       	ldd	r25, Y+7	; 0x07
+ d18:	01 96       	adiw	r24, 0x01	; 1
+ d1a:	9f 83       	std	Y+7, r25	; 0x07
+ d1c:	8e 83       	std	Y+6, r24	; 0x06
+	Handler->RxBufferSize = 0;
+
+	Handler->TxBuffer = pTxData  ;
+	Handler->TxBufferSize = size;
+	HAL_GPIO_WRITEPIN(GPIOB,SPI_PIN_SS,GPIO_PIN_RESET); 	
+	while(Handler->TxBufferSize-- > 0)   /* block mode so this function will block till the size of buffer is equal to zero */
+ d1e:	8a 85       	ldd	r24, Y+10	; 0x0a
+ d20:	9b 85       	ldd	r25, Y+11	; 0x0b
+ d22:	9c 01       	movw	r18, r24
+ d24:	21 50       	subi	r18, 0x01	; 1
+ d26:	31 09       	sbc	r19, r1
+ d28:	3b 87       	std	Y+11, r19	; 0x0b
+ d2a:	2a 87       	std	Y+10, r18	; 0x0a
+ d2c:	89 2b       	or	r24, r25
+ d2e:	61 f7       	brne	.-40     	; 0xd08 <HAL_SPI_Transmit+0x24>
+	{
+		SPI_PREPH->SPI_SPDR = *(Handler->TxBuffer);
+		while(!(SPI_PREPH->SPI_SPSR & SPI_SPSR_SPIF)); /* wait till the SPI send byte and set SPIIF bit */
+		++(Handler->TxBuffer);
+	}
+	HAL_GPIO_WRITEPIN(GPIOB,SPI_PIN_SS,GPIO_PIN_SET);
+ d30:	41 e0       	ldi	r20, 0x01	; 1
+ d32:	60 e1       	ldi	r22, 0x10	; 16
+ d34:	86 e3       	ldi	r24, 0x36	; 54
+ d36:	90 e0       	ldi	r25, 0x00	; 0
+ d38:	0e 94 33 05 	call	0xa66	; 0xa66 <HAL_GPIO_WRITEPIN>
+	 
+	
+}/* END_FUN HAL_SPI_Transmit()*/
+ d3c:	df 91       	pop	r29
+ d3e:	cf 91       	pop	r28
+ d40:	08 95       	ret
+
+00000d42 <HAL_UART_Init>:
+ * brief : this function used to initialization  UART peripheral 
+ * param : Handler pointer to the struct hold UART configuration 
+ * return : void 
+ */
+void HAL_UART_Init(UART_Handler_t * Handler )
+{
+ d42:	fc 01       	movw	r30, r24
+	uint16_t BaudRateCal =0 ;
+	
+	UCSRB = 0x00 ;
+ d44:	1a b8       	out	0x0a, r1	; 10
+	UCSRC = (1 << URSEL) | 0x00 ;    /* clear UCSRC register to set a new configurations */
+ d46:	80 e8       	ldi	r24, 0x80	; 128
+ d48:	80 bd       	out	0x20, r24	; 32
+	UCSRB |= Handler->Init.Mode ;   /* enable uart in tx or rx or both */
+ d4a:	9a b1       	in	r25, 0x0a	; 10
+ d4c:	87 81       	ldd	r24, Z+7	; 0x07
+ d4e:	89 2b       	or	r24, r25
+ d50:	8a b9       	out	0x0a, r24	; 10
+
+	/* set the word size and parity and stop bits */
+	UCSRC  |= (1 << URSEL) |((Handler->Init.wordLen) & (0x06)) | (Handler->Init.StopBits);
+ d52:	20 b5       	in	r18, 0x20	; 32
+ d54:	94 81       	ldd	r25, Z+4	; 0x04
+ d56:	85 81       	ldd	r24, Z+5	; 0x05
+ d58:	96 70       	andi	r25, 0x06	; 6
+ d5a:	98 2b       	or	r25, r24
+ d5c:	92 2b       	or	r25, r18
+ d5e:	90 68       	ori	r25, 0x80	; 128
+ d60:	90 bd       	out	0x20, r25	; 32
+
+	
+
+	/* now set the baud rate */
+	BaudRateCal = (F_CPU/(16ul *Handler->Init.BaudRate))-1;
+ d62:	80 81       	ld	r24, Z
+ d64:	91 81       	ldd	r25, Z+1	; 0x01
+ d66:	a2 81       	ldd	r26, Z+2	; 0x02
+ d68:	b3 81       	ldd	r27, Z+3	; 0x03
+ d6a:	88 0f       	add	r24, r24
+ d6c:	99 1f       	adc	r25, r25
+ d6e:	aa 1f       	adc	r26, r26
+ d70:	bb 1f       	adc	r27, r27
+ d72:	88 0f       	add	r24, r24
+ d74:	99 1f       	adc	r25, r25
+ d76:	aa 1f       	adc	r26, r26
+ d78:	bb 1f       	adc	r27, r27
+ d7a:	9c 01       	movw	r18, r24
+ d7c:	ad 01       	movw	r20, r26
+ d7e:	22 0f       	add	r18, r18
+ d80:	33 1f       	adc	r19, r19
+ d82:	44 1f       	adc	r20, r20
+ d84:	55 1f       	adc	r21, r21
+ d86:	22 0f       	add	r18, r18
+ d88:	33 1f       	adc	r19, r19
+ d8a:	44 1f       	adc	r20, r20
+ d8c:	55 1f       	adc	r21, r21
+ d8e:	60 e0       	ldi	r22, 0x00	; 0
+ d90:	74 e2       	ldi	r23, 0x24	; 36
+ d92:	84 ef       	ldi	r24, 0xF4	; 244
+ d94:	90 e0       	ldi	r25, 0x00	; 0
+ d96:	0e 94 37 07 	call	0xe6e	; 0xe6e <__udivmodsi4>
+ d9a:	21 50       	subi	r18, 0x01	; 1
+ d9c:	31 09       	sbc	r19, r1
+	UBRRL = BaudRateCal ;
+ d9e:	29 b9       	out	0x09, r18	; 9
+	UBRRH =(BaudRateCal>>8)&(0x0f);
+ da0:	83 2f       	mov	r24, r19
+ da2:	8f 70       	andi	r24, 0x0F	; 15
+ da4:	80 bd       	out	0x20, r24	; 32
+
+	
+	DDRD  |= 0x02 ;
+ da6:	81 b3       	in	r24, 0x11	; 17
+ da8:	82 60       	ori	r24, 0x02	; 2
+ daa:	81 bb       	out	0x11, r24	; 17
+	DDRD  &= ~(1<<0);
+ dac:	81 b3       	in	r24, 0x11	; 17
+ dae:	8e 7f       	andi	r24, 0xFE	; 254
+ db0:	81 bb       	out	0x11, r24	; 17
+ db2:	08 95       	ret
+
+00000db4 <HAL_UART_TRANSMIT>:
+ * param : TxBuffer pointer to the transmitted buffer 
+ * param : Size hold the size of transmitted data 
+ * return : void 
+ */
+void HAL_UART_TRANSMIT(UART_Handler_t * Handler ,uint8_t * TxBuffer ,uint16_t Size )
+{
+ db4:	fc 01       	movw	r30, r24
+	Handler->RxBuffer = 0;
+ db6:	13 86       	std	Z+11, r1	; 0x0b
+ db8:	12 86       	std	Z+10, r1	; 0x0a
+	Handler->RxSize =0 ;
+ dba:	17 86       	std	Z+15, r1	; 0x0f
+ dbc:	16 86       	std	Z+14, r1	; 0x0e
+	Handler->TxBuffer = TxBuffer ;
+ dbe:	71 87       	std	Z+9, r23	; 0x09
+ dc0:	60 87       	std	Z+8, r22	; 0x08
+	Handler->TxSize = Size ;
+ dc2:	55 87       	std	Z+13, r21	; 0x0d
+ dc4:	44 87       	std	Z+12, r20	; 0x0c
+	
+	for (uint16_t iterator =0 ;iterator<Handler->TxSize;iterator++)
+ dc6:	20 e0       	ldi	r18, 0x00	; 0
+ dc8:	30 e0       	ldi	r19, 0x00	; 0
+ dca:	0f c0       	rjmp	.+30     	; 0xdea <HAL_UART_TRANSMIT+0x36>
+	{
+	   while(!(UCSRA &(1<<UDRE)));
+ dcc:	5d 9b       	sbis	0x0b, 5	; 11
+ dce:	fe cf       	rjmp	.-4      	; 0xdcc <HAL_UART_TRANSMIT+0x18>
+	   	if(Handler->Init.wordLen == UART_WordLen_9)
+ dd0:	84 81       	ldd	r24, Z+4	; 0x04
+ dd2:	86 31       	cpi	r24, 0x16	; 22
+ dd4:	19 f4       	brne	.+6      	; 0xddc <HAL_UART_TRANSMIT+0x28>
+		   {
+			  UCSRB |=((0x100)&(Handler->TxBuffer[iterator]))>>8|0x01; 
+ dd6:	8a b1       	in	r24, 0x0a	; 10
+ dd8:	81 60       	ori	r24, 0x01	; 1
+ dda:	8a b9       	out	0x0a, r24	; 10
+		   }
+			UDR =(TxBuffer[iterator]);
+ ddc:	db 01       	movw	r26, r22
+ dde:	a2 0f       	add	r26, r18
+ de0:	b3 1f       	adc	r27, r19
+ de2:	8c 91       	ld	r24, X
+ de4:	8c b9       	out	0x0c, r24	; 12
+	Handler->RxBuffer = 0;
+	Handler->RxSize =0 ;
+	Handler->TxBuffer = TxBuffer ;
+	Handler->TxSize = Size ;
+	
+	for (uint16_t iterator =0 ;iterator<Handler->TxSize;iterator++)
+ de6:	2f 5f       	subi	r18, 0xFF	; 255
+ de8:	3f 4f       	sbci	r19, 0xFF	; 255
+ dea:	84 85       	ldd	r24, Z+12	; 0x0c
+ dec:	95 85       	ldd	r25, Z+13	; 0x0d
+ dee:	28 17       	cp	r18, r24
+ df0:	39 07       	cpc	r19, r25
+ df2:	60 f3       	brcs	.-40     	; 0xdcc <HAL_UART_TRANSMIT+0x18>
+
+	}
+	
+	
+	
+}/* END_FUN HAL_UART_TRANSMIT() */
+ df4:	08 95       	ret
+
+00000df6 <HAL_UART_RECEIVE>:
+ * param : RxBuffer pointer to the Received buffer 
+ * param : Size hold the size of transmitted data 
+ * return : void 
+ */
+void HAL_UART_RECEIVE(UART_Handler_t * Handler ,uint8_t * RxBuffer ,uint16_t Size )
+{
+ df6:	fc 01       	movw	r30, r24
+	
+	Handler->TxBuffer = NULL;
+ df8:	11 86       	std	Z+9, r1	; 0x09
+ dfa:	10 86       	std	Z+8, r1	; 0x08
+	Handler->TxSize =0 ;
+ dfc:	15 86       	std	Z+13, r1	; 0x0d
+ dfe:	14 86       	std	Z+12, r1	; 0x0c
+	Handler->RxBuffer = RxBuffer ;
+ e00:	73 87       	std	Z+11, r23	; 0x0b
+ e02:	62 87       	std	Z+10, r22	; 0x0a
+	Handler->RxSize = Size ;
+ e04:	57 87       	std	Z+15, r21	; 0x0f
+ e06:	46 87       	std	Z+14, r20	; 0x0e
+	
+	
+	for (uint16_t iterator =0 ;iterator<Handler->RxSize;iterator++)
+ e08:	20 e0       	ldi	r18, 0x00	; 0
+ e0a:	30 e0       	ldi	r19, 0x00	; 0
+ e0c:	2a c0       	rjmp	.+84     	; 0xe62 <HAL_UART_RECEIVE+0x6c>
+	{
+		while(!(UCSRA & (1<<RXC)));
+ e0e:	5f 9b       	sbis	0x0b, 7	; 11
+ e10:	fe cf       	rjmp	.-4      	; 0xe0e <HAL_UART_RECEIVE+0x18>
+		if(Handler->Init.wordLen == UART_WordLen_9)
+ e12:	84 81       	ldd	r24, Z+4	; 0x04
+ e14:	86 31       	cpi	r24, 0x16	; 22
+ e16:	e9 f4       	brne	.+58     	; 0xe52 <HAL_UART_RECEIVE+0x5c>
+		{
+					*(((uint16_t *)Handler->RxBuffer)+iterator)  = (((uint16_t)UCSRB & 0x02)<<7) ;     /* the ninth bit must be read first */
+ e18:	a2 85       	ldd	r26, Z+10	; 0x0a
+ e1a:	b3 85       	ldd	r27, Z+11	; 0x0b
+ e1c:	a9 01       	movw	r20, r18
+ e1e:	44 0f       	add	r20, r20
+ e20:	55 1f       	adc	r21, r21
+ e22:	a4 0f       	add	r26, r20
+ e24:	b5 1f       	adc	r27, r21
+ e26:	8a b1       	in	r24, 0x0a	; 10
+ e28:	82 70       	andi	r24, 0x02	; 2
+ e2a:	90 e0       	ldi	r25, 0x00	; 0
+ e2c:	96 95       	lsr	r25
+ e2e:	98 2f       	mov	r25, r24
+ e30:	88 27       	eor	r24, r24
+ e32:	97 95       	ror	r25
+ e34:	87 95       	ror	r24
+ e36:	8d 93       	st	X+, r24
+ e38:	9c 93       	st	X, r25
+					*(((uint16_t *)Handler->RxBuffer)+iterator) |= UDR ;
+ e3a:	6c b1       	in	r22, 0x0c	; 12
+ e3c:	a2 85       	ldd	r26, Z+10	; 0x0a
+ e3e:	b3 85       	ldd	r27, Z+11	; 0x0b
+ e40:	a4 0f       	add	r26, r20
+ e42:	b5 1f       	adc	r27, r21
+ e44:	8d 91       	ld	r24, X+
+ e46:	9c 91       	ld	r25, X
+ e48:	11 97       	sbiw	r26, 0x01	; 1
+ e4a:	86 2b       	or	r24, r22
+ e4c:	8d 93       	st	X+, r24
+ e4e:	9c 93       	st	X, r25
+ e50:	06 c0       	rjmp	.+12     	; 0xe5e <HAL_UART_RECEIVE+0x68>
+		}else{
+			
+		Handler->RxBuffer[iterator] = UDR ;
+ e52:	a2 85       	ldd	r26, Z+10	; 0x0a
+ e54:	b3 85       	ldd	r27, Z+11	; 0x0b
+ e56:	a2 0f       	add	r26, r18
+ e58:	b3 1f       	adc	r27, r19
+ e5a:	8c b1       	in	r24, 0x0c	; 12
+ e5c:	8c 93       	st	X, r24
+	Handler->TxSize =0 ;
+	Handler->RxBuffer = RxBuffer ;
+	Handler->RxSize = Size ;
+	
+	
+	for (uint16_t iterator =0 ;iterator<Handler->RxSize;iterator++)
+ e5e:	2f 5f       	subi	r18, 0xFF	; 255
+ e60:	3f 4f       	sbci	r19, 0xFF	; 255
+ e62:	86 85       	ldd	r24, Z+14	; 0x0e
+ e64:	97 85       	ldd	r25, Z+15	; 0x0f
+ e66:	28 17       	cp	r18, r24
+ e68:	39 07       	cpc	r19, r25
+ e6a:	88 f2       	brcs	.-94     	; 0xe0e <HAL_UART_RECEIVE+0x18>
+		}
+	
+	}
+	
+	
+}/* END_FUN HAL_UART_RECEIVE() */
+ e6c:	08 95       	ret
+
+00000e6e <__udivmodsi4>:
+ e6e:	a1 e2       	ldi	r26, 0x21	; 33
+ e70:	1a 2e       	mov	r1, r26
+ e72:	aa 1b       	sub	r26, r26
+ e74:	bb 1b       	sub	r27, r27
+ e76:	fd 01       	movw	r30, r26
+ e78:	0d c0       	rjmp	.+26     	; 0xe94 <__udivmodsi4_ep>
+
+00000e7a <__udivmodsi4_loop>:
+ e7a:	aa 1f       	adc	r26, r26
+ e7c:	bb 1f       	adc	r27, r27
+ e7e:	ee 1f       	adc	r30, r30
+ e80:	ff 1f       	adc	r31, r31
+ e82:	a2 17       	cp	r26, r18
+ e84:	b3 07       	cpc	r27, r19
+ e86:	e4 07       	cpc	r30, r20
+ e88:	f5 07       	cpc	r31, r21
+ e8a:	20 f0       	brcs	.+8      	; 0xe94 <__udivmodsi4_ep>
+ e8c:	a2 1b       	sub	r26, r18
+ e8e:	b3 0b       	sbc	r27, r19
+ e90:	e4 0b       	sbc	r30, r20
+ e92:	f5 0b       	sbc	r31, r21
+
+00000e94 <__udivmodsi4_ep>:
+ e94:	66 1f       	adc	r22, r22
+ e96:	77 1f       	adc	r23, r23
+ e98:	88 1f       	adc	r24, r24
+ e9a:	99 1f       	adc	r25, r25
+ e9c:	1a 94       	dec	r1
+ e9e:	69 f7       	brne	.-38     	; 0xe7a <__udivmodsi4_loop>
+ ea0:	60 95       	com	r22
+ ea2:	70 95       	com	r23
+ ea4:	80 95       	com	r24
+ ea6:	90 95       	com	r25
+ ea8:	9b 01       	movw	r18, r22
+ eaa:	ac 01       	movw	r20, r24
+ eac:	bd 01       	movw	r22, r26
+ eae:	cf 01       	movw	r24, r30
+ eb0:	08 95       	ret
+
+00000eb2 <__tablejump2__>:
+ eb2:	ee 0f       	add	r30, r30
+ eb4:	ff 1f       	adc	r31, r31
+ eb6:	05 90       	lpm	r0, Z+
+ eb8:	f4 91       	lpm	r31, Z
+ eba:	e0 2d       	mov	r30, r0
+ ebc:	09 94       	ijmp
+
+00000ebe <__ashrdi3>:
+ ebe:	97 fb       	bst	r25, 7
+ ec0:	10 f8       	bld	r1, 0
+
+00000ec2 <__lshrdi3>:
+ ec2:	16 94       	lsr	r1
+ ec4:	00 08       	sbc	r0, r0
+ ec6:	0f 93       	push	r16
+ ec8:	08 30       	cpi	r16, 0x08	; 8
+ eca:	98 f0       	brcs	.+38     	; 0xef2 <__lshrdi3+0x30>
+ ecc:	08 50       	subi	r16, 0x08	; 8
+ ece:	23 2f       	mov	r18, r19
+ ed0:	34 2f       	mov	r19, r20
+ ed2:	45 2f       	mov	r20, r21
+ ed4:	56 2f       	mov	r21, r22
+ ed6:	67 2f       	mov	r22, r23
+ ed8:	78 2f       	mov	r23, r24
+ eda:	89 2f       	mov	r24, r25
+ edc:	90 2d       	mov	r25, r0
+ ede:	f4 cf       	rjmp	.-24     	; 0xec8 <__lshrdi3+0x6>
+ ee0:	05 94       	asr	r0
+ ee2:	97 95       	ror	r25
+ ee4:	87 95       	ror	r24
+ ee6:	77 95       	ror	r23
+ ee8:	67 95       	ror	r22
+ eea:	57 95       	ror	r21
+ eec:	47 95       	ror	r20
+ eee:	37 95       	ror	r19
+ ef0:	27 95       	ror	r18
+ ef2:	0a 95       	dec	r16
+ ef4:	aa f7       	brpl	.-22     	; 0xee0 <__lshrdi3+0x1e>
+ ef6:	0f 91       	pop	r16
+ ef8:	08 95       	ret
+
+00000efa <__adddi3_s8>:
+ efa:	00 24       	eor	r0, r0
+ efc:	a7 fd       	sbrc	r26, 7
+ efe:	00 94       	com	r0
+ f00:	2a 0f       	add	r18, r26
+ f02:	30 1d       	adc	r19, r0
+ f04:	40 1d       	adc	r20, r0
+ f06:	50 1d       	adc	r21, r0
+ f08:	60 1d       	adc	r22, r0
+ f0a:	70 1d       	adc	r23, r0
+ f0c:	80 1d       	adc	r24, r0
+ f0e:	90 1d       	adc	r25, r0
+ f10:	08 95       	ret
+
+00000f12 <atoi>:
+ f12:	fc 01       	movw	r30, r24
+ f14:	88 27       	eor	r24, r24
+ f16:	99 27       	eor	r25, r25
+ f18:	e8 94       	clt
+ f1a:	21 91       	ld	r18, Z+
+ f1c:	20 32       	cpi	r18, 0x20	; 32
+ f1e:	e9 f3       	breq	.-6      	; 0xf1a <atoi+0x8>
+ f20:	29 30       	cpi	r18, 0x09	; 9
+ f22:	10 f0       	brcs	.+4      	; 0xf28 <atoi+0x16>
+ f24:	2e 30       	cpi	r18, 0x0E	; 14
+ f26:	c8 f3       	brcs	.-14     	; 0xf1a <atoi+0x8>
+ f28:	2b 32       	cpi	r18, 0x2B	; 43
+ f2a:	41 f0       	breq	.+16     	; 0xf3c <atoi+0x2a>
+ f2c:	2d 32       	cpi	r18, 0x2D	; 45
+ f2e:	39 f4       	brne	.+14     	; 0xf3e <atoi+0x2c>
+ f30:	68 94       	set
+ f32:	04 c0       	rjmp	.+8      	; 0xf3c <atoi+0x2a>
+ f34:	0e 94 bd 07 	call	0xf7a	; 0xf7a <__mulhi_const_10>
+ f38:	82 0f       	add	r24, r18
+ f3a:	91 1d       	adc	r25, r1
+ f3c:	21 91       	ld	r18, Z+
+ f3e:	20 53       	subi	r18, 0x30	; 48
+ f40:	2a 30       	cpi	r18, 0x0A	; 10
+ f42:	c0 f3       	brcs	.-16     	; 0xf34 <atoi+0x22>
+ f44:	1e f4       	brtc	.+6      	; 0xf4c <atoi+0x3a>
+ f46:	90 95       	com	r25
+ f48:	81 95       	neg	r24
+ f4a:	9f 4f       	sbci	r25, 0xFF	; 255
+ f4c:	08 95       	ret
+
+00000f4e <itoa>:
+ f4e:	45 32       	cpi	r20, 0x25	; 37
+ f50:	51 05       	cpc	r21, r1
+ f52:	20 f4       	brcc	.+8      	; 0xf5c <itoa+0xe>
+ f54:	42 30       	cpi	r20, 0x02	; 2
+ f56:	10 f0       	brcs	.+4      	; 0xf5c <itoa+0xe>
+ f58:	0c 94 b2 07 	jmp	0xf64	; 0xf64 <__itoa_ncheck>
+ f5c:	fb 01       	movw	r30, r22
+ f5e:	10 82       	st	Z, r1
+ f60:	cb 01       	movw	r24, r22
+ f62:	08 95       	ret
+
+00000f64 <__itoa_ncheck>:
+ f64:	bb 27       	eor	r27, r27
+ f66:	4a 30       	cpi	r20, 0x0A	; 10
+ f68:	31 f4       	brne	.+12     	; 0xf76 <__itoa_ncheck+0x12>
+ f6a:	99 23       	and	r25, r25
+ f6c:	22 f4       	brpl	.+8      	; 0xf76 <__itoa_ncheck+0x12>
+ f6e:	bd e2       	ldi	r27, 0x2D	; 45
+ f70:	90 95       	com	r25
+ f72:	81 95       	neg	r24
+ f74:	9f 4f       	sbci	r25, 0xFF	; 255
+ f76:	0c 94 c6 07 	jmp	0xf8c	; 0xf8c <__utoa_common>
+
+00000f7a <__mulhi_const_10>:
+ f7a:	7a e0       	ldi	r23, 0x0A	; 10
+ f7c:	97 9f       	mul	r25, r23
+ f7e:	90 2d       	mov	r25, r0
+ f80:	87 9f       	mul	r24, r23
+ f82:	80 2d       	mov	r24, r0
+ f84:	91 0d       	add	r25, r1
+ f86:	11 24       	eor	r1, r1
+ f88:	08 95       	ret
+
+00000f8a <__utoa_ncheck>:
+ f8a:	bb 27       	eor	r27, r27
+
+00000f8c <__utoa_common>:
+ f8c:	fb 01       	movw	r30, r22
+ f8e:	55 27       	eor	r21, r21
+ f90:	aa 27       	eor	r26, r26
+ f92:	88 0f       	add	r24, r24
+ f94:	99 1f       	adc	r25, r25
+ f96:	aa 1f       	adc	r26, r26
+ f98:	a4 17       	cp	r26, r20
+ f9a:	10 f0       	brcs	.+4      	; 0xfa0 <__utoa_common+0x14>
+ f9c:	a4 1b       	sub	r26, r20
+ f9e:	83 95       	inc	r24
+ fa0:	50 51       	subi	r21, 0x10	; 16
+ fa2:	b9 f7       	brne	.-18     	; 0xf92 <__utoa_common+0x6>
+ fa4:	a0 5d       	subi	r26, 0xD0	; 208
+ fa6:	aa 33       	cpi	r26, 0x3A	; 58
+ fa8:	08 f0       	brcs	.+2      	; 0xfac <__utoa_common+0x20>
+ faa:	a9 5d       	subi	r26, 0xD9	; 217
+ fac:	a1 93       	st	Z+, r26
+ fae:	00 97       	sbiw	r24, 0x00	; 0
+ fb0:	79 f7       	brne	.-34     	; 0xf90 <__utoa_common+0x4>
+ fb2:	b1 11       	cpse	r27, r1
+ fb4:	b1 93       	st	Z+, r27
+ fb6:	11 92       	st	Z+, r1
+ fb8:	cb 01       	movw	r24, r22
+ fba:	0c 94 df 07 	jmp	0xfbe	; 0xfbe <strrev>
+
+00000fbe <strrev>:
+ fbe:	dc 01       	movw	r26, r24
+ fc0:	fc 01       	movw	r30, r24
+ fc2:	67 2f       	mov	r22, r23
+ fc4:	71 91       	ld	r23, Z+
+ fc6:	77 23       	and	r23, r23
+ fc8:	e1 f7       	brne	.-8      	; 0xfc2 <strrev+0x4>
+ fca:	32 97       	sbiw	r30, 0x02	; 2
+ fcc:	04 c0       	rjmp	.+8      	; 0xfd6 <strrev+0x18>
+ fce:	7c 91       	ld	r23, X
+ fd0:	6d 93       	st	X+, r22
+ fd2:	70 83       	st	Z, r23
+ fd4:	62 91       	ld	r22, -Z
+ fd6:	ae 17       	cp	r26, r30
+ fd8:	bf 07       	cpc	r27, r31
+ fda:	c8 f3       	brcs	.-14     	; 0xfce <strrev+0x10>
+ fdc:	08 95       	ret
+
+00000fde <_exit>:
+ fde:	f8 94       	cli
+
+00000fe0 <__stop_program>:
+ fe0:	ff cf       	rjmp	.-2      	; 0xfe0 <__stop_program>
