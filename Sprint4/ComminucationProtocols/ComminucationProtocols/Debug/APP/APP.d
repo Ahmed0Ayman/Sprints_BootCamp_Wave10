@@ -14,21 +14,20 @@ APP/APP.d APP/APP.o: ../APP/APP.c ../APP/APP.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
  ../MCAL/EXTI/HAL_EXIT.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../MCAL/HAL_I2C/HAL_I2c.h ../MCAL/HAL_GPIO/GPIO_TYPEDEF.h \
- ../MCAL/HAL_SPI/HAL_SPI.h \
+ ../MCAL/HAL_I2C/HAL_I2c.h ../MCAL/HAL_SPI/HAL_SPI.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- ../MCAL/UART/HAL_Uart.h ../MCAL/External_CAN/MCP2515.h \
- ../MCAL/External_CAN/MCP2515_REG.h \
+ ../MCAL/UART/HAL_Uart.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ ../MCAL/External_CAN/MCP2515.h ../MCAL/External_CAN/MCP2515_REG.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../HAL/Atmega32a\ KeyPad/KeyPad.h ../HAL/Atmega32a\ KeyPad/KeyPad_Pins.h \
  ../HAL/Atmega32a\ lcd/Lcd-Driver.h ../HAL/Atmega32a\ lcd/LCD_Pins.h \
  ../HAL/Atmega32a\ lcd/Lcd-Driver.h ../HAL/LED_BUTTONS/But_LED.h \
- ../HAL/EEPROM/EEPROM.h ../HAL/EEPROM/EEPROM_Config.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h
+ ../HAL/EEPROM/EEPROM.h ../HAL/EEPROM/EEPROM_Config.h
 
 ../APP/APP.h:
 
@@ -66,8 +65,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../MCAL/HAL_I2C/HAL_I2c.h:
 
-../MCAL/HAL_GPIO/GPIO_TYPEDEF.h:
-
 ../MCAL/HAL_SPI/HAL_SPI.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
@@ -77,6 +74,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
 ../MCAL/UART/HAL_Uart.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
 ../MCAL/External_CAN/MCP2515.h:
 
@@ -103,5 +102,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../HAL/EEPROM/EEPROM.h:
 
 ../HAL/EEPROM/EEPROM_Config.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:

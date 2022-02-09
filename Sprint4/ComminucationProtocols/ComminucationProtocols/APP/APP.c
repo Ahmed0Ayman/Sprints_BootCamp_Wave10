@@ -8,7 +8,9 @@
 
 #include "APP.h"
 
-
+#define  I2C_MEM_START_ADD			0x00u
+#define  I2C_MEM_ADD_SIZE			0x02u
+#define  EEPROM_DATA_SIZE			0x0cu
 
 uint8_t KeypadKey[2] ;
 uint8_t ControlFlag ;
@@ -80,9 +82,11 @@ void APP_Init(void)
 
 void APP_UPdate(void)
 {
+			
 			*KeypadKey = 0 ;
 			while(!KeypadKey[0])
 			KeypadKey[0] = KeyPad_GetPressedKey(&KeyPad);
+			LCD_Send_Command(LCD_COMMANED_CLEAR_LCD);
 			LCD_Send_Character_WithLoc(1,1,KeypadKey[0]);
 			_delay_ms(100);
 
@@ -113,8 +117,8 @@ void APP_UPdate(void)
 						EEPROM_Write_Only();
 					break;
 				case 8 :
-						EEPROM_Reset();
-								ControlFlag  = 0  ;
+//						EEPROM_Reset();
+//								ControlFlag  = 0  ;
 
 								_delay_ms(100);
 					break;
@@ -171,7 +175,7 @@ void I2C_Transmit_Only(void)
 	uint8_t ExitKey = 0 ;
 	while(!ExitKey)
 	{
-		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 ,1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+		HAL_I2C_Mem_Write(&I2C_Handler , 0xa0 ,I2C_MEM_START_ADD ,I2C_MEM_ADD_SIZE ,I2C_Buffer ,I2C_Buffer_SIZE);
 		ControlFlag  = 0  ;
 		ExitKey = KeyPad_GetPressedKey(&KeyPad);
 	}
@@ -181,11 +185,12 @@ void I2C_Transmit_Only(void)
 void ALL_Transmit_Only(void)
 {
 	uint8_t ExitKey = 0 ;
-	while(!ExitKey)
-	{
+
 		HAL_UART_TRANSMIT(&UART_Handler ,UART_TXBuffer ,  UART_TXBuffer_SIZE );
 		HAL_SPI_Transmit(&SPI_Handler , SPI_TXBuffer ,SPI_TXBuffer_SIZE );
 		HAL_I2C_Mem_Write(&I2C_Handler , 0xaa ,5 , 1 ,I2C_Buffer ,I2C_Buffer_SIZE);
+	while(!ExitKey)
+	{
 		ExitKey = KeyPad_GetPressedKey(&KeyPad);
 	}
 		ControlFlag  = 0  ;
@@ -195,10 +200,11 @@ void ALL_Transmit_Only(void)
 void Uart_ECHO_Only(void)
 {
 	uint8_t ExitKey = 0 ;
-	while(!ExitKey)
-	{
+
 		HAL_UART_RECEIVE(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
 		HAL_UART_TRANSMIT(&UART_Handler ,UART_RXBuffer ,  UART_RXBuffer_SIZE );
+	while(!ExitKey)
+	{
 		ExitKey = KeyPad_GetPressedKey(&KeyPad);
 	}
 		ControlFlag  = 0  ;
@@ -211,10 +217,10 @@ void Uart_ECHO_Only(void)
 void EEPROM_Write_Only(void)
 {
 	uint8_t ExitKey = 0 ;
-	uint8_t TXByte[3] = "AH" ;
+	uint8_t TXByte[EEPROM_DATA_SIZE] = "HI , THIER " ;
 	while(!ExitKey)
 	{
-		EEPROM_WriteByteS(10,10,TXByte , 2);
+		EEPROM_WriteByteS(10,TXByte , EEPROM_DATA_SIZE);
 		ExitKey = KeyPad_GetPressedKey(&KeyPad);
 	}
 	ControlFlag  = 0  ;
@@ -226,13 +232,15 @@ void EEPROM_Write_Only(void)
 void EEPROM_Read_Only(void)
 {
 	uint8_t ExitKey = 0 ;
-	uint8_t RXByte[2] = {0} ;
+	uint8_t RXByte[EEPROM_DATA_SIZE] = {0} ;
 	while(!ExitKey)
 	{
-		EEPROM_ReadByteS(10,10,RXByte , 2);
+		EEPROM_ReadByteS(10,RXByte , EEPROM_DATA_SIZE);
 		ExitKey = KeyPad_GetPressedKey(&KeyPad);
 	}
+	LCD_Send_Command( LCD_COMMANED_CLEAR_LCD);
+	LCD_Send_String_WithLoc(1,1,RXByte );
 	ControlFlag  = 0  ;
-	_delay_ms(100);
+	_delay_ms(1000);
 }
 

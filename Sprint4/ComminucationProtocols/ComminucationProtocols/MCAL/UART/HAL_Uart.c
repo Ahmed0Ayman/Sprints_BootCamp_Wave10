@@ -54,8 +54,6 @@ void HAL_UART_Init(UART_Handler_t * Handler )
  */
 void HAL_UART_TRANSMIT(UART_Handler_t * Handler ,uint8_t * TxBuffer ,uint16_t Size )
 {
-	Handler->RxBuffer = 0;
-	Handler->RxSize =0 ;
 	Handler->TxBuffer = TxBuffer ;
 	Handler->TxSize = Size ;
 	
@@ -80,12 +78,71 @@ void HAL_UART_TRANSMIT(UART_Handler_t * Handler ,uint8_t * TxBuffer ,uint16_t Si
 
 
 /*
- * brief : this function used to receive data in blocking mode 
+ * brief : this function used to receive data in blocking mode with /r or /n terminator char
  * param : Handler pointer to the struct hold UART configuration 
  * param : RxBuffer pointer to the Received buffer 
  * param : Size hold the size of transmitted data 
  * return : void 
  */
+
+void HAL_UART_RECEIVE(UART_Handler_t * Handler ,uint8_t * RxBuffer ,uint16_t Size )
+{
+	
+	Handler->TxBuffer = NULL;
+	Handler->TxSize =0 ;
+	Handler->RxBuffer = RxBuffer ;
+	Handler->RxSize = Size ;
+	uint8_t TempData = 0 ;
+	
+	for (uint16_t iterator =0 ; ;iterator++)
+	{
+		while(!(UCSRA & (1<<RXC)));
+		TempData = UDR ;
+
+			if (iterator <= Handler->RxSize)
+			{
+				if(Handler->Init.wordLen == UART_WordLen_9)
+				{
+					*(((uint16_t *)Handler->RxBuffer)+iterator)  = (((uint16_t)UCSRB & 0x02)<<7) ;     // the ninth bit must be read first 
+					*(((uint16_t *)Handler->RxBuffer)+iterator) |= TempData ;
+					if((TempData == '\r')||(TempData == '\n'))
+					{
+						if(iterator < Handler->RxSize )
+						*(((uint16_t *)Handler->RxBuffer)+iterator) = '\0' ;
+						else
+						*(((uint16_t *)Handler->RxBuffer)+Size) = '\0' ;
+						
+						break ;
+					}
+				}else{
+					Handler->RxBuffer[iterator] = TempData ;
+					if((TempData == '\r')||(TempData == '\n'))
+					{
+						if(iterator < Handler->RxSize )
+						Handler->RxBuffer[iterator] = '\0' ;
+						else
+						Handler->RxBuffer[Size] = '\0' ;
+						
+						break;
+					}
+				}
+			}else{
+				
+					if((TempData == '\r')||(TempData == '\n'))
+					{
+						if(iterator < Handler->RxSize )
+						Handler->RxBuffer[iterator] = '\0' ;
+						else
+						Handler->RxBuffer[Size] = '\0' ;
+										
+						break;
+					}
+				}
+		}
+	
+	
+}/* END_FUN HAL_UART_RECEIVE() */
+/*
 void HAL_UART_RECEIVE(UART_Handler_t * Handler ,uint8_t * RxBuffer ,uint16_t Size )
 {
 	
@@ -100,19 +157,22 @@ void HAL_UART_RECEIVE(UART_Handler_t * Handler ,uint8_t * RxBuffer ,uint16_t Siz
 		while(!(UCSRA & (1<<RXC)));
 		if(Handler->Init.wordLen == UART_WordLen_9)
 		{
-					*(((uint16_t *)Handler->RxBuffer)+iterator)  = (((uint16_t)UCSRB & 0x02)<<7) ;     /* the ninth bit must be read first */
+					*(((uint16_t *)Handler->RxBuffer)+iterator)  = (((uint16_t)UCSRB & 0x02)<<7) ;     // the ninth bit must be read first 
 					*(((uint16_t *)Handler->RxBuffer)+iterator) |= UDR ;
 		}else{
 			
 		Handler->RxBuffer[iterator] = UDR ;
+		if (Handler->RxBuffer[iterator] == '\r')
+		{
+			Handler->RxBuffer[iterator] = '\0' ;
+			break;
+		}
 		}
 	
 	}
 	
 	
-}/* END_FUN HAL_UART_RECEIVE() */
-
-
+}// END_FUN HAL_UART_RECEIVE() */
 
 
 /*

@@ -84,7 +84,7 @@ typedef enum
  * param. : PIN_CONFIG pointer to struct hold all configuration
  * return : void 
  */
-void HAL_GPIO_INIT_PIN(StrGPIO_t PORT, GPIO_InitTypeDef *  PIN_CONFIG);
+void HAL_GPIO_Pin_Init(StrGPIO_t PORT, GPIO_InitTypeDef *  PIN_CONFIG);
 
 /*
  * brief  : this function used to read the specific pin 

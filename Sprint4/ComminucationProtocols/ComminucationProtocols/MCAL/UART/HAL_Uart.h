@@ -19,9 +19,7 @@
  
 #include <stdint.h>
 #include <avr/io.h>
-
-
-#define  NULL ((void * )0)
+#include <stdlib.h>
 
 #define  UART_SYNC  0
 

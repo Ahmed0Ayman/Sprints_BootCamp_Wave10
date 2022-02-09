@@ -179,7 +179,7 @@ LCD_Status_t LCD_Initializaion(void)
 	{
 		LCD_GPIO_Handler.pin = LcdBitSelect.LcdBits[i].Pin ;
 		  
-		HAL_GPIO_INIT_PIN(LcdBitSelect.LcdBits[i].Port,&LCD_GPIO_Handler);
+		HAL_GPIO_Pin_Init(LcdBitSelect.LcdBits[i].Port,&LCD_GPIO_Handler);
 	}
 
 	/* LCD Initialization command*/

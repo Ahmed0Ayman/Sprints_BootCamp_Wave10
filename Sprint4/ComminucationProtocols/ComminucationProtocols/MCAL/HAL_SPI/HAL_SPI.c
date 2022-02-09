@@ -7,11 +7,9 @@
  */ 
 
 
-#include "HAL_SPI.h"
-
- SPI_Handler_t  SPI_Handler ;    
+#include "HAL_SPI.h" 
  
-static SPI_STATUS SPI_State  ;  /* static variable used by the driver to indicate the status of the SPI driver */
+static uint8_t SPI_State  ;  /* static variable used by the driver to indicate the status of the SPI driver */
 
 
 
@@ -35,21 +33,21 @@ static SPI_STATUS SPI_State  ;  /* static variable used by the driver to indicat
 	{
 		SPI_GpioPin.mode = GPIO_MODE_OUTPUT ;
 		SPI_GpioPin.pin  = SPI_PIN_MOSI | SPI_PIN_SS | SPI_PIN_SCK;
-		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+		HAL_GPIO_Pin_Init(GPIOB,&SPI_GpioPin);
 
 		SPI_GpioPin.mode = GPIO_MODE_INPUT ;
 		SPI_GpioPin.pin  = SPI_PIN_MISO ;
-		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);		
+		HAL_GPIO_Pin_Init(GPIOB,&SPI_GpioPin);		
 		
 		
 	}else{           /* slave mode GPIO configuration */
 		SPI_GpioPin.mode = GPIO_MODE_INPUT ;
 		SPI_GpioPin.pin  = SPI_PIN_SCK | SPI_PIN_MOSI | SPI_PIN_SS;
-		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+		HAL_GPIO_Pin_Init(GPIOB,&SPI_GpioPin);
 
 		SPI_GpioPin.mode = GPIO_MODE_OUTPUT ;
 		SPI_GpioPin.pin  = SPI_PIN_MISO ;
-		HAL_GPIO_INIT_PIN(GPIOB,&SPI_GpioPin);
+		HAL_GPIO_Pin_Init(GPIOB,&SPI_GpioPin);
 	}
 	/* set the select attribute of the SPI peripheral */
 	 SPI_PREPH->SPI_SPCR  = Handler->strSPI_Init.CLKPhase | Handler->strSPI_Init.CLKPolarity |Handler->strSPI_Init.FirstBit |Handler->strSPI_Init.IT_EN |Handler->strSPI_Init.Mode ;

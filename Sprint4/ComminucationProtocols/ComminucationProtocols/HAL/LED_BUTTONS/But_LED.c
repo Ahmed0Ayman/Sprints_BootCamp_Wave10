@@ -32,7 +32,7 @@ ButtonStatus_t Button_Init(ButtonConfig_t * Buttons )
 		for (uint8_t itera = 0 ; itera < NumberOFButtons ; itera++ )
 		{
 			ButtoninInit.pin = 	Buttons[itera].PINNum ;
-			HAL_GPIO_INIT_PIN(Buttons[itera].PORT , &ButtoninInit) ;
+			HAL_GPIO_Pin_Init(Buttons[itera].PORT , &ButtoninInit) ;
 		}
 	
 	
@@ -119,7 +119,7 @@ LEDStatus_t LED_Init(LEDConfig_t * LEDs )
 	for (uint8_t itera = 0 ; itera < NumberOFLEDs ; itera++ )
 	{
 		LEDinInit.pin = LEDs[itera].PINNum ;
-		HAL_GPIO_INIT_PIN(LEDs[itera].PORT , &LEDinInit) ;
+		HAL_GPIO_Pin_Init(LEDs[itera].PORT , &LEDinInit) ;
 	}
 	
 	

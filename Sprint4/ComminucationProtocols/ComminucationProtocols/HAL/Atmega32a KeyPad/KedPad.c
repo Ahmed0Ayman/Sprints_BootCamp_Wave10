@@ -26,7 +26,7 @@ void KeyPad_Initialization(KeyPad_t * KeyPad)
 	for(uint8_t iter =0 ; iter < _NUM_OF_ColumnS ;iter++)
 	{
 		KeyPad_gpio.pin = KeyPad->ColumnPins[iter].Pin ;
-		HAL_GPIO_INIT_PIN(KeyPad->ColumnPins[iter].Port , &KeyPad_gpio);
+		HAL_GPIO_Pin_Init(KeyPad->ColumnPins[iter].Port , &KeyPad_gpio);
 		HAL_GPIO_WRITEPIN(KeyPad->ColumnPins[iter].Port , KeyPad->ColumnPins[iter].Pin , WRIGHT_SECOND);
 	}
 
@@ -36,7 +36,7 @@ void KeyPad_Initialization(KeyPad_t * KeyPad)
 	for(uint8_t iter =0 ; iter < _NUM_OF_ROWS ;iter++)
 	{
 		KeyPad_gpio.pin = KeyPad->RowPins[iter].Pin ;
-		HAL_GPIO_INIT_PIN(KeyPad->RowPins[iter].Port , &KeyPad_gpio);
+		HAL_GPIO_Pin_Init(KeyPad->RowPins[iter].Port , &KeyPad_gpio);
 	}	
 	
 

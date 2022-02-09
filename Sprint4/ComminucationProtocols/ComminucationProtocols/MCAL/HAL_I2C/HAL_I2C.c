@@ -121,7 +121,10 @@ I2C_STATUS HAL_I2C_Slave_Receive(I2C_Handler_t * Handler  ,uint8_t * pRxData ,ui
 	{
 		I2C_EN_ACK();WAIT_FLAG()
 		*(Handler->buffer) = I2C->I2C_TWDR ;
-		 Handler->buffer++;
+		if(Handler->BufferSize == 0)
+		{
+			break ;
+		}		 Handler->buffer++;
 	}
 	I2C_EN_NACK() ;
 	
@@ -150,6 +153,10 @@ I2C_STATUS HAL_I2C_Slave_Transmit(I2C_Handler_t * Handler  ,uint8_t * pTxData,ui
 			I2C_EN_ACK();WAIT_FLAG();
 			I2C->I2C_TWDR = *(Handler->buffer);
 			Handler->buffer++;
+			if(Handler->BufferSize == 0)
+			{
+				break ;
+			}
 		}
 		I2C_EN_NACK() ;
 	
@@ -177,21 +184,23 @@ I2C_STATUS HAL_I2C_Mem_Write(I2C_Handler_t * Handler ,uint8_t DevAdd,uint16_t Me
 	I2C_EN_START();WAIT_FLAG();
 	I2C->I2C_TWDR = DevAdd ;
 	I2C_EN();WAIT_FLAG();
-	I2C->I2C_TWDR =( MemAdd & 0xff );
-	I2C_EN();WAIT_FLAG();
+
 	if (MemAddSize == 2)
 	{
-		I2C->I2C_TWDR = ((MemAdd>>8) & 0xff);
-		I2C_EN();WAIT_FLAG();	
+		I2C->I2C_TWDR =( MemAdd>>8 & 0xff );
+		I2C_EN();WAIT_FLAG();
 	}
-	while(Handler->BufferSize-- > 0)
+	I2C->I2C_TWDR =( MemAdd & 0xff );
+	I2C_EN();WAIT_FLAG();
+
+	while(DataSize-- > 0)
 	{
 		I2C->I2C_TWDR = *(Handler->buffer++) ;
 		I2C_EN();WAIT_FLAG();
+
 	}
 	I2C_EN_STOP();
-	
-	
+
 	return I2C_NORMAL ;
 	
 }/* END_FUN I2C_MEM_WRITE() */
@@ -218,27 +227,27 @@ I2C_STATUS HAL_I2C_Mem_Read(I2C_Handler_t * Handler ,uint8_t DevAdd,uint16_t Mem
 	I2C_EN_START();WAIT_FLAG();
 	I2C->I2C_TWDR = DevAdd ;
 	I2C_EN();WAIT_FLAG();
-	I2C->I2C_TWDR =( MemAdd & 0xff );
-	I2C_EN();WAIT_FLAG();
 	if (MemAddSize == 2)
 	{
-		I2C->I2C_TWDR = ((MemAdd>>8) & 0xff);
+		I2C->I2C_TWDR =( MemAdd>>8 & 0xff );
 		I2C_EN();WAIT_FLAG();
 	}
-	I2C_EN_START();
-	WAIT_FLAG();
+	I2C->I2C_TWDR =( MemAdd & 0xff );
+	I2C_EN();WAIT_FLAG();
+	I2C_EN_START();WAIT_FLAG();
 	I2C->I2C_TWDR = DevAdd | 1 ;
 	I2C_EN();WAIT_FLAG();
-	while(Handler->BufferSize-- > 1)	
+	while(DataSize-- > 1)	
 	{
-		*(Handler->buffer++) = I2C->I2C_TWDR ;
 		I2C_EN_ACK();WAIT_FLAG();
+		*(Handler->buffer++) = I2C->I2C_TWDR ;
 	}
 	
 	
 	/* Last Byte Will received with NACK */
+	I2C_EN();WAIT_FLAG();
 	*(Handler->buffer++) = I2C->I2C_TWDR ;
-	I2C_EN_NACK();WAIT_FLAG();
+
 	
 	/* Send Stop Bit allow another Master to acquire the bus */
 	I2C_EN_STOP();
