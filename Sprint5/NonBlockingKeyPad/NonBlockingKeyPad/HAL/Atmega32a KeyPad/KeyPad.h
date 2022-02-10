@@ -35,6 +35,8 @@ typedef struct
 }KeyPad_PinTypeDef;      /* this struct used to hold the config of each pin of keypad */
 
 
+extern uint8_t TimerEvent  ;
+
 /*
  * brief : this typedef struct is a handler to the keypad hold 
  * all required information a bout keypad so this function first 
@@ -75,7 +77,7 @@ char KeyPad_GetPressedKey(KeyPad_t * KeyPad);
  * param. : KeyPadInit pointer to the handler of keypad
  * return : void 
  */
-void KeyPad_Initialization(KeyPad_t * KeyPad);
+uint8_t KeyPad_Initialization(KeyPad_t * KeyPad);
 
 
 char KeyPad_NONBlock_GetPressedKey(KeyPad_t * KeyPad);

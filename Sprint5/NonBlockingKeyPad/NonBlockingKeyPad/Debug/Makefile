@@ -50,12 +50,11 @@ C_SRCS +=  \
 ../HAL/Atmega32a\ KeyPad/KeyPad_Pins.c \
 ../HAL/Atmega32a\ lcd/Lcd-Driver.c \
 ../HAL/Atmega32a\ lcd/LCD_Pins.c \
-../LinkedList.c \
 ../main.c \
 ../MCAL/EXTI/HAL_EXIT.c \
 ../MCAL/HAL_GPIO/HAL_GPIO.c \
 ../MCAL/Timer/TIMER_Interface.c \
-../Stack.c
+../Queue.c
 
 
 PREPROCESSING_SRCS += 
@@ -70,12 +69,11 @@ HAL/Atmega32a\ KeyPad/KedPad.o \
 HAL/Atmega32a\ KeyPad/KeyPad_Pins.o \
 HAL/Atmega32a\ lcd/Lcd-Driver.o \
 HAL/Atmega32a\ lcd/LCD_Pins.o \
-LinkedList.o \
 main.o \
 MCAL/EXTI/HAL_EXIT.o \
 MCAL/HAL_GPIO/HAL_GPIO.o \
 MCAL/Timer/TIMER_Interface.o \
-Stack.o
+Queue.o
 
 OBJS_AS_ARGS +=  \
 APP/APP.o \
@@ -83,12 +81,11 @@ APP/APP.o \
 "HAL/Atmega32a KeyPad/KeyPad_Pins.o" \
 "HAL/Atmega32a lcd/Lcd-Driver.o" \
 "HAL/Atmega32a lcd/LCD_Pins.o" \
-LinkedList.o \
 main.o \
 MCAL/EXTI/HAL_EXIT.o \
 MCAL/HAL_GPIO/HAL_GPIO.o \
 MCAL/Timer/TIMER_Interface.o \
-Stack.o
+Queue.o
 
 C_DEPS +=  \
 APP/APP.d \
@@ -96,12 +93,11 @@ HAL/Atmega32a\ KeyPad/KedPad.d \
 HAL/Atmega32a\ KeyPad/KeyPad_Pins.d \
 HAL/Atmega32a\ lcd/Lcd-Driver.d \
 HAL/Atmega32a\ lcd/LCD_Pins.d \
-LinkedList.d \
 main.d \
 MCAL/EXTI/HAL_EXIT.d \
 MCAL/HAL_GPIO/HAL_GPIO.d \
 MCAL/Timer/TIMER_Interface.d \
-Stack.d
+Queue.d
 
 C_DEPS_AS_ARGS +=  \
 APP/APP.d \
@@ -109,12 +105,11 @@ APP/APP.d \
 "HAL/Atmega32a KeyPad/KeyPad_Pins.d" \
 "HAL/Atmega32a lcd/Lcd-Driver.d" \
 "HAL/Atmega32a lcd/LCD_Pins.d" \
-LinkedList.d \
 main.d \
 MCAL/EXTI/HAL_EXIT.d \
 MCAL/HAL_GPIO/HAL_GPIO.d \
 MCAL/Timer/TIMER_Interface.d \
-Stack.d
+Queue.d
 
 OUTPUT_FILE_PATH +=NonBlockingKeyPad.elf
 
@@ -165,13 +160,6 @@ HAL/Atmega32a\ lcd/LCD_Pins.o: ../HAL/Atmega32a\ lcd/LCD_Pins.c
 	@echo Finished building: $<
 	
 
-./LinkedList.o: .././LinkedList.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../MCAL/HAL_GPIO" -I"../MCAL/Timer" -I"../HAL/Atmega32a KeyPad" -I"../HAL/Atmega32a lcd" -I"../APP" -I"../MCAL/EXTI" -I".."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -Wextra -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -200,7 +188,7 @@ MCAL/Timer/TIMER_Interface.o: ../MCAL/Timer/TIMER_Interface.c
 	@echo Finished building: $<
 	
 
-./Stack.o: .././Stack.c
+./Queue.o: .././Queue.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../MCAL/HAL_GPIO" -I"../MCAL/Timer" -I"../HAL/Atmega32a KeyPad" -I"../HAL/Atmega32a lcd" -I"../APP" -I"../MCAL/EXTI" -I".."  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -Wextra -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

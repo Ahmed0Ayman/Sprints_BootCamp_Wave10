@@ -16,10 +16,10 @@
 #include "Lcd-Driver.h"
 #include <util/delay.h>
 #include "HAL_EXIT.h"
-#include "LinkedList.h"
-#include "Stack.h"
+#include "Queue.h"
 
-extern pstr_Stack_t Stack_Handler;
+
+extern struct Queue * Queue_Handler;
 
 void APP_Init(void);
 

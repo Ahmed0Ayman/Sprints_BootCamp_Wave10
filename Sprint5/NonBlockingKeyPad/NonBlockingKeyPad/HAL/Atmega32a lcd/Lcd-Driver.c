@@ -7,14 +7,19 @@
 #include "LCD-Driver.h"
 
 
-pstr_Stack_t Stack_Handler;
+struct Queue * Queue_Handler;
 
+uint8_t TempData ;
+uint8_t LCD_State , LCD_Prev_State;
+
+
+
+ uint32_t Temp_LcdSystemDelay  ;
 
 
 
 /* start position for x & y location as described in data sheet*/ 
 static uint8_t column_position [2] = {0x80,0xc0};
-uint16_t LCD_DelayOS = 0  ; 
 extern uint8_t LCD_PendingStart ; 
 extern EXIT_Handler_t  EXIT_Handler ;
 uint8_t LCD_PendingStat = 0 ; 
@@ -60,8 +65,6 @@ static void LCD_Triger_Enable(void)
 #define  WaitDelay	2
 
 
-uint8_t TempData  = 0;
-uint8_t LCD_State = 0 , LCD_Prev_State;
 uint8_t LCD_Send_4BitData(uint8_t data)
 {
 
@@ -114,16 +117,12 @@ switch(LCD_State)
  */ 
 LCD_Status_t LCD_Send_Character_CurrLoc(uint8_t character)
 {
-	TempData = character ;
-	if (LCD_PendingStart == 1)
-	{
-		return LCD_BUSY ;
-	}else
-	{
+		uint8_t Data = character ;
+		EnQueue(Queue_Handler , &Data);
 		HAL_GPIO_WRITEPIN(LcdBitSelect.LcdBits[LCD_BIT_RS_PIN].Port,LcdBitSelect.LcdBits[LCD_BIT_RS_PIN].Pin,GPIO_PIN_SET);  // set enable pin
 		HAL_GPIO_WRITEPIN(LcdBitSelect.LcdBits[LCD_BIT_RW_PIN].Port,LcdBitSelect.LcdBits[LCD_BIT_RW_PIN].Pin,GPIO_PIN_RESET);  // set enable pin
 		LCD_PendingStart = 1  ;
-	}
+
 	
 	return LCD_OK ;
 } /* END_FUN LCD_Send_Character_CurrLoc()*/
@@ -136,13 +135,16 @@ LCD_Status_t LCD_Send_Character_CurrLoc(uint8_t character)
  * param. : command the specific command to send to LCD chose one of @ LCD_COMMANED_ 
  * return : void 
  */
+#define  SetCommand		0
+#define  WaitCommand	1
+
 LCD_Status_t LCD_Send_Command(uint8_t command)
 {
 	static uint8_t StatCommand ; 
 	LCD_Status_t RetVal = 0 ; 
 	switch(StatCommand)
 	{
-		case 0 : 
+		case SetCommand : 
 			if (LCD_PendingStart == 1)
 			{
 				return LCD_BUSY ; 
@@ -155,7 +157,7 @@ LCD_Status_t LCD_Send_Command(uint8_t command)
 			RetVal  = LCD_BUSY ; 
 			break;
 			
-		case 1 :
+		case WaitCommand :
 			if (LCD_PendingStart == 0)
 			{
 					RetVal = LCD_OK ;
@@ -189,14 +191,16 @@ LCD_Status_t LCD_Send_String_CurrLoc(char *StringOfCharacters)
 		uint8_t  TempChar = 0 ;
 		while (1)
 		{
-			Stack_Push(&Stack_Handler, (uint8_t *)StringOfCharacters);
+			EnQueue(Queue_Handler ,  (uint8_t *)StringOfCharacters);
 			if (*StringOfCharacters == '\0')
 			{
 				break;
 			}
 			StringOfCharacters++ ;
 		}
-		Stack_Pop(&Stack_Handler, &TempChar);
+		
+		//LCD_PendingStart = 1;
+		//DeQueue(Queue_Handler, &TempChar);
 		LCD_Send_Character_CurrLoc(TempChar) ;
 
 	return LCD_OK ;
@@ -218,7 +222,10 @@ LCD_Status_t LCD_Goto_Location(uint8_t y , uint8_t x)
 	return LCD_OK ;	
 } /* END_FUN LCD_Goto_Location()*/
 
-
+void LCD_HAL_Delay(uint32_t MsDelay)
+{
+	Temp_LcdSystemDelay = MsDelay ; 
+}
 
 
 /*
@@ -227,10 +234,15 @@ LCD_Status_t LCD_Goto_Location(uint8_t y , uint8_t x)
  */ 
 LCD_Status_t LCD_Initializaion(void)
 {
+	
+	
 	GPIO_InitTypeDef LCD_GPIO_Handler ;
 	
 	
 	_delay_ms(20);
+	
+	LCD_HAL_Delay(20);
+	
 	/* Set portB pin 1,2,3 as output */
 	LCD_GPIO_Handler.mode = GPIO_MODE_OUTPUT ;
 	LCD_GPIO_Handler.pull =GPIO_NOPULL ;
@@ -283,9 +295,9 @@ LCD_Status_t LCD_Send_Float_CurLoc( float number )
 	uint16_t decimalValue = (uint16_t)(diffValue * pow(10,2));  /* calculate the float value */
 	
 	
-	LCD_Send_Integer_CurrLoc(intValue,5);
+	LCD_Send_Integer_CurrLoc(intValue);
 	LCD_Send_Character_CurrLoc('.');
-	LCD_Send_Integer_CurrLoc(decimalValue,5);
+	LCD_Send_Integer_CurrLoc(decimalValue);
 	
 	
 		return LCD_OK ;
@@ -301,9 +313,9 @@ LCD_Status_t LCD_Send_Float_CurLoc( float number )
  * param. : NumberOfDigits number of digits of the integer number that you want to display
  * return : void 
  */
-LCD_Status_t LCD_Send_Integer_CurrLoc(uint16_t IntegerToDisplay, uint8_t NumberOfDigits)
+LCD_Status_t LCD_Send_Integer_CurrLoc(uint16_t IntegerToDisplay)
 {
-		char StringToDisplay[NumberOfDigits];   /* create array with required size */ 
+		char StringToDisplay[10];   /* create array with required size */ 
 		itoa(IntegerToDisplay, StringToDisplay,10); /* convert from int num. to char num. */
 		LCD_Send_String_CurrLoc(StringToDisplay);  /* print char array on the screen */
 		return LCD_OK ;

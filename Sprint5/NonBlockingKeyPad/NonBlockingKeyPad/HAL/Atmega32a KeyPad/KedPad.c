@@ -21,7 +21,7 @@ static GPIO_InitTypeDef KeyPad_gpio ;
  * param. : KeyPadInit pointer to the handler of keypad
  * return : void 
  */
-void KeyPad_Initialization(KeyPad_t * KeyPad)
+uint8_t KeyPad_Initialization(KeyPad_t * KeyPad)
 {
     /* for output pins  --> all colomn will set as autput pins*/
 	KeyPad_gpio.mode = GPIO_MODE_OUTPUT ;
@@ -41,11 +41,14 @@ void KeyPad_Initialization(KeyPad_t * KeyPad)
 		HAL_GPIO_INIT_PIN(KeyPad->RowPins[iter].Port , &KeyPad_gpio);
 	}	
 	
-
+	return 0 ;
 
 }/* END_FUN KeyPad_Initialization()*/
 
 
+
+#define FIRSTPRESSED			0
+#define BOUNCING				1
 char KeyPad_NONBlock_GetPressedKey(KeyPad_t * KeyPad)
 {
 	uint8_t key  = KeyPad_GetPressedKey( KeyPad) ; 
@@ -55,14 +58,14 @@ char KeyPad_NONBlock_GetPressedKey(KeyPad_t * KeyPad)
 		
 	switch(KeyPad_State)
 	{
-		case 0 : 
+		case FIRSTPRESSED : 
 		
 			KeyPad_State = 1 ;
 			KeyPad_PendingStart = 1 ;
 			key =0;
 		break;
 		
-		case 1 :
+		case BOUNCING :
 			
 			if (TimerEvent == 1)
 			{

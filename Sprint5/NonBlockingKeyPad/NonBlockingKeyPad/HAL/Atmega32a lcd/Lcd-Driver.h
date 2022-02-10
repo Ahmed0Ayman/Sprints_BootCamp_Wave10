@@ -9,8 +9,13 @@
 #include "HAL_GPIO.h"
 #include "LCD_Pins.h"
 #include <stdlib.h>
- #include "HAL_EXIT.h"
- #include "Stack.h"
+#include "HAL_EXIT.h"
+#include "Queue.h"
+
+
+extern uint8_t LcdPending_state , LCD_FunPending ,  LCD_State , TempData; 
+extern uint8_t LCD_PendingStat ; 
+
 
 typedef enum {LCD_Send_Char ,LCD_Send_Str , LCD_Send_Int , LCD_Send_Float , LCD_Send_Com}LCD_Oper_t;
 typedef struct 
@@ -112,10 +117,9 @@ LCD_Status_t LCD_Send_Float_CurLoc( float number );
 /* 
  * brief  : this function used to send an 16 bit integer to LCD with the current location 
  * param. : IntegerToDisplay this is the integer value that you want to display
- * param. : NumberOfDigits number of digits of the integer number that you want to display
  * return : void 
  */
-LCD_Status_t LCD_Send_Integer_CurrLoc(uint16_t IntegerToDisplay, uint8_t NumberOfDigits);
+LCD_Status_t LCD_Send_Integer_CurrLoc(uint16_t IntegerToDisplay);
 
 
 
